@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
+    <link href='style.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <!-- Start Questionnaire -->
+    <div class="questionnaire">
+        <form action="#" type="#" id="questionnaire-form">    
+            <div class="questionnaire-card">
+                <h1 class="title"><span>Questionnaire</span> Mockup</h1>
+                <label for="name" class="question required">What are your first and last names?</label>
+                <input type="text" class="short-answer" name="name" id="name" value="John Wayne">
+                <label for="email" class="question required">What is your email address?</label>
+                <input type="text" class="short-answer" name="email" id="email" value="whatsup@moderndeveloper.com">
+                <label for="color" class="question">What is your favorite color</label>
+                <input type="text" class="short-answer" name="color" id="color" value="">
+                <input type="button" class="button" value="Continue">
+            </div>
+
+            <div class="questionnaire-card">
+                <h1 class="title">Section Title</h1>
+                <label for="question_1" class="question">Question</label>
+                <input type="text" class="short-answer" name="question_1" id="question_1" value="Answer">
+                <label for="question_2" class="question">Question</label>
+                <input type="text" class="short-answer" name="question_2" id="question_2" value="Answer">
+                <label for="long_response" class="question">Question</label>
+                <textarea name="long_response" id="long_response" class="long-answer">Long Response, using &lt;textarea&gt; </textarea>
+                <input type="button" class="button" value="Continue">
+            </div>
+
+            <div class="questionnaire-card disabled">
+                <h1 class="title">This section is disabled</h1>
+                <label for="question_3" class="question">Question</label>
+                <input type="text" class="short-answer" name="question_3" id="question_3" value="Your Answer">
+                <input type="button" class="button" value="Continue">
+            </div>
+
+            <div class="questionnaire-card">
+                <h1 class="title"><span>Strong</span> Section Title</h1>
+                <p class="description">
+                    Description paragraph.
+                    <img src="amazing-beautiful-beauty-blue.jpg" alt="Amazing blue">
+                </p>
+                <label for="question_4" class="question">Question</label>
+                <p class="description">
+                    Description paragraph.
+                </p>
+                <input type="text" class="short-answer" name="question_4" id="question_4" value="Your Answer">
+                <label for="long_response_2" class="question">Question</label>
+                <textarea name="long_response_2" id="long_response_2" class="long-answer">Long response, using &lt;textarea&gt; </textarea>
+                <input type="button" class="button" value="Continue">
+            </div>
+
+            <div class="questionnaire-card">
+                <h1 class="title">Section Title w/ form elements</h1>
+                <p class="description">
+                    Description paragraph.
+                </p>
+                <div class="multiple-choice">
+                    <h3>Multiple Choice w/ Radio Inputs</h3>
+                    <label for="radio-item-1">
+                        <input type="radio" id="radio-item-1" name="radio-item-1" value="something_A" checked />I like option A
+                    </label>
+                    <label for="radio-item-2">
+                        <input type="radio" id="radio-item-2" name="radio-item-1" value="something_B" />I like option B
+                    </label>
+                    <label for="radio-item-3">
+                        <input type="radio" id="radio-item-3" name="radio-item-1" value="something_C" />I like option C
+                    </label>
+                </div>
+                <div class="multiple-choice">
+                    <h3>Multiple Choice w/ Checkbox Inputs</h3>
+                    <label for="checkbox-item-1">
+                        <input type="checkbox" id="checkbox-item-1" name="checkbox-item" value="something_A" checked />I like option A
+                    </label>
+                    <label for="checkbox-item-2">
+                        <input type="checkbox" id="checkbox-item-2" name="checkbox-item" value="something_B" />I like option B
+                    </label>
+                    <label for="checkbox-item-3">
+                        <input type="checkbox" id="checkbox-item-3" name="checkbox-item" value="something_C" />I like option C
+                    </label>
+                </div>
+                <label for="drop_1" class="question required">Dropdown Select from the list below:</label>
+                <p class="description">
+                    Description paragraph.
+                </p>
+                <select name="drop_1" id="drop_1" class="dropdown">
+                    <option value="Option 1">Option 1</option>option>
+                    <option value="Option 2">Option 2</option>option>
+                    <option value="Option 3">Option 3</option>option>
+                    <option value="Option 4">Option 4</option>option>
+                </select>
+                <input type="submit" class="button submit" value="Submit">
+            </div>
+        </form>        
+    </div> 
+    <!-- End Questionnaire -->  
+</body>
+</html>
