@@ -3,7 +3,7 @@
 body {
   font-size: 16px;
   font-family: "Roboto", "Helvetica Neue", sans-serif;
-  background: #F3FFBD url('https://static.pexels.com/photos/30732/pexels-photo-30732.jpg') repeat-y top center;
+  background: #F3FFBD url('images/picjumbo.com_IMG_1455.jpg') fixed left bottom;
 }
 
 /* Specific CSS rulesets */
@@ -40,7 +40,7 @@ body {
     border-bottom: 1px solid #D0D0D0;
 }
 
-.questionnaire__card--disabled .questionnaire__card__title {
+.questionnaire__card__title--disabled {
     color: #C0C0C0;
 }
 
@@ -62,21 +62,22 @@ body {
     float: right;
 }
 
-.questionnaire__card__question--required + input {
+.questionnaire__card__question--required input {
     color: #A7ADA9;
 }
 
-.questionnaire__card__question__short-answer, .questionnaire__card__question__long-answer {
+.questionnaire__card__short-answer, .questionnaire__card__long-answer {
     width: 97%;
     margin: 15px 0;
     padding: 10px 10px;
     border: 0px;
     border-bottom: 3px solid #6631A7;
     font-size: 1.1em;
+    font-weight: normal;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.questionnaire__card__question__long-answer {
+.questionnaire__card__long-answer {
     height: 130px;
 }
 
@@ -104,7 +105,6 @@ body {
     background-color: #60BCCA;
 }
 
-
 .questionnaire__card__description {
     overflow: hidden;
     color: #83859A;
@@ -113,7 +113,6 @@ body {
 .questionnaire__card__description img {
     padding-top: 25px;
 }
-
 
 .questionnaire__card__multiple-choice {
     margin-top: 30px;
@@ -125,6 +124,7 @@ body {
 
 .questionnaire__card__multiple-choice input {
     margin-bottom: 20px;
+    margin-right: 10px;
 }
 
 .questionnaire__card__dropdown {
