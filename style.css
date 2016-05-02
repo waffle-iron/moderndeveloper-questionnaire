@@ -8,10 +8,14 @@ body {
 
 /* Specific CSS rulesets */
 
-.questionnaire .questionnaire-card {
+.questionnaire {
     position:relative;
-    width: 38%;
     margin: 130px auto;
+    width: 50%;
+}
+
+.questionnaire__card {
+    margin: 130px 0;
     padding: 30px 80px;
     border: 1px solid #EAEAEA;
     background-color: #fff;
@@ -23,7 +27,12 @@ body {
     border-radius: 4px;
 }
 
-.questionnaire-card h1.title {
+.questionnaire__card--disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.questionnaire__card__title {
     font-weight: 300;
     color: #6432A5;
     padding-bottom: 25px;
@@ -31,29 +40,33 @@ body {
     border-bottom: 1px solid #D0D0D0;
 }
 
-.questionnaire-card h1.title span {
+.questionnaire__card--disabled .questionnaire__card__title {
+    color: #C0C0C0;
+}
+
+.questionnaire__card__title--strong {
     font-weight:700;
 }
 
-.questionnaire-card .question {
+.questionnaire__card__question {
     display: block;
     font-weight:700;
     font-size: 1.1em;
     margin-top: 30px;
 }
 
-.questionnaire-card .required::after {
+.questionnaire__card__question--required::before {
     content: "REQUIRED";
     color: #880429;
     font-size:0.8em;
     float: right;
 }
 
-.questionnaire-card .required + input {
+.questionnaire__card__question--required + input {
     color: #A7ADA9;
 }
 
-.questionnaire-card .short-answer, .questionnaire-card .long-answer {
+.questionnaire__card__question__short-answer, .questionnaire__card__question__long-answer {
     width: 97%;
     margin: 15px 0;
     padding: 10px 10px;
@@ -63,11 +76,11 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.questionnaire-card .long-answer {
+.questionnaire__card__question__long-answer {
     height: 130px;
 }
 
-.questionnaire-card .button {
+.questionnaire__card__button {
     display: block;
     width: 40%;
     padding: 15px 15px!important;
@@ -78,51 +91,43 @@ body {
     background-color: #8F5FCF;
 }
 
-.questionnaire-card .button:hover {
+.questionnaire__card__button:hover {
     background-color: #5F6ECF;
 }
 
-.questionnaire-card .submit {
+.questionnaire__card__submit {
     margin-top: 40px!important;
     background-color: #AA3377;
 }
 
-.questionnaire-card .submit:hover {
+.questionnaire__card__submit:hover {
     background-color: #60BCCA;
 }
 
-.questionnaire .disabled {
-    pointer-events: none;
-    opacity: 0.5;
-}
 
-.questionnaire .disabled .title {
-    color: #C0C0C0;
-}
-
-.questionnaire-card .description {
+.questionnaire__card__description {
     overflow: hidden;
     color: #83859A;
 }
 
-.questionnaire-card .description img {
+.questionnaire__card__description img {
     padding-top: 25px;
 }
 
 
-.questionnaire-card .multiple-choice {
+.questionnaire__card__multiple-choice {
     margin-top: 30px;
 }
 
-.questionnaire-card .multiple-choice label {
+.questionnaire__card__multiple-choice label {
     display: block;
 }
 
-.questionnaire-card .multiple-choice input {
+.questionnaire__card__multiple-choice input {
     margin-bottom: 20px;
 }
 
-.questionnaire-card .dropdown {
+.questionnaire__card__dropdown {
     width: 100%;
     font-size: 1.1em;
 }

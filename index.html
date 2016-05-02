@@ -8,91 +8,99 @@
     <!-- Start Questionnaire -->
     <div class="questionnaire">
         <form action="#" type="#" id="questionnaire-form">    
-            <div class="questionnaire-card">
-                <h1 class="title"><span>Questionnaire</span> Mockup</h1>
-                <label for="name" class="question required">What are your first and last names?</label>
-                <input type="text" class="short-answer" name="name" id="name" value="John Wayne">
-                <label for="email" class="question required">What is your email address?</label>
-                <input type="text" class="short-answer" name="email" id="email" value="whatsup@moderndeveloper.com">
-                <label for="color" class="question">What is your favorite color</label>
-                <input type="text" class="short-answer" name="color" id="color" value="">
-                <input type="button" class="button" value="Continue">
+            <div class="questionnaire__card">
+                <h1 class="questionnaire__card__title"><span class="questionnaire__card__title--strong">Questionnaire</span> Mockup</h1>
+                <label class="questionnaire__card__question questionnaire__card__question--required">What are your first and last names?
+                    <input type="text" class="questionnaire__card__question__short-answer" name="name" id="name" value="John Wayne">
+                </label>
+                <label class="questionnaire__card__question questionnaire__card__question--required">What is your email address?
+                    <input type="text" class="questionnaire__card__question__short-answer" name="email" id="email" value="whatsup@moderndeveloper.com">
+                </label>
+                <label class="questionnaire__card__question">What is your favorite color
+                    <input type="text" class="questionnaire__card__question__short-answer" name="color" id="color" value="">
+                </label>
+                <input type="button" class="questionnaire__card__button" value="Continue">
             </div>
 
-            <div class="questionnaire-card">
-                <h1 class="title">Section Title</h1>
-                <label for="question_1" class="question">Question</label>
-                <input type="text" class="short-answer" name="question_1" id="question_1" value="Answer">
-                <label for="question_2" class="question">Question</label>
-                <input type="text" class="short-answer" name="question_2" id="question_2" value="Answer">
-                <label for="long_response" class="question">Question</label>
-                <textarea name="long_response" id="long_response" class="long-answer">Long Response, using &lt;textarea&gt; </textarea>
-                <input type="button" class="button" value="Continue">
+            <div class="questionnaire__card">
+                <h1 class="questionnaire__card__title">Section Title</h1>
+                <label class="questionnaire__card__question">Question
+                    <input type="text" class="questionnaire__card__question__short-answer" name="question_1" id="question_1" value="Answer">
+                </label>
+                <label class="questionnaire__card__question">Question
+                    <input type="text" class="questionnaire__card__question__short-answer" name="question_2" id="question_2" value="Answer">
+                </label>
+                <label class="questionnaire__card__question">Question
+                    <textarea name="long_response" id="long_response" class="questionnaire__card__question__long-answer">Long Response, using &lt;textarea&gt;</textarea>
+                </label>
+                <input type="button" class="questionnaire__card__button" value="Continue">
             </div>
 
-            <div class="questionnaire-card disabled">
-                <h1 class="title">This section is disabled</h1>
-                <label for="question_3" class="question">Question</label>
-                <input type="text" class="short-answer" name="question_3" id="question_3" value="Your Answer">
-                <input type="button" class="button" value="Continue">
+            <div class="questionnaire__card questionnaire__card--disabled">
+                <h1 class="questionnaire__card__title">This section is disabled</h1>
+                <label class="questionnaire__card__question">Question
+                    <input type="text" class="questionnaire__card__question__short-answer" name="question_3" id="question_3" value="Your Answer">
+                </label>
+                <input type="button" class="questionnaire__card__button" value="Continue">
             </div>
 
-            <div class="questionnaire-card">
-                <h1 class="title"><span>Strong</span> Section Title</h1>
-                <p class="description">
+            <div class="questionnaire__card">
+                <h1 class="questionnaire__card__title"><span class="questionnaire__card__title--strong">Strong</span> Section Title</h1>
+                <p class="questionnaire__card__description">
                     Description paragraph.
                     <img src="amazing-beautiful-beauty-blue.jpg" alt="Amazing blue">
                 </p>
-                <label for="question_4" class="question">Question</label>
-                <p class="description">
+                <label for="question_4" class="questionnaire__card__question">Question</label>
+                <p class="questionnaire__card__description">
                     Description paragraph.
                 </p>
-                <input type="text" class="short-answer" name="question_4" id="question_4" value="Your Answer">
-                <label for="long_response_2" class="question">Question</label>
-                <textarea name="long_response_2" id="long_response_2" class="long-answer">Long response, using &lt;textarea&gt; </textarea>
-                <input type="button" class="button" value="Continue">
+                <input type="text" class="questionnaire__card__question__short-answer" name="question_4" id="question_4" value="Your Answer">
+                <label class="questionnaire__card__question">Question
+                    <textarea name="long_response_2" id="long_response_2" class="questionnaire__card__question__long-answer">Long response, using &lt;textarea&gt; </textarea>
+                </label>
+                <input type="button" class="questionnaire__card__button" value="Continue">
             </div>
 
-            <div class="questionnaire-card">
-                <h1 class="title">Section Title w/ form elements</h1>
-                <p class="description">
+            <div class="questionnaire__card">
+                <h1 class="questionnaire__card__title">Section Title w/ form elements</h1>
+                <p class="questionnaire__card__description">
                     Description paragraph.
                 </p>
-                <div class="multiple-choice">
+                <div class="questionnaire__card__multiple-choice">
                     <h3>Multiple Choice w/ Radio Inputs</h3>
-                    <label for="radio-item-1">
+                    <label>
                         <input type="radio" id="radio-item-1" name="radio-item-1" value="something_A" checked />I like option A
                     </label>
-                    <label for="radio-item-2">
+                    <label>
                         <input type="radio" id="radio-item-2" name="radio-item-1" value="something_B" />I like option B
                     </label>
-                    <label for="radio-item-3">
+                    <label>
                         <input type="radio" id="radio-item-3" name="radio-item-1" value="something_C" />I like option C
                     </label>
                 </div>
-                <div class="multiple-choice">
+                <div class="questionnaire__card__multiple-choice">
                     <h3>Multiple Choice w/ Checkbox Inputs</h3>
-                    <label for="checkbox-item-1">
+                    <label>
                         <input type="checkbox" id="checkbox-item-1" name="checkbox-item" value="something_A" checked />I like option A
                     </label>
-                    <label for="checkbox-item-2">
+                    <label>
                         <input type="checkbox" id="checkbox-item-2" name="checkbox-item" value="something_B" />I like option B
                     </label>
-                    <label for="checkbox-item-3">
+                    <label>
                         <input type="checkbox" id="checkbox-item-3" name="checkbox-item" value="something_C" />I like option C
                     </label>
                 </div>
-                <label for="drop_1" class="question required">Dropdown Select from the list below:</label>
-                <p class="description">
+                <label for="drop_1" class="questionnaire__card__question questionnaire__card__question--required">Dropdown Select from the list below:</label>
+                <p class="questionnaire__card__description">
                     Description paragraph.
                 </p>
-                <select name="drop_1" id="drop_1" class="dropdown">
+                <select name="drop_1" id="drop_1" class="questionnaire__card__dropdown">
                     <option value="Option 1">Option 1</option>option>
                     <option value="Option 2">Option 2</option>option>
                     <option value="Option 3">Option 3</option>option>
                     <option value="Option 4">Option 4</option>option>
                 </select>
-                <input type="submit" class="button submit" value="Submit">
+                <input type="submit" class="questionnaire__card__button questionnaire__card__submit" value="Submit">
             </div>
         </form>        
     </div> 
