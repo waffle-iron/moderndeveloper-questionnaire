@@ -1,224 +1,324 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie-edge">
-    <title>
-        Joyous-Giant-Anteater :: Questionnaire App
-    </title>
-    <meta name="description" content="HTML & CSS Project Assignment number 1">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>
+    Joyous-Giant-Anteater :: Questionnaire App
+  </title>
+  <meta name="description" content="HTML & CSS Project Assignment">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.css' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
-    <link href='style.css' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Roboto:400,300,500,700">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <!-- Start Questionnaire -->
-    <div class="questionnaire">
-        <form action="#" type="#" id="questionnaire-form">    
+  <main role="main">
+    <article>
+      <form accept-charset="UTF-8" action="#" method="post">
 
-            <div class="questionnaire__card">
-                <h1 class="questionnaire__card__title">
-                    <strong class="questionnaire__card__title--strong">
-                        Questionnaire
-                    </strong> 
-                    Mockup
-                </h1>
-                <label  for="name"
-                        class="questionnaire__card__question
-                               questionnaire__card__question--required">
-                    What are your first and last names?
-                </label>                    
-                <input  type="text" 
-                        class="questionnaire__card__short-answer" name="name" 
-                        id="name" 
-                        value="John Wayne">                
-                <label  for="email"
-                        class="questionnaire__card__question
-                               questionnaire__card__question--required">
-                    What is your email address?
+        <div class="alt-quest">
+          <section class="alt-quest__card">
+            <header class="alt-quest__head">
+              <h2>
+                <strong>
+                  Questionnaire
+                </strong>
+                Mockup
+              </h2>
+            </header>
+            <fieldset>
+              <div class="form-row">
+                <label for="card-01-name"
+                       class="is-required">
+                  What are your first and last names?
                 </label>
-                <input  type="text" 
-                        class="questionnaire__card__short-answer" name="email" 
-                        id="email" 
-                        value="whatsup@moderndeveloper.com">                
-                <label for="color" class="questionnaire__card__question">
-                    What is your favorite color
+                <input type="text"
+                       id="card-01-name"
+                       name="card-01-name"
+                       placeholder="John Wayne"
+                       tabindex="1"
+                       autofocus="autofocus"
+                       aria-required="true"
+                       required="required" />
+              </div>
+              <div class="form-row">
+                <label for="card-01-email"
+                        class="is-required">
+                  What is your email address?
                 </label>
-                <input  type="text" 
-                        class="questionnaire__card__short-answer"
-                        name="color" 
-                        id="color" 
-                        value="">                
-                <input  type="button" 
-                        class="questionnaire__card__button" 
-                        value="Continue">
-            </div>
-
-            <div class="questionnaire__card">
-                <h1 class="questionnaire__card__title">
-                    Section Title
-                </h1>
-                <label for="question_1" class="questionnaire__card__question">
-                    Question
+                <input type="email"
+                       id="card-01-email"
+                       name="card-01-email"
+                       placeholder="whatsup@moderndeveloper.com"
+                       tabindex="2"
+                       aria-required="true"
+                       required="required" />
+              </div>
+              <div class="form-row">
+                <label for="card-01-color">
+                  What is your favorite color
                 </label>
-                <input  type="text" 
-                        class="questionnaire__card__short-answer"
-                        name="question_1" 
-                        id="question_1" 
-                        value="Answer">
-                <label for="question_2" class="questionnaire__card__question">
-                    Question
+                <input type="text"
+                       id="card-01-color"
+                       name="card-01-color"
+                       tabindex="3" />
+              </div>
+              <div class="form-row form-row--button">
+                <button class="button" tabindex="4">
+                  Continue
+                </button>
+              </div>
+              <p class="is-required">
+                * Required
+              </p>
+            </fieldset>
+          </section>
+        </div>
+        <div class="alt-quest">
+          <section class="alt-quest__card">
+            <header class="alt-quest__head">
+              <h2>
+                Section Title
+              </h2>
+            </header>
+            <fieldset>
+              <div class="form-row">
+                <label for="card-02-question-01">
+                  Question
                 </label>
-                <input  type="text" 
-                        class="questionnaire__card__short-answer"
-                        name="question_2" id="question_2" value="Answer">
-                <label  for="long_response" 
-                        class="questionnaire__card__question">
-                    Question
+                <input type="text"
+                       id="card-02-question-01"
+                       name="card-02-question-01"
+                       placeholder="Answer"
+                       tabindex="5" />
+              </div>
+              <div class="form-row">
+                <label for="card-02-question-02">
+                  Question
                 </label>
-                <textarea   name="long_response" id="long_response" 
-                            class="questionnaire__card__long-answer">Long Response, using &lt;textarea&gt;
-                </textarea>
-                <input  type="button" 
-                        class="questionnaire__card__button" 
-                        value="Continue">
-            </div>
-
-            <div class="questionnaire__card questionnaire__card--disabled">
-                <h1  class="questionnaire__card__title
-                            questionnaire__card__title--disabled">
-                    This section is disabled
-                </h1>
-                <label for="question_3" class="questionnaire__card__question">
-                    Question
+                <input type="text"
+                       id="card-02-question-02"
+                       name="card-02-question-02"
+                       placeholder="Answer"
+                       tabindex="6" />
+              </div>
+              <div class="form-row">
+                <label for="card-02-question-03">
+                  Question
                 </label>
-                <input  type="text" 
-                        class="questionnaire__card__short-answer"
-                        name="question_3" 
-                        id="question_3" 
-                        value="Your Answer">
-                <input  type="button" 
-                        class="questionnaire__card__button" 
-                        value="Continue">
-            </div>
-
-            <div class="questionnaire__card">
-                <h1 class="questionnaire__card__title">
-                    <strong class="questionnaire__card__title--strong">
-                        Strong
-                    </strong>
-                    Section Title
-                </h1>
-                <p class="questionnaire__card__description">
-                    Description paragraph.
-                    <img    src="amazing-beautiful-beauty-blue.jpg" 
-                            alt="Amazing blue">
+                <textarea id="card-02-question-03"
+                          name="card-02-question-03"
+                          placeholder="Long Response, using &lt;textarea&gt;"
+                          tabindex="7"></textarea>
+              </div>
+              <div class="form-row form-row--button">
+                <button class="button" tabindex="8">
+                  Continue
+                </button>
+              </div>
+            </fieldset>
+          </section>
+        </div>
+        <div class="alt-quest">
+          <section class="alt-quest__card
+                          alt-quest__card--disabled">
+            <header class="alt-quest__head">
+              <h2>
+                This section is disabled
+              </h2>
+            </header>
+            <fieldset>
+              <div class="form-row">
+                <label for="card-03-question-01">
+                  Question
+                </label>
+                <input type="text"
+                       id="card-03-question-01"
+                       name="card-03-question-01"
+                       placeholder="Your Answer"
+                       tabindex="9"
+                       disabled="disabled">
+              </div>
+              <div class="form-row form-row--button">
+                <button class="button"
+                        tabindex="10"
+                        disabled="disabled">
+                  Continue
+                </button>
+              </div>
+            </fieldset>
+          </section>
+        </div>
+        <div class="alt-quest">
+          <section class="alt-quest__card">
+            <header class="alt-quest__head">
+              <h2>
+                <strong>
+                  Strong
+                </strong>
+                Section Title
+              </h2>
+            </header>
+            <p>
+              Description paragraph.
+            </p>
+            <figure>
+              <img src="img/tree.jpg"
+                   class="img--responsive"
+                   alt="Amazing blue">
+            </figure>
+            <fieldset>
+              <div class="form-row">
+                <label for="card-04-question-01">
+                  Question
+                </label>
+                <p>
+                  Description paragraph.
                 </p>
-                <label for="question_4" class="questionnaire__card__question">
-                    Question
+                <input type="text"
+                       id="card-04-question-01"
+                       name="card-04-question-01"
+                       placeholder="Answer"
+                       tabindex="11" />
+              </div>
+              <div class="form-row">
+                <label for="card-04-question-02">
+                  Question
                 </label>
-                <p class="questionnaire__card__description">
-                    Description paragraph.
-                </p>
-                <input  type="text" 
-                        class="questionnaire__card__short-answer"
-                        name="question_4"
-                        id="question_4"
-                        value="Your Answer">
-                <label  for="long_response_2" 
-                        class="questionnaire__card__question">
-                    Question
+                <input type="text"
+                       id="card-04-question-02"
+                       name="card-04-question-02"
+                       placeholder="Answer"
+                       tabindex="12" />
+              </div>
+              <div class="form-row">
+                <label for="card-04-question-03">
+                  Question
                 </label>
-                <textarea   name="long_response_2" 
-                            id="long_response_2" 
-                            class="questionnaire__card__long-answer">Long response, using &lt;textarea&gt; 
-                </textarea>                
-                <input  type="button" 
-                        class="questionnaire__card__button" 
-                        value="Continue">
-            </div>
-
-            <div class="questionnaire__card">
-                <h1 class="questionnaire__card__title">
-                    Section Title w/ form elements
-                </h1>
-                <p class="questionnaire__card__description">
-                    Description paragraph.
-                </p>
-                <div class="questionnaire__card__multiple-choice">
-                    <h3>Multiple Choice w/ Radio Inputs</h3>
-                    <label>
-                        <input  type="radio" 
-                                id="radio-item-1" 
-                                name="radio-item-1" 
-                                value="something_A" checked />
-                            I like option A
-                    </label>
-                    <label>
-                        <input  type="radio" 
-                                id="radio-item-2" 
-                                name="radio-item-1" 
-                                value="something_B" />
-                            I like option B
-                    </label>
-                    <label>
-                        <input  type="radio" 
-                                id="radio-item-3" 
-                                name="radio-item-1" 
-                                value="something_C" />
-                            I like option C
-                    </label>
-                </div>
-                <div class="questionnaire__card__multiple-choice">
-                    <h3>Multiple Choice w/ Checkbox Inputs</h3>
-                    <label>
-                        <input  type="checkbox" 
-                                id="checkbox-item-1" 
-                                name="checkbox-item" 
-                                value="something_A" checked />
-                            I like option A
-                    </label>
-                    <label>
-                        <input  type="checkbox" 
-                                id="checkbox-item-2" 
-                                name="checkbox-item" 
-                                value="something_B" />
-                            I like option B
-                    </label>
-                    <label>
-                        <input  type="checkbox" 
-                                id="checkbox-item-3" 
-                                name="checkbox-item" 
-                                value="something_C" />
-                            I like option C
-                    </label>
-                </div>
-                <label  for="drop_1" 
-                        class="questionnaire__card__question 
-                               questionnaire__card__question--required">
-                    Dropdown Select from the list below:
+                <textarea id="card-04-question-03"
+                          name="card-04-question-03"
+                          placeholder="Long Response, using &lt;textarea&gt;"
+                          tabindex="13"></textarea>
+              </div>
+              <div class="form-row form-row--button">
+                <button class="button" tabindex="14">
+                  Continue
+                </button>
+              </div>
+            </fieldset>
+          </section>
+        </div>
+        <div class="alt-quest">
+          <section class="alt-quest__card">
+            <header class="alt-quest__head">
+              <h2>
+                Section Title w/ form elements
+              </h2>
+            </header>
+            <p>
+              Description paragraph.
+            </p>
+            <fieldset>
+              <div class="form-row">
+                <label>
+                  Multiple Choice w/ Radio Inputs
                 </label>
-                <p class="questionnaire__card__description">
-                    Description paragraph.
+                <label>
+                  <input type="radio"
+                         id="card-05-radio-item-1"
+                         name="card-05-radio-item-1"
+                         value="something_A" checked
+                         tabindex="15" />
+                  I like option A
+                </label>
+                <label>
+                  <input type="radio"
+                         id="card-05-radio-item-02"
+                         name="card-05-radio-item-02"
+                         value="something_B"
+                         tabindex="16" />
+                  I like option B
+                </label>
+                <label>
+                  <input type="radio"
+                         id="card-05-radio-item-03"
+                         name="card-05-radio-item-03"
+                         value="something_C"
+                         tabindex="17" />
+                  I like option C
+                </label>
+              </div>
+              <div class="form-row">
+                <label>
+                  Multiple Choice w/ Checkbox Inputs
+                </label>
+                <label>
+                  <input type="checkbox"
+                         id="card-05-checkbox-item-01"
+                         name="card-05-checkbox-item-01"
+                         value="something_A" checked
+                         tabindex="18" />
+                  I like option A
+                </label>
+                <label>
+                  <input type="checkbox"
+                         id="card-05-checkbox-item-02"
+                         name="card-05-checkbox-item-02"
+                         value="something_B"
+                         tabindex="19" />
+                  I like option B
+                </label>
+                <label>
+                  <input type="checkbox"
+                         id="card-05-checkbox-item-03"
+                         name="card-05-checkbox-item-03"
+                         value="something_C"
+                         tabindex="20" />
+                  I like option C
+                </label>
+              </div>
+              <div class="form-row">
+                <label for="card-05-dropdown"
+                       class="is-required">
+                  Dropdown Select from the list below:
+                </label>
+                <p>
+                  Description paragraph.
                 </p>
-                <select     name="drop_1" 
-                            id="drop_1" 
-                            class="questionnaire__card__dropdown">
-                    <option value="Option 1">Option 1</option>option>
-                    <option value="Option 2">Option 2</option>option>
-                    <option value="Option 3">Option 3</option>option>
-                    <option value="Option 4">Option 4</option>option>
+                <select name="card-05-dropdown"
+                        id="card-05-dropdown"
+                        tabindex="21"
+                        required="required">
+                  <option value="Option 1">
+                    Option 1
+                  </option>
+                  <option value="Option 2">
+                    Option 2
+                  </option>
+                  <option value="Option 3">
+                    Option 3
+                  </option>
+                  <option value="Option 4">
+                    Option 4
+                  </option>
                 </select>
-                <input  type="submit" 
-                        class="questionnaire__card__button
-                               questionnaire__card__submit" value="Submit">
-            </div>
-
-        </form>        
-    </div> 
-
-    <!-- End Questionnaire -->  
+              </div>
+              <div class="form-row form-row--button">
+                <button type="submit" class="button" tabindex="22">
+                  Submit
+                </button>
+              </div>
+              <p class="is-required">
+                * Required
+              </p>
+            </fieldset>
+          </section>
+        </div>
+      </form>
+    </article>
+  </main>
 </body>
 </html>
