@@ -7,12 +7,6 @@ html {
   font-size: 100%;
 }
 
-@media (min-width: 1200px) {
-  html {
-    font-size: 125%;
-  }
-}
-
 *,
 *:before,
 *:after {
@@ -20,11 +14,7 @@ html {
 }
 
 body {
-  background-attachment: fixed;
   background-color: #fff;
-  background-image: url("../img/road.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
   color: #333;
   font-family: "Roboto", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   min-height: 100vh;
@@ -54,6 +44,21 @@ img {
   margin-left: auto;
   margin-right: auto;
   max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  body {
+    background-attachment: fixed;
+    background-image: url("../img/road.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+@media (min-width: 1200px) {
+  html {
+    font-size: 125%;
+  }
 }
 
 /**
@@ -103,19 +108,6 @@ label.is-required::after {
 p.is-required {
   color: #940000;
   font-weight: 700;
-}
-
-@media (min-width: 768px) {
-  label.is-required::after {
-    content: "Required";
-    font-size: 0.875rem;
-    font-weight: 500;
-    text-transform: uppercase;
-  }
-
-  p.is-required {
-    display: none;
-  }
 }
 
 input[type="email"],
@@ -179,6 +171,19 @@ input[type="radio"] {
   text-align: center;
 }
 
+@media (min-width: 768px) {
+  label.is-required::after {
+    content: "Required";
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  p.is-required {
+    display: none;
+  }
+}
+
 /**
  * Buttons
  */
@@ -212,24 +217,22 @@ input[type="radio"] {
  * Questionnaire
  */
 
-.alt-quest {
+.questionnaire__card {
   background-color: #fafafa;
   border-bottom: 1px solid #eaeaea;
-  height: 100vh;
-  position: relative;
-  width: 100vw;
-}
-
-.alt-quest__card {
-  background-color: #fafafa;
   padding: 1.5rem 2.5rem 0.5rem;
 }
 
-.alt-quest__card--disabled {
-  pointer-events: none;
+.questionnaire__card:last-child {
+  border: 0;
 }
 
-.alt-quest__card--disabled::before {
+.questionnaire__card--disabled {
+  pointer-events: none;
+  position: relative;
+}
+
+.questionnaire__card--disabled::before {
   background-color: #333;
   bottom: -1px;
   content: " ";
@@ -241,34 +244,33 @@ input[type="radio"] {
   top: -1px;
 }
 
-@media (min-width: 768px) {
-  .alt-quest {
-    align-items: center;
-    background-color: transparent;
-    border: 0;
-    display: flex;
-    justify-content: center;
-    position: static;
-  }
-
-  .alt-quest__card {
-    border: 1px solid #eaeaea;
-    border-radius: 0.25rem;
-    box-shadow: 0 5px 5px 0 rgba(50, 50, 50, 0.75);
-    flex: 0 1 42rem;
-    padding: 3rem 5rem 1rem;
-  }
-
-  .alt-quest__card--disabled {
-    position: relative;
-  }
-}
-
-.alt-quest__head {
+.questionnaire__head {
   border-bottom: 1px solid #d0d0d0;
   color: #653294;
   margin-bottom: 1.5rem;
   padding-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .questionnaire {
+    display: flex;
+    justify-content: center;
+  }
+
+  .questionnaire__card {
+    border: 1px solid #eaeaea;
+    border-radius: 0.25rem;
+    box-shadow: 0 5px 5px 0 rgba(50, 50, 50, 0.75);
+    margin: 6rem 0;
+    padding: 3rem 5rem 1rem;
+    width: 42rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .questionnaire__card {
+    margin: 1.5rem 0;
+  }
 }
 
 
@@ -276,13 +278,13 @@ input[type="radio"] {
 
 /* Specific CSS rulesets */
 
-.questionnaire {
+.alt-questionnaire {
     position:relative;
     margin: 130px auto;
     width: 50%;
 }
 
-.questionnaire__card {
+.alt-questionnaire__card {
     margin: 130px 0;
     padding: 30px 80px;
     border: 1px solid #EAEAEA;
@@ -295,12 +297,12 @@ input[type="radio"] {
     border-radius: 4px;
 }
 
-.questionnaire__card--disabled {
+.alt-questionnaire__card--disabled {
     pointer-events: none;
     opacity: 0.5;
 }
 
-.questionnaire__card__title {
+.alt-questionnaire__card__title {
     font-weight: 300;
     color: #6432A5;
     padding-bottom: 25px;
@@ -308,33 +310,33 @@ input[type="radio"] {
     border-bottom: 1px solid #D0D0D0;
 }
 
-.questionnaire__card__title--disabled {
+.alt-questionnaire__card__title--disabled {
     color: #C0C0C0;
 }
 
-.questionnaire__card__title--strong {
+.alt-questionnaire__card__title--strong {
     font-weight:700;
 }
 
-.questionnaire__card__question {
+.alt-questionnaire__card__question {
     display: block;
     font-weight:700;
     font-size: 1.1em;
     margin-top: 30px;
 }
 
-.questionnaire__card__question--required::before {
+.alt-questionnaire__card__question--required::before {
     content: "REQUIRED";
     color: #880429;
     font-size:0.8em;
     float: right;
 }
 
-.questionnaire__card__question--required input {
+.alt-questionnaire__card__question--required input {
     color: #A7ADA9;
 }
 
-.questionnaire__card__short-answer, .questionnaire__card__long-answer {
+.alt-questionnaire__card__short-answer, .alt-questionnaire__card__long-answer {
     width: 97%;
     margin: 15px 0;
     padding: 10px 10px;
@@ -345,11 +347,11 @@ input[type="radio"] {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.questionnaire__card__long-answer {
+.alt-questionnaire__card__long-answer {
     height: 130px;
 }
 
-.questionnaire__card__button {
+.alt-questionnaire__card__button {
     display: block;
     width: 40%;
     padding: 15px 15px!important;
@@ -360,42 +362,42 @@ input[type="radio"] {
     background-color: #8F5FCF;
 }
 
-.questionnaire__card__button:hover {
+.alt-questionnaire__card__button:hover {
     background-color: #5F6ECF;
 }
 
-.questionnaire__card__submit {
+.alt-questionnaire__card__submit {
     margin-top: 40px!important;
     background-color: #AA3377;
 }
 
-.questionnaire__card__submit:hover {
+.alt-questionnaire__card__submit:hover {
     background-color: #60BCCA;
 }
 
-.questionnaire__card__description {
+.alt-questionnaire__card__description {
     overflow: hidden;
     color: #83859A;
 }
 
-.questionnaire__card__description img {
+.alt-questionnaire__card__description img {
     padding-top: 25px;
 }
 
-.questionnaire__card__multiple-choice {
+.alt-questionnaire__card__multiple-choice {
     margin-top: 30px;
 }
 
-.questionnaire__card__multiple-choice label {
+.alt-questionnaire__card__multiple-choice label {
     display: block;
 }
 
-.questionnaire__card__multiple-choice input {
+.alt-questionnaire__card__multiple-choice input {
     margin-bottom: 20px;
     margin-right: 10px;
 }
 
-.questionnaire__card__dropdown {
+.alt-questionnaire__card__dropdown {
     width: 100%;
     font-size: 1.1em;
 }
