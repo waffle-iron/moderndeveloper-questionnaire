@@ -11,11 +11,58 @@ As a fundamental rule, you should use this element only to mark up typographical
 
 ## Syntax
 
-Introduction to the syntax/usage. A example of CSS syntax is below:
+```
+        <sub [optional_attributes]> Subscripted Text </sub>
+```
 
-```
-        background: <color | url(path) | others.. | none>;
-```
+The *sub* element has the following properties:
+
+### Categories
+
+* Flow content
+
+* Phrasing content
+
+* Palpable content
+
+### Attributes
+
+Every HTML tag commonly have one or more attributes within them, known as *content attribute*. 
+
+Their main aim is to provide the browser with more information about how the element should appear (during the rendering) or behave (at runtime).
+
+The *sub* element provides you with the *Global attributes*. They can be summarized as:
+
+* accesskey
+
+* class
+
+* contenteditable
+
+* contextmenu
+
+* dir
+
+* draggable
+
+* dropzone
+
+* hidden
+
+* id
+
+* lang
+
+* spellcheck
+
+* style
+
+* tabindex
+
+* title
+
+* translate
+
 
 ### Values
 
