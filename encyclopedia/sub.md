@@ -21,9 +21,16 @@ The *sub* element has the following properties:
 
 * Flow content
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Elements belonging to this category typically contain text or embedded content within them.
+ 
 * Phrasing content
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Elements belonging to this category define the text and the markup they include.
+
 * Palpable content
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Content is defined this way if it is neither empty nor hidden.
+
 
 ### Attributes
 
