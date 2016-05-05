@@ -36,6 +36,14 @@ The *sub* element has the following properties:
 
 Every HTML tag have one or more optional *attributes* within them, in the form of list. They are commonly known as *content attributes*. 
 
+The general syntax of an attribute is:
+
+```
+        attribute_name = "attribute_value"
+```
+
+where: `attribute_name` is the actual attribute name, the equal sign is the `delimiter` and `attribute_value` is the current value of the attribute.
+
 Their main aim is to provide the browser with more information about how the element should appear (during the rendering) or behave (at runtime) in the web page.
 
 The *sub* element provides you with the *Global attributes*. They can be summarized as:
