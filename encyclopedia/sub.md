@@ -12,7 +12,7 @@ As a fundamental rule, you should use this element only to mark up typographical
 ## Syntax
 
 ```
-        <sub [optional_attributes]> Subscripted Text </sub>
+        <sub { optional_attributes_list }> Subscripted Text </sub>
 ```
 
 The *sub* element has the following properties:
@@ -27,9 +27,9 @@ The *sub* element has the following properties:
 
 ### Attributes
 
-Every HTML tag commonly have one or more attributes within them, known as *content attribute*. 
+Every HTML tag have one or more optional *attributes* within them, in the form of list. They are commonly known as *content attributes*. 
 
-Their main aim is to provide the browser with more information about how the element should appear (during the rendering) or behave (at runtime).
+Their main aim is to provide the browser with more information about how the element should appear (during the rendering) or behave (at runtime) in the web page.
 
 The *sub* element provides you with the *Global attributes*. They can be summarized as:
 
