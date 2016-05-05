@@ -1,8 +1,12 @@
 # Sub
 
-*Write a short "what it is" here. This can be a one-word definition.*
+*Sub is an HTML element used to mark up typographical conventions with specific meanings.*
 
-Write a description here. Provide an overview of what the reference entry is, how it's used, it's significance, or how it's commonly used.
+The *sub* element represents a *subscript* that can be used where a *phrasing content* is expected. 
+
+> A subscript is a number, figure, symbol, or indicator that is smaller than their normal line of type and is set slightly below it.<sup>1</sup>
+
+As a fundamental rule, you should use this element only to mark up typographical conventions with specific meanings, as for mathematical expressions.
 
 
 ## Syntax
