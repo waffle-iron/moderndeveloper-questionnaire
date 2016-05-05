@@ -12,7 +12,7 @@ As a fundamental rule, you should use this element only to mark up typographical
 ## Syntax
 
 ```
-        <sub { optional_attributes_list }> Subscripted Text </sub>
+        <sub [<attributes>…​] > Subscripted Text </sub>
 ```
 
 The *sub* element has the following properties:
@@ -21,7 +21,7 @@ The *sub* element has the following properties:
 
 * Flow content
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Elements belonging to this category typically contain text or embedded content within them.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Elements belonging to this category typically contain text or embedded content within them. (e.g. `div`, `article`, `label`, etc.)
  
 * Phrasing content
 
