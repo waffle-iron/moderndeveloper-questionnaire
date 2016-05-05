@@ -80,17 +80,11 @@ They can be summarized as:
 * translate
 
 
-### Values
+### Content model
 
-This is a CSS example, so each value would need it's own sub-section below.
+**Phrasing content**
 
-#### Color
-
-An explanation of the "color" value belongs here.
-
-#### url(path)
-
-An explanation of using `url(path)` as a value to link to an image belongs here.
+Represents a description of the kind of content you must include as children and descendants of the `<sub>` element. *Phrasing content* is a naming used to denote the text of the document, as well as other elements that mark up that text at the intra-paragraph level.
 
 ## Example 1
 
