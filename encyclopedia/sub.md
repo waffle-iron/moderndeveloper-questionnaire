@@ -88,10 +88,10 @@ Represents a description of the kind of content you must include as children and
 
 ## Example 1
 
-Write a introduction to the example, sufficient to explain what the example is showing.
+You may use the `sub` element to visually represent the base of a logarithm as in the following example.
 
 ```
-        background: green;
+        log<sub>2</sub> 8 = 3
 ```
 
 ## Example 2
