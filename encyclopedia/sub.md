@@ -82,6 +82,11 @@ They can be summarized as:
 * translate
 
 
+### Accessible Rich Internet Applications (WAI-ARIA)
+
+This element may have any valid [ARIA](https://www.w3.org/TR/html51/dom.html#aria-role-attribute) `role`. 
+
+
 ### Content model
 
 **Phrasing content**
@@ -171,3 +176,4 @@ sub {
 }
 
 ```
+
