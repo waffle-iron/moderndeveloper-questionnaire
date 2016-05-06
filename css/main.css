@@ -94,7 +94,6 @@ fieldset {
 
 label {
   display: block;
-  font-weight: 500;
   margin: 0 0 1rem;
 }
 
@@ -256,6 +255,11 @@ input[type="radio"] {
   color: #653294;
   margin-bottom: 1.5rem;
   padding-bottom: 1.5rem;
+}
+
+.questionnaire__question {
+  font-weight: 500;
+  color: #2a3753;
 }
 
 .questionnaire__submit {
