@@ -6,13 +6,13 @@ The *sub* is an HTML element used to mark up *typographical conventions* with sp
 
 > A subscript is a number, figure, symbol, or indicator that is smaller than their normal line of type and is set slightly below it.<sup>1</sup>
 
-As a fundamental rule, you should use this element only to mark up typographical conventions with specific meanings, as for mathematical expressions.
+As a fundamental rule, you should use this element only to mark up typographical conventions with specific meanings, as for chemical formulas and mathematical indices.
 
 
 ## Syntax
 
 ```
-        <sub [<attributes>…​] > Subscripted Text </sub>
+        <sub [<attributes>…]> Subscripted Text </sub>
 ```
 
 The *sub* element has the following properties:
