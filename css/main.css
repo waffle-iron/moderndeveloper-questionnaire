@@ -251,6 +251,16 @@ input[type="radio"] {
   padding-bottom: 1.5rem;
 }
 
+.questionnaire__submit {
+  background-color: #a83676;
+  border-color: #7D315A;
+}
+
+.questionnaire__submit:hover,
+.questionnaire__submit:focus {
+  background-color: #F7008B;
+}
+
 @media (min-width: 768px) {
   .questionnaire {
     display: flex;
