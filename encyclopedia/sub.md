@@ -134,4 +134,8 @@ alternatively, also for representing variables that have subscripts.
 
 ## Special Notes
 
-Add information that you found that seemed lesser known. Common bugs, obscure bugs, important distinctions, all belong in this section.
+Browser Support
+
+| Android |  iOS | Chrome | Firefox | Internet Explorer | Opera | Safari |
+|:-------:|:----:|:------:|:-------:|:-----------------:|:-----:|:------:|
+|   1.0+  | 1.0+ |  1.0+  |   1.0+  |        2.0+       |  2.0+ |  1.0+  |
