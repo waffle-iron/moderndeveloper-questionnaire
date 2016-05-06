@@ -146,6 +146,10 @@ textarea:focus {
   outline: 0;
 }
 
+input[type="text"]:disabled {
+  color:#000;
+}
+
 select {
   border: 1px solid #653294;
   padding: calc(0.5rem + 1px);
@@ -241,6 +245,10 @@ input[type="radio"] {
   position: absolute;
   right: -1px;
   top: -1px;
+}
+
+.questionnaire__card--disabled > .questionnaire__head {
+  color:#a7ada9;
 }
 
 .questionnaire__head {
