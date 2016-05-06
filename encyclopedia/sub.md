@@ -4,9 +4,9 @@
 
 The *sub* is an HTML element used to mark up *typographical conventions* with specific meanings. This item represents a *subscript* and it can be used within the document where a *phrasing content* is expected. 
 
-From Wikipedia:
+From [Wikipedia](https://en.wikipedia.org/wiki/Subscript_and_superscript):
 
-> A subscript is a number, figure, symbol, or indicator that is smaller than their normal line of type and is set slightly below it.<sup>1</sup>
+> A subscript is a number, figure, symbol, or indicator that is smaller than their normal line of type and is set slightly below it.
 
 As a fundamental rule, you should use this element only to mark up typographical conventions with specific meanings, as for chemical formulas and mathematical indices.
 
