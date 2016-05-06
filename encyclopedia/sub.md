@@ -86,6 +86,22 @@ They can be summarized as:
 
 Represents a description of the kind of content you must include as children and descendants of the `<sub>` element. *Phrasing content* is a naming used to denote the text of the document, as well as other elements that mark up that text at the intra-paragraph level. 
 
+<table>
+<tbody>
+        <tr>
+                <td><strong>Contents</strong></td>
+                <td>Inline elements</td>
+                <td></td>
+        </tr>
+        <tr>
+                <td><strong>Contained in</strong></td>
+                <td>Inline elements</td>
+                <td>Block-level elements</td>
+        </tr>
+</tbody>
+</table>
+
+
 ## Example 1
 
 The following snippet of code shows a very basic usage of an `sub` element.
