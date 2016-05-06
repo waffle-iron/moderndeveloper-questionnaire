@@ -112,13 +112,22 @@ or to describe a chemical formula instead.
 
 ## Example 3 - Complex
 
-You may also use the `sub` element inside a `var` item, to represent for example variables that have subscripts.
+You may also use the `sub` element together with a `var` item.
 
 ```
         <p>
                 The Fibonacci sequence is defined by setting F<sub>0</sub> = 0, F<sub>1</sub> = 1 
                 and the rest through the following recursive equation:
-                F<sub>n</sub> = F<sub>n-1</sub> + F<sub>n-2</sub>
+                F<sub><var>n</var></sub> = F<sub><var>n</var>-1</sub> + F<sub><var>n</var>-2</sub>
+        </p>
+        
+```
+
+alternatively, also for representing variables that have subscripts.
+
+```
+        <p>
+                <var>a<sub>1</sub></var> + <var>a<sub>2</sub></var> = <var>a<sub>3</sub></var>
         </p>
         
 ```
