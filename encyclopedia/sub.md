@@ -84,30 +84,43 @@ They can be summarized as:
 
 **Phrasing content**
 
-Represents a description of the kind of content you must include as children and descendants of the `<sub>` element. *Phrasing content* is a naming used to denote the text of the document, as well as other elements that mark up that text at the intra-paragraph level.
+Represents a description of the kind of content you must include as children and descendants of the `<sub>` element. *Phrasing content* is a naming used to denote the text of the document, as well as other elements that mark up that text at the intra-paragraph level. 
 
 ## Example 1
 
-You may use the `sub` element to visually represent the base of a logarithm as in the following example.
+The following snippet of code shows a very basic usage of an `sub` element.
+
+```
+        <p>This is how is represented a <sub>subscript</sub></p>
+```
+
+## Example 2
+
+You may use the `sub` element to represent the base of a logarithm visually as in the following example.
 
 ```
         log<sub>2</sub> 8 = 3
 ```
 
-## Example 2
-
-Write a introduction to the example, sufficient to explain what the example is showing.
+or to describe a chemical formula instead.
 
 ```
-        background: url('path_to_image.png');
+        <p>
+                Chemical Formula for Caffeine: C<sub>8</sub>H<sub>10</sub>N<sub>4</sub>O<sub>2</sub>
+        </p>
 ```
 
 ## Example 3 - Complex
 
-Write a introduction to the example, sufficient to explain what the example is showing.
+You may also use the `sub` element inside a `var` item, to represent for example variables that have subscripts.
 
 ```
-        background: none 50% 25% auto contain fixed;
+        <p>
+                The Fibonacci sequence is defined by setting F<sub>0</sub> = 0, F<sub>1</sub> = 1 
+                and the rest through the following recursive equation:
+                F<sub>n</sub> = F<sub>n-1</sub> + F<sub>n-2</sub>
+        </p>
+        
 ```
 
 ## Special Notes
