@@ -1,6 +1,6 @@
 # Sub
 
-*Sub defines a portion of writing that appears slightly below, and smaller in size, compared with the original writing.*
+*Sub defines a portion of text that appears slightly below, and usually smaller in size, compared with the original writing.*
 
 The *sub* is an HTML element used to mark up *typographical conventions* with specific meanings. This item represents a *subscript* and it can be used within the document where a *phrasing content* is expected. 
 
