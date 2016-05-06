@@ -157,4 +157,15 @@ alternatively, also for representing variables that have subscripts.
 
 ## Special Notes
 
+Differences between HTML 4.01 and HTML5: **None**
 
+Most browsers will render the `<sub>` element through the following CSS ruleset:
+
+```css
+
+sub { 
+    vertical-align: sub;
+    font-size: smaller;
+}
+
+```
