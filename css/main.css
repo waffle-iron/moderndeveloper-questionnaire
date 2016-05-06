@@ -191,8 +191,8 @@ input[type="radio"] {
 .button {
   -webkit-font-smoothing: antialiased;
   appearance: none;
-  background-color: #9347d0;
-  border: 0;
+  background-color: #8e63cc;
+  border: 1px solid #6e539d;
   color: #fff;
   cursor: pointer;
   display: inline-block;
