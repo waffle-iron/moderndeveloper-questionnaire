@@ -262,6 +262,10 @@ input[type="radio"] {
   color: #2a3753;
 }
 
+.questionnaire__description {
+  color: #7d8497;
+}
+
 .questionnaire__submit {
   background-color: #a83676;
   border-color: #7D315A;
