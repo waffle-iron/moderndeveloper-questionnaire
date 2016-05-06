@@ -132,10 +132,13 @@ alternatively, also for representing variables that have subscripts.
         
 ```
 
-## Special Notes
-
-Browser Support
+### Browser Support
 
 | Android |  iOS | Chrome | Firefox | Internet Explorer | Opera | Safari |
 |:-------:|:----:|:------:|:-------:|:-----------------:|:-----:|:------:|
 |   1.0+  | 1.0+ |  1.0+  |   1.0+  |        2.0+       |  2.0+ |  1.0+  |
+
+
+## Special Notes
+
+
