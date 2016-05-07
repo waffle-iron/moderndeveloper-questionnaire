@@ -37,15 +37,15 @@ Defines the maximum height of the element in percent respect to its containing b
 
 #### initial
 
-An explanation of using `url(path)` as a value to link to an image belongs here.
+Sets `max-height` property to its default value.
 
 #### inherit
 
-An explanation of using `url(path)` as a value to link to an image belongs here.
+Specifies that the value for this property should be taken from the parent element. 
 
 #### none
 
-An explanation of using `url(path)` as a value to link to an image belongs here.
+This is the *default* value for this property. It clears the `max-height` value of the element. Then, the `height` property of the object can assume any value.
 
 ## Example 1
 
