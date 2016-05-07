@@ -29,7 +29,7 @@ As reported in the syntax, the max-height property comes with some values. Each 
 
 #### length
 
-An explanation of the "color" value belongs here.
+Specifies a fixed computed height (*length values* are numbers followed by a *unit identifier* like *px*, *cm*, *em*, etc.). Negative values are not allowed.
 
 #### percentage
 
