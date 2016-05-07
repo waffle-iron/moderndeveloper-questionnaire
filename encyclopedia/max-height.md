@@ -2,12 +2,18 @@
 
 *CSS property used to set the maximum height of an element*
 
-The `max-height` property sets the **maximum height** of an element and prevents it from becoming larger than the specified length value (i.e. overrides the `height` property of the element itself).
+The `max-height` property sets the **maximum height** of an element, and is used to constrain the box's height within a certain range. In a nutshell, it prevents the intended element from becoming larger than a specified length value (i.e. it overrides the `height` property of the object itself).
 
-To this end, you should remember the following rules:
+The chain of overlappings works in the following way:
 
-`max-height` - *overrides* -> `height` **but** `min-height` - *overrides* -> `max-height`
 
+```                               
+                                  BUT
+             overrides             |               overrides
+max-height  ---------->>  height   |  min-height  ---------->>  max-height
+                                   |
+
+```
 
 ## Syntax
 
