@@ -13,6 +13,8 @@
         href="https://fonts.googleapis.com/css?family=Roboto:400,300,500,700">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
+
+  <script src="js/baseliner.js"></script>
 </head>
 <body>
   <main role="main">
@@ -311,5 +313,10 @@
       </form>
     </article>
   </main>
+  <script>
+    window.onload = function() {
+      baseliner = new Baseliner(24);
+    }
+  </script>
 </body>
 </html>

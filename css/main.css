@@ -69,7 +69,7 @@ h2 {
   font-size: 2rem;
   font-weight: 300;
   line-height: 3rem;
-  margin: 1rem 0 0 0;
+  margin: 0 0 1.5rem;
 }
 
 h2 > strong {
@@ -94,7 +94,7 @@ fieldset {
 
 label {
   display: block;
-  margin: 0 0 1rem;
+  margin: 0 0 1.5rem;
 }
 
 label.is-required::after {
@@ -102,6 +102,7 @@ label.is-required::after {
   color: #940000;
   float: right;
   font-weight: 700;
+  line-height: 1.5rem;
 }
 
 p.is-required {
@@ -121,7 +122,7 @@ textarea {
   color: #777;
   display: block;
   font-size: 1rem;
-  padding: 0.4rem 0.5rem;
+  padding: 0.625rem;
   transition: border-color 0.15s ease-in-out,
               box-shadow 0.15s ease-in-out;
   width: 100%;
@@ -151,7 +152,7 @@ input[type="text"]:disabled {
 
 select {
   border: 1px solid #653294;
-  padding: calc(0.5rem + 1px);
+  padding: 0.75rem 0.625rem calc(0.75rem + 1px);
 }
 
 textarea {
@@ -166,11 +167,11 @@ input[type="radio"] {
 }
 
 .form-row {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .form-row--button {
-  padding-top: 1rem;
+  padding-top: 1.5rem;
   text-align: center;
 }
 
@@ -201,7 +202,7 @@ input[type="radio"] {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  padding: 0.5rem 4rem;
+  padding: 0.6875rem 4rem;
   text-decoration: none;
   transition: background-color 150ms ease;
   user-select: none;
@@ -253,8 +254,7 @@ input[type="radio"] {
 .questionnaire__head {
   border-bottom: 1px solid #d0d0d0;
   color: #653294;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1.5rem;
+  margin-bottom: calc(1.5rem - 1px);
 }
 
 .questionnaire__question {
@@ -268,12 +268,12 @@ input[type="radio"] {
 
 .questionnaire__submit {
   background-color: #a83676;
-  border-color: #7D315A;
+  border-color: #7d315a;
 }
 
 .questionnaire__submit:hover,
 .questionnaire__submit:focus {
-  background-color: #F7008B;
+  background-color: #f7008b;
 }
 
 @media (min-width: 768px) {
@@ -285,9 +285,9 @@ input[type="radio"] {
   .questionnaire__card {
     border: 1px solid #eaeaea;
     border-radius: 0.25rem;
-    box-shadow: 0 5px 5px 0 rgba(50, 50, 50, 0.75);
-    margin: 6rem 0;
-    padding: 3rem 5rem 1rem;
+    box-shadow: 0 0.25rem 0.25rem 0 rgba(50, 50, 50, 0.75);
+    margin-top: calc(6rem - 1px);
+    padding: 3rem 5rem 1.5rem;
     width: 42rem;
   }
 }
@@ -296,133 +296,4 @@ input[type="radio"] {
   .questionnaire__card {
     margin: 1.5rem 0;
   }
-}
-
-
-
-
-/* Specific CSS rulesets */
-
-.alt-questionnaire {
-    position:relative;
-    margin: 130px auto;
-    width: 50%;
-}
-
-.alt-questionnaire__card {
-    margin: 130px 0;
-    padding: 30px 80px;
-    border: 1px solid #EAEAEA;
-    background-color: #fff;
-    -webkit-box-shadow: 0px 5px 5px 0px rgba(50, 50, 50, 0.75);
-    -moz-box-shadow:    0px 5px 5px 0px rgba(50, 50, 50, 0.75);
-    box-shadow:         0px 5px 5px 0px rgba(50, 50, 50, 0.75);
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-}
-
-.alt-questionnaire__card--disabled {
-    pointer-events: none;
-    opacity: 0.5;
-}
-
-.alt-questionnaire__card__title {
-    font-weight: 300;
-    color: #6432A5;
-    padding-bottom: 25px;
-    margin-bottom: 15px;
-    border-bottom: 1px solid #D0D0D0;
-}
-
-.alt-questionnaire__card__title--disabled {
-    color: #C0C0C0;
-}
-
-.alt-questionnaire__card__title--strong {
-    font-weight:700;
-}
-
-.alt-questionnaire__card__question {
-    display: block;
-    font-weight:700;
-    font-size: 1.1em;
-    margin-top: 30px;
-}
-
-.alt-questionnaire__card__question--required::before {
-    content: "REQUIRED";
-    color: #880429;
-    font-size:0.8em;
-    float: right;
-}
-
-.alt-questionnaire__card__question--required input {
-    color: #A7ADA9;
-}
-
-.alt-questionnaire__card__short-answer, .alt-questionnaire__card__long-answer {
-    width: 97%;
-    margin: 15px 0;
-    padding: 10px 10px;
-    border: 0px;
-    border-bottom: 3px solid #6631A7;
-    font-size: 1.1em;
-    font-weight: normal;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.alt-questionnaire__card__long-answer {
-    height: 130px;
-}
-
-.alt-questionnaire__card__button {
-    display: block;
-    width: 40%;
-    padding: 15px 15px!important;
-    color: #FFF;
-    font-size: 0.9em;
-    margin: 25px auto!important;
-    border: 2px solid #6F5390!important;
-    background-color: #8F5FCF;
-}
-
-.alt-questionnaire__card__button:hover {
-    background-color: #5F6ECF;
-}
-
-.alt-questionnaire__card__submit {
-    margin-top: 40px!important;
-    background-color: #AA3377;
-}
-
-.alt-questionnaire__card__submit:hover {
-    background-color: #60BCCA;
-}
-
-.alt-questionnaire__card__description {
-    overflow: hidden;
-    color: #83859A;
-}
-
-.alt-questionnaire__card__description img {
-    padding-top: 25px;
-}
-
-.alt-questionnaire__card__multiple-choice {
-    margin-top: 30px;
-}
-
-.alt-questionnaire__card__multiple-choice label {
-    display: block;
-}
-
-.alt-questionnaire__card__multiple-choice input {
-    margin-bottom: 20px;
-    margin-right: 10px;
-}
-
-.alt-questionnaire__card__dropdown {
-    width: 100%;
-    font-size: 1.1em;
 }
