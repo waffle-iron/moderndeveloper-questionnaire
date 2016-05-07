@@ -2,7 +2,11 @@
 
 *CSS property used to set the maximum height of an element*
 
-Write a description here. Provide an overview of what the reference entry is, how it's used, it's significance, or how it's commonly used.
+The `max-height` property sets the **maximum height** of an element and prevents it from becoming larger than the specified length value (i.e. overrides the `height` property of the element itself).
+
+To this end, you should remember the following rules:
+
+`max-height` - *overrides* -> `height`, **but** `min-height` - *overrides* -> `max-height`
 
 
 ## Syntax
