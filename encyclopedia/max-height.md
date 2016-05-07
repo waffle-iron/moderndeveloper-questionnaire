@@ -8,7 +8,7 @@ The chain of overlappings works in the following way:
 
 
 ```                               
-                                  BUT      [ min-height > max-height ]
+                                  BUT     if ( min-height > max-height )
 
              overrides             |               overrides
 max-height  ---------->>  height   |  min-height  ---------->>  max-height
