@@ -56,10 +56,13 @@ The following example shows how to set the maximum height for an element with th
 
 ## Example 2
 
-Write a introduction to the example, sufficient to explain what the example is showing.
+The following snippet of code shows how constrain the element to being fixed on the base of its parent element's height.
 
 ```
-        background: url('path_to_image.png');
+        p {
+          max-height: inherit;
+          border: 2px dotted red;
+        }
 ```
 
 ## Example 3 - Complex
