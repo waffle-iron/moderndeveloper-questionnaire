@@ -6,7 +6,7 @@ The `max-height` property sets the **maximum height** of an element and prevents
 
 To this end, you should remember the following rules:
 
-`max-height` - *overrides* -> `height`, **but** `min-height` - *overrides* -> `max-height`
+`max-height` - *overrides* -> `height` **but** `min-height` - *overrides* -> `max-height`
 
 
 ## Syntax
@@ -55,4 +55,4 @@ Write a introduction to the example, sufficient to explain what the example is s
 
 ## Special Notes
 
-Add information that you found that seemed lesser known. Common bugs, obscure bugs, important distinctions, all belong in this section.
+The `max-height` property does not apply on **non-replaced inline elements** and **table columns**, **column groups**.
