@@ -46,10 +46,12 @@ This is the *default* value for this property. It clears the `max-height` value 
 
 ## Example 1
 
-Write a introduction to the example, sufficient to explain what the example is showing.
+The following example shows how to set the maximum height for an element with the ID of '*box*'.
 
 ```
-        background: green;
+        #box {
+          max-height: 100px;
+        } 
 ```
 
 ## Example 2
