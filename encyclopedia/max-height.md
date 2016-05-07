@@ -1,6 +1,6 @@
 # Max-height 
 
-*Write a short "what it is" here. This can be a one-word definition.*
+*CSS property used to set the maximum height of an element*
 
 Write a description here. Provide an overview of what the reference entry is, how it's used, it's significance, or how it's commonly used.
 
