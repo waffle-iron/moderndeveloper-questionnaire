@@ -33,7 +33,7 @@ Specifies a fixed computed height (*length values* are numbers followed by a *un
 
 #### percentage
 
-An explanation of using `url(path)` as a value to link to an image belongs here.
+Defines the maximum height of the element in percent respect to its containing block. If the parent block does not have the height explicitly set then the `max-height` will be automatically set as `none`. Negative values are not allowed.
 
 #### initial
 
