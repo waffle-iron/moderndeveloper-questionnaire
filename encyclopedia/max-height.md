@@ -8,7 +8,8 @@ The chain of overlappings works in the following way:
 
 
 ```                               
-                                  BUT
+                                  BUT     if min-height > max-height
+                                  
              overrides             |               overrides
 max-height  ---------->>  height   |  min-height  ---------->>  max-height
                                    |
@@ -70,6 +71,14 @@ Write a introduction to the example, sufficient to explain what the example is s
 ```
         background: none 50% 25% auto contain fixed;
 ```
+
+
+### Browser Support
+
+| Android |  iOS | Chrome | Firefox | Internet Explorer | Opera | Safari |
+|:-------:|:----:|:------:|:-------:|:-----------------:|:-----:|:------:|
+|   1.0+  | 1.0+ |  1.0+  |   1.0+  |        7.0+       |  7.0+ |  1.0+  |
+
 
 ## Special Notes
 
