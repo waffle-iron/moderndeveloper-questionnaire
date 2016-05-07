@@ -78,7 +78,7 @@ Write a introduction to the example, sufficient to explain what the example is s
 
 ## Special Notes
 
-The `max-height` property does not apply on **non-replaced inline elements** and **table columns**, **column groups**.
+The `max-height` property does not apply on **non-replaced inline elements** (e.g. `img`, `textarea`, `input`, etc.) and **table columns**, **column groups**.
 
 The `max-height` applies only to the *content area* but it **does not** include the *height* of the *padding*, *border*, or *margin areas*.
 
