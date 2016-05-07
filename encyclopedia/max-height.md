@@ -9,7 +9,7 @@ The chain of overlappings works in the following way:
 
 ```                               
                                   BUT     if min-height > max-height
-                                  
+
              overrides             |               overrides
 max-height  ---------->>  height   |  min-height  ---------->>  max-height
                                    |
@@ -77,7 +77,7 @@ Write a introduction to the example, sufficient to explain what the example is s
 
 | Android |  iOS | Chrome | Firefox | Internet Explorer | Opera | Safari |
 |:-------:|:----:|:------:|:-------:|:-----------------:|:-----:|:------:|
-|   1.0+  | 1.0+ |  1.0+  |   1.0+  |        7.0+       |  7.0+ |  1.0+  |
+|   2.1+  | 3.2+ |  1.0+  |   1.0+  |        7.0+       |  7.0+ |  2.0.2+  |
 
 
 ## Special Notes
@@ -87,3 +87,7 @@ The `max-height` property does not apply on **non-replaced inline elements** and
 The `max-height` applies only to the *content area* but it **does not** include the *height* of the *padding*, *border*, or *margin areas*.
 
 If the contents of a block require more vertical space than is provided by the range that have been set with the `max-height` property, their behavior is controlled by the `overflow` property.
+
+*IE7* does not support *inherit* as a value for `max-height`.
+
+*IE8* has some bugs with `max-height` combined with `overflow: auto | scroll`.
