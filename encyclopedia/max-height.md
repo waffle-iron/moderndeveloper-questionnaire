@@ -17,21 +17,33 @@ max-height  ---------->>  height   |  min-height  ---------->>  max-height
 
 ## Syntax
 
-Introduction to the syntax/usage. A example of CSS syntax is below:
+The CSS syntax of the `max-height` property is below:
 
 ```
-        background: <color | url(path) | others.. | none>;
+        max-height: <length | percentage | initial | inherit | none>;
 ```
 
 ### Values
 
-This is a CSS example, so each value would need it's own sub-section below.
+As reported in the syntax, the max-height property comes with some values. Each one is described below in detail.
 
-#### Color
+#### length
 
 An explanation of the "color" value belongs here.
 
-#### url(path)
+#### percentage
+
+An explanation of using `url(path)` as a value to link to an image belongs here.
+
+#### initial
+
+An explanation of using `url(path)` as a value to link to an image belongs here.
+
+#### inherit
+
+An explanation of using `url(path)` as a value to link to an image belongs here.
+
+#### none
 
 An explanation of using `url(path)` as a value to link to an image belongs here.
 
