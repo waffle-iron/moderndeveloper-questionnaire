@@ -41,7 +41,7 @@ Sets `max-height` property to its default value.
 
 #### inherit
 
-Specifies that the value for this property should be taken from the parent element. 
+Specifies that the value for this property should be taken from the computed value of its parent element. 
 
 #### none
 
