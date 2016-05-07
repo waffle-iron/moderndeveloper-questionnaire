@@ -8,7 +8,7 @@ The chain of overlappings works in the following way:
 
 
 ```                               
-                                  BUT     if min-height > max-height
+                                  BUT      [ min-height > max-height ]
 
              overrides             |               overrides
 max-height  ---------->>  height   |  min-height  ---------->>  max-height
@@ -21,7 +21,7 @@ max-height  ---------->>  height   |  min-height  ---------->>  max-height
 The CSS syntax of the `max-height` property is below:
 
 ```
-        max-height: <length | percentage | initial | inherit | none>;
+        max-height: <length | percentage | inherit | none>;
 ```
 
 ### Values
@@ -35,10 +35,6 @@ Specifies a fixed computed height (*length values* are numbers followed by a *un
 #### percentage
 
 Defines the maximum height of the element in percent respect to its containing block. If the parent block does not have the height explicitly set then the `max-height` will be automatically set as `none`. Negative values are not allowed.
-
-#### initial
-
-Sets `max-height` property to its default value.
 
 #### inherit
 
