@@ -67,10 +67,18 @@ The following snippet of code shows how constrain the element to being fixed on 
 
 ## Example 3 - Complex
 
-Write a introduction to the example, sufficient to explain what the example is showing.
+Imagine we have a `div` container which contains a child element that has the class `.description` applied.   
+
+Due to the specified value of `50%`, and based on the size of its parent, the child's height should be `400px`. But the CSS ruleset constrains the maximum height value at 55px even if the parent element is 800px in height.
 
 ```
-        background: none 50% 25% auto contain fixed;
+        div {
+            height: 800px;
+        }
+        .description {
+          height: 50%;
+          max-height: 55px;
+        }
 ```
 
 
