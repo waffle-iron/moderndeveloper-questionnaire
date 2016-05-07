@@ -25,7 +25,7 @@ The CSS syntax of the `max-height` property is below:
 
 ### Values
 
-As reported in the syntax, the max-height property comes with some values. Each one is described below in detail.
+As reported in the syntax, the `max-height` property comes with the ability to use some specific values. Each one is described below in detail.
 
 #### length
 
