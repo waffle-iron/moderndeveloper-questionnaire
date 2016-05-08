@@ -75,7 +75,7 @@ Due to the specified value of `50%` in height, and based on the size of its pare
         div {
             height: 800px;
         }
-        
+
         .description {
           height: 50%;
           max-height: 55px;
@@ -92,7 +92,7 @@ Due to the specified value of `50%` in height, and based on the size of its pare
 
 ## Special Notes
 
-The `max-height` property does not apply on **non-replaced inline elements** (e.g. `img`, `textarea`, `input`, etc.) and **table columns**, **column groups**.
+The `max-height` property does not apply on **non-replaced inline elements** (e.g. `img`, `textarea`, `input`, etc.) and **table columns** or **column groups**.
 
 The `max-height` applies only to the *content area* but it **does not** include the *height* of the *padding*, *border*, or *margin areas*.
 
