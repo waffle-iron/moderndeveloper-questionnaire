@@ -31,13 +31,17 @@ The corresponding GitHub pages site to this repository can be found [here][2].
 
 Research and write about the following encyclopedia entries:
 
-Team member #1:
+Stefan Frede:
 
-+ `<thead>`
-+ `color`
-+ `window.focus()`
++ [`<thead>`][6]
++ [`color`][7]
++ [`window.focus()`][8]
 
-Team member #2:
+[6]: ./md/thead.md
+[7]: ./md/color.md
+[8]: ./md/window-focus.md
+
+Gabriele Romeo:
 
 + `<sub>`
 + `max-height`
