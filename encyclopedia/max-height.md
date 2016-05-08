@@ -8,8 +8,8 @@ The chain of overlappings works in the following way:
 
 
 ```                               
-                                        when ( min-height > max-height )
-                                  BUT
+            By default                   when ( min-height > max-height )
+                                  
              overrides             |               overrides
 max-height  ==========>>  height   |  min-height  ==========>>  max-height
                                    |
