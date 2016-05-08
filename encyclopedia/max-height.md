@@ -56,7 +56,7 @@ The following example shows how to set the maximum height for an element with th
 
 ## Example 2
 
-The following snippet of code shows how constrain the element to being fixed on the base of its parent element's height.
+The following snippet of code shows you how to constrain the element to be fixed on the base of its parent element's height.
 
 ```
         p {
