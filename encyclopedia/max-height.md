@@ -67,14 +67,15 @@ The following snippet of code shows how constrain the element to being fixed on 
 
 ## Example 3 - Complex
 
-Imagine we have a `div` container which contains a child element that has the class `.description` applied.   
+Imagine having a `div` which contains one or more child element with a class `.description` applied.     
 
-Due to the specified value of `50%`, and based on the size of its parent, the child's height should be `400px`. But the CSS ruleset constrains the maximum height value at 55px even if the parent element is 800px in height.
+Due to the specified value of `50%` in height, and based on the size of its parent, the children's height should be `400px`. But the more specific CSS rule `max-height` constrains the maximum height value at 55px no matter if the parent element is 800px in height or some other value. 
 
 ```
         div {
             height: 800px;
         }
+        
         .description {
           height: 50%;
           max-height: 55px;
