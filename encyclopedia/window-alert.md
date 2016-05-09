@@ -2,7 +2,7 @@
 
 *Throws an alert box within the browser window.*
 
-The `window.alert` is a *Javascript* functionality used to bring the focus away from the underlying web page and constrains the users to watch a message you want to transmit to them.  In a nutshell, it is a mean to communicate with users and bring them to the attention of some *particular event* or *message*.
+The `alert()` is a *Javascript* method used to bring the focus away from the underlying web page and constrains the users to watch a message you want to transmit to them.  In a nutshell, it is a mean to communicate with users and bring them to the attention of some *particular event* or *message*.
 
 This mechanism belongs to the `window` object which represents a window containing the entire DOM document.
 
@@ -59,8 +59,14 @@ The following example shows you how to use the `window.alert` functionality.
 
 ```
 
+### Browser Support
+
+| Android |  iOS | Chrome | Firefox | Internet Explorer | Opera | Safari |
+|:-------:|:----:|:------:|:-------:|:-----------------:|:-----:|:------:|
+|   2.1+  | 3.2+ |  1.0+  |   1.0+  |        7.0+       |  7.0+ |  2.0.2+  |
+
 ## Special Notes
 
 Due to its intrinsic nature, the alert box should be used only for communication purposes or, anyway, for messages which do not require any response on the part of the user.
 
-Starting with Chrome 46.0 this method is blocked inside an `<iframe>` unless its sandbox attribute has the value `allow-modal`.
+Starting with Chrome 46.0 this method is blocked inside an `<iframe>` unless its sandbox attribute has the value `allow-modal.
