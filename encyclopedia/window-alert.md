@@ -26,23 +26,20 @@ Write a description here. Provide an overview of what the reference entry is, ho
 
 ## Syntax
 
-Introduction to the syntax/usage. A example of CSS syntax is below:
+The `window.alert`'s syntax is pretty straightforward:
 
 ```
-        background: <color | url(path) | others.. | none>;
+        window.alert(message);
 ```
 
-### Values
+### Parameter Values
 
-This is a CSS example, so each value would need it's own sub-section below.
+As you can see from syntax above, `window.alert` takes an optional parameter which is described below.
 
-#### Color
+#### message
 
-An explanation of the "color" value belongs here.
+An *optional* textual message to display in the alert box.
 
-#### url(path)
-
-An explanation of using `url(path)` as a value to link to an image belongs here.
 
 ## Example 1
 
