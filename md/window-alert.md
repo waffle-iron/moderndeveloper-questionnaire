@@ -11,7 +11,7 @@ The new box that shows up is known as a  "*modal window*" because it prevents th
 
 ```
 ┌───────────────────────────────────────────────────────┐
-│[Javascript Application]                            ╳ |
+│[Javascript Application]                             X |
 │───────────────────────────────────────────────────────|
 |    .                                                  |
 |   /|\                                                 |
