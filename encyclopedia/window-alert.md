@@ -1,8 +1,8 @@
 # Window.alert
 
-*Write a short "what it is" here. This can be a one-word definition.*
+*Throws an alert box within the browser window.*
 
-Write a description here. Provide an overview of what the reference entry is, how it's used, it's significance, or how it's commonly used.
+The alert box is a *Javascript* functionality used to bring the focus away from the underlying web page and constrains the users to watch a message you want to transmit to them. In a nutshell, it is a mean to communicate with users and bring them to the attention of some *particular event*.
 
 ```
 ┌───────────────────────────────────────────────────────┐
@@ -41,7 +41,7 @@ Specifies an *optional* text message to display in the alert box.
 
 ## Example 1
 
-Write a introduction to the example, sufficient to explain what the example is showing.
+The following example .
 
 ```
         background: green;
