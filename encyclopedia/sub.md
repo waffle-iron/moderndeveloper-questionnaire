@@ -113,7 +113,7 @@ Represents a description of the kind of content you must include as children and
 
 The following snippet of code shows a very basic usage of an `sub` element.
 
-```
+```html
         <p>This is how is represented a <sub>subscript</sub></p>
 ```
 
@@ -121,13 +121,13 @@ The following snippet of code shows a very basic usage of an `sub` element.
 
 You may use the `sub` element to represent the base of a logarithm visually as in the following example.
 
-```
+```html
         log<sub>2</sub> 8 = 3
 ```
 
 or to describe a chemical formula instead.
 
-```
+```html
         <p>
                 Chemical Formula for Caffeine: C<sub>8</sub>H<sub>10</sub>N<sub>4</sub>O<sub>2</sub>
         </p>
@@ -137,7 +137,7 @@ or to describe a chemical formula instead.
 
 You may also use the `sub` element together with a `var` item.
 
-```
+```html
         <p>
                 The Fibonacci sequence is defined by setting F<sub>0</sub> = 0, F<sub>1</sub> = 1 
                 and the rest through the following recursive equation:
@@ -148,7 +148,7 @@ You may also use the `sub` element together with a `var` item.
 
 alternatively, also for representing variables that have subscripts.
 
-```
+```html
         <p>
                 <var>a<sub>1</sub></var> + <var>a<sub>2</sub></var> = <var>a<sub>3</sub></var>
         </p>
