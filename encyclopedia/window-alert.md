@@ -61,9 +61,10 @@ The following example shows you how to use the `window.alert` functionality.
 
 ### Browser Support
 
-| Android |  iOS | Chrome | Firefox | Internet Explorer | Opera | Safari |
-|:-------:|:----:|:------:|:-------:|:-----------------:|:-----:|:------:|
-|   2.1+  | 3.2+ |  1.0+  |   1.0+  |        7.0+       |  7.0+ |  2.0.2+  |
+| Chrome | Firefox | Internet Explorer | Opera | Safari |
+|:------:|:-------:|:-----------------:|:-----:|:------:|
+|  Yes   |   Yes   |        Yes        |  Yes  |  Yes   |
+
 
 ## Special Notes
 
