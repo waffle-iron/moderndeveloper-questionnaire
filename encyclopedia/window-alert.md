@@ -29,7 +29,7 @@ The new box that shows up is known as a  "*modal window*" because it prevents th
 
 ## Syntax
 
-The `window.alert`'s syntax is pretty straightforward:
+The syntax of this method is pretty straightforward:
 
 ```js
         window.alert(message);
@@ -47,7 +47,7 @@ Specifies an *optional* text message to display in the alert box.
 
 None
 
-## Example
+## Example 1
 
 The following example shows you how to use the `window.alert` functionality.
 
@@ -55,6 +55,30 @@ The following example shows you how to use the `window.alert` functionality.
         <script type="text/javascript">
           // The result of this example is showed on top of this page
           window.alert(Hello world!);
+        </script>
+
+```
+
+## How to write text on multiple lines
+
+Since the `window.alert` functionality belongs to the `window` object, to write some text on a new line we need to use the **new line escape** character.
+
+An escape character consists of a backslash (`\`) symbol followed by an alphabet.
+
+The most common used escape characters are:
+
+* \n: Decomposes the message and places the remaining text it on a new line
+* \r: Carriage return
+* \t: Inserts a tab
+* \': Single quote
+* \": Double quote
+* \\: Backslash
+
+## Example 2
+
+```js
+        <script type="text/javascript">
+          window.alert('Hi!\nI\'m on a new line!');
         </script>
 
 ```
