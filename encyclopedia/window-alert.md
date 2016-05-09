@@ -26,7 +26,7 @@ Write a description here. Provide an overview of what the reference entry is, ho
 
 The `window.alert`'s syntax is pretty straightforward:
 
-```
+```js
         window.alert(message);
 ```
 
