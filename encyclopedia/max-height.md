@@ -7,13 +7,17 @@ The `max-height` property sets the **maximum height** of the *content area* of a
 The chain of overlappings works in the following way:
 
 
-```                               
-            By default                   when ( min-height > max-height )
-                                  
-             overrides             |               overrides
-max-height  ==========>>  height   |  min-height  ==========>>  max-height
-                                   |
+```  
+          ╓─═══════════─╖               ╓─═════════════════════════─╖        
+          ║  By default ║               ║            When           ║
+          ╙─═══════════─╜               ║   min-height > max-height ║  
+                                        ╙─═════════════════════════─╜
 
+              overrides             ║              overrides
+              ▒▒▒▒▒▒▒▒▒             ║              ▒▒▒▒▒▒▒▒▒
+ max-height  ==========>>  height   ║  min-height  =========>>  max-height
+                                    ║
+                                    ║
 ```
 
 ## Syntax
@@ -48,7 +52,7 @@ This is the *default* value for this property. It clears the `max-height` value 
 
 The following example shows how to set the maximum height for an element with the ID of '*box*'.
 
-```
+```css
         #box {
           max-height: 100px;
         } 
@@ -58,7 +62,7 @@ The following example shows how to set the maximum height for an element with th
 
 The following snippet of code shows you how to constrain the element to be fixed on the base of its parent element's height.
 
-```
+```css
         p {
           max-height: inherit;
           border: 2px dotted red;
@@ -71,7 +75,7 @@ Imagine having a `div` which contains one or more child element with a class `.d
 
 Due to the specified value of `50%` in height, and based on the size of its parent, the children's height should be `400px`. But the more specific CSS rule `max-height` constrains the maximum height value at 55px no matter if the parent element is 800px in height or some other value. 
 
-```
+```css
         div {
             height: 800px;
         }
