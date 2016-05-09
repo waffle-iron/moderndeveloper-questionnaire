@@ -2,7 +2,12 @@
 
 *Throws an alert box within the browser window.*
 
-The alert box is a *Javascript* functionality used to bring the focus away from the underlying web page and constrains the users to watch a message you want to transmit to them. In a nutshell, it is a mean to communicate with users and bring them to the attention of some *particular event*.
+The `window.alert` is a *Javascript* functionality used to bring the focus away from the underlying web page and constrains the users to watch a message you want to transmit to them.  In a nutshell, it is a mean to communicate with users and bring them to the attention of some *particular event* or *message*.
+
+This mechanism belongs to the `window` object which represents a window containing the entire DOM document.
+
+The new box that shows up is known as a  "*modal window*" because it prevents the user from accessing the rest of the interface until the dialog box won't be *intentionally closed* through the acknowledgment of the message.
+
 
 ```
 ┌───────────────────────────────────────────────────────┐
