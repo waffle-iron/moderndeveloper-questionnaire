@@ -53,7 +53,7 @@ The following example shows you how to use the `window.alert` functionality.
 
 ```js
         <script type="text/javascript">
-          // The result of this example is showed on top of this page
+          // The result of this example is shown at the beginning this page
           window.alert(Hello world!);
         </script>
 
@@ -72,7 +72,7 @@ The most common used escape characters are:
 * \t: Inserts a tab
 * \': Single quote
 * \": Double quote
-* \\: Backslash
+* \/\: Backslash
 
 ## Example 2
 
