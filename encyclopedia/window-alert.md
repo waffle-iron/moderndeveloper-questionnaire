@@ -42,28 +42,16 @@ Specifies an *optional* text message to display in the alert box.
 
 None
 
-## Example 1
+## Example
 
-The following example .
+The following example shows you how to use the `window.alert` functionality.
 
-```
-        background: green;
-```
+```js
+        <script type="text/javascript">
+          // The result of this example is showed on top of this page
+          window.alert(Hello world!);
+        </script>
 
-## Example 2
-
-Write a introduction to the example, sufficient to explain what the example is showing.
-
-```
-        background: url('path_to_image.png');
-```
-
-## Example 3 - Complex
-
-Write a introduction to the example, sufficient to explain what the example is showing.
-
-```
-        background: none 50% 25% auto contain fixed;
 ```
 
 ## Special Notes
