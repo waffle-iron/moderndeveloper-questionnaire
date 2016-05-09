@@ -11,7 +11,7 @@ Write a description here. Provide an overview of what the reference entry is, ho
 |    .                                                 |
 |   /|\                                                |
 |  / ║ \    Hello world!                               |
-| /__°__\                                              | |                                                      │
+| /__°__\                                              |
 |                                                      |
 ╞══════════════════════════════════════════════════════╡
 │                                                      |
