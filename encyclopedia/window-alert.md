@@ -53,7 +53,7 @@ The following example shows you how to use the `window.alert` functionality.
 
 ```js
         <script type="text/javascript">
-          // The result of this example is shown at the beginning this page
+          // The result of this example is shown at the beginning of this page
           window.alert(Hello world!);
         </script>
 
@@ -67,12 +67,14 @@ An escape character consists of a backslash (`\`) symbol followed by an alphabet
 
 The most common used escape characters are:
 
-* \n: Decomposes the message and places the remaining text it on a new line
-* \r: Carriage return
-* \t: Inserts a tab
-* \': Single quote
-* \": Double quote
-* \/\: Backslash
+`\n`: Decomposes the message and places the remaining text it on a new line
+`\r`: Carriage return
+`\t`: Inserts a tab
+`\'`: Single quote
+`\"`: Double quote
+`\\`: Backslash
+
+The following example shows the Javascript *line escaping* in practice.
 
 ## Example 2
 
