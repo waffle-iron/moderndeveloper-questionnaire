@@ -30,7 +30,7 @@
             </h2>
           </header>
           <fieldset>
-            <div class="questionnaire__form-row">
+            <div class="form-row">
               <label for="card-01-name"
                      class="is-required">
                 What are your first and last names?
@@ -44,7 +44,7 @@
                      aria-required="true"
                      required="required" />
             </div>
-            <div class="questionnaire__form-row">
+            <div class="form-row">
               <label for="card-01-email"
                      class="is-required">
                 What is your email address?
@@ -57,7 +57,7 @@
                      aria-required="true"
                      required="required" />
             </div>
-            <div class="questionnaire__form-row">
+            <div class="form-row">
               <label for="card-01-color">
                 What is your favorite color
               </label>
@@ -66,7 +66,7 @@
                      name="card-01-color"
                      tabindex="3" />
             </div>
-            <div class="questionnaire__form-row">
+            <div class="form-row">
               <button class="questionnaire__button" tabindex="4">
                 Continue
               </button>
@@ -83,7 +83,7 @@
             </h2>
           </header>
           <fieldset>
-            <div class="questionnaire__form-row">
+            <div class="form-row">
               <label for="card-02-question-01">
                 Question
               </label>
@@ -93,7 +93,7 @@
                      placeholder="Answer"
                      tabindex="5" />
             </div>
-            <div class="questionnaire__form-row">
+            <div class="form-row">
               <label for="card-02-question-02">
                 Question
               </label>
@@ -103,7 +103,7 @@
                      placeholder="Answer"
                      tabindex="6" />
             </div>
-            <div class="questionnaire__form-row">
+            <div class="form-row">
               <label for="card-02-question-03">
                 Question
               </label>
@@ -112,7 +112,7 @@
                         placeholder="Long Response, using &lt;textarea&gt;"
                         tabindex="7"></textarea>
             </div>
-            <div class="questionnaire__form-row">
+            <div class="form-row">
               <button class="questionnaire__button" tabindex="8">
                 Continue
               </button>
@@ -127,7 +127,7 @@
             </h2>
           </header>
           <fieldset>
-            <div class="questionnaire__form-row">
+            <div class="form-row">
               <label for="card-03-question-01">
                 Question
               </label>
@@ -138,7 +138,7 @@
                      tabindex="9"
                      disabled="disabled">
             </div>
-            <div class="questionnaire__form-row">
+            <div class="form-row">
               <button class="questionnaire__button"
                       tabindex="10"
                       disabled="disabled">
@@ -165,7 +165,7 @@
                  alt="Amazing blue">
           </figure>
           <fieldset>
-            <div class="questionnaire__form-row">
+            <div class="form-row">
               <label for="card-04-question-01">
                 Question
               </label>
@@ -178,7 +178,7 @@
                      placeholder="Answer"
                      tabindex="11" />
             </div>
-            <div class="questionnaire__form-row">
+            <div class="form-row">
               <label for="card-04-question-02">
                 Question
               </label>
@@ -188,7 +188,7 @@
                      placeholder="Answer"
                      tabindex="12" />
             </div>
-            <div class="questionnaire__form-row">
+            <div class="form-row">
               <label for="card-04-question-03">
                 Question
               </label>
@@ -197,7 +197,7 @@
                         placeholder="Long Response, using &lt;textarea&gt;"
                         tabindex="13"></textarea>
             </div>
-            <div class="questionnaire__form-row">
+            <div class="form-row">
               <button class="questionnaire__button" tabindex="14">
                 Continue
               </button>
@@ -214,10 +214,12 @@
             Description paragraph.
           </p>
           <fieldset>
-            <div class="questionnaire__form-row">
-              <label>
-                Multiple Choice w/ Radio Inputs
-              </label>
+            <div class="form-row questionnaire__multiple-choice">
+              <p>
+                <strong>
+                  Multiple Choice w/ Radio Inputs
+                </strong>
+              </p>
               <label>
                 <input type="radio"
                        id="card-05-radio-item-1"
@@ -243,10 +245,12 @@
                 I like option C
               </label>
             </div>
-            <div class="questionnaire__form-row">
-              <label>
-                Multiple Choice w/ Checkbox Inputs
-              </label>
+            <div class="form-row questionnaire__multiple-choice">
+              <p>
+                <strong>
+                  Multiple Choice w/ Checkbox Inputs
+                </strong>
+              </p>
               <label>
                 <input type="checkbox"
                        id="card-05-checkbox-item-01"
@@ -272,7 +276,7 @@
                 I like option C
               </label>
             </div>
-            <div class="questionnaire__form-row">
+            <div class="form-row">
               <label for="card-05-dropdown"
                      class="questionnaire__question
                             is-required">
@@ -299,7 +303,7 @@
                 </option>
               </select>
             </div>
-            <div class="questionnaire__form-row">
+            <div class="form-row">
               <button type="submit"
                       class="questionnaire__button
                              questionnaire__button--submit"
@@ -316,11 +320,9 @@
     </article>
   </main>
   <script>
-    /*
     window.onload = function() {
       baseliner = new Baseliner(24);
     }
-    */
   </script>
 </body>
 </html>
