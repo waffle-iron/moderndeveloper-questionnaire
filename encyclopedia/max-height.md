@@ -13,13 +13,12 @@ The chain of overlappings works in the following way:
               ╙─═══════════─╜               ║   min-height > max-height ║  
                                             ╙─═════════════════════════─╜
 
-                  overrides             ║              overrides
-                                        ║
-                  ▒▒▒▒▒▒▒▒▒             ║              ▒▒▒▒▒▒▒▒▒
-    max-height    ========>>  height    ║  min-height  =========>>  max-height
-                                        ║
+               @--overrides--@          ║            @--overrides--@   
+    max-height  ============>>  height  ║ min-height  ===========>>  max-height
                                         ║
 ```
+
+≤∑†åß„` …µªª`–@@π@@––@@@
 
 ## Syntax
 
