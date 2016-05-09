@@ -8,14 +8,14 @@ The chain of overlappings works in the following way:
 
 
 ```  
-              ╓─═══════════─╖               ╓─═════════════════════════─╖
-              ║  By default ║               ║            When           ║
-              ╙─═══════════─╜               ║   min-height > max-height ║  
-                                            ╙─═════════════════════════─╜
+              ╓─═══════════─╖                  ╓─═════════════════════════─╖
+              ║  By default ║                  ║            When           ║
+              ╙─═══════════─╜                  ║   min-height > max-height ║  
+                                               ╙─═════════════════════════─╜
 
-                 -overrides-            ║              -overrides-  
-    max-height  ============>>  height  ║ min-height  ===========>>  max-height
-                                        ║
+                 -overrides-           ║               -overrides-  
+    max-height  ===========>>  height  ║  min-height  ===========>>  max-height
+                                       ║
 ```
 
 
