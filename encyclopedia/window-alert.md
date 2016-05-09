@@ -36,7 +36,7 @@ As you can see from syntax above, `window.alert` takes an optional parameter whi
 
 #### message
 
-An *optional* textual message to display in the alert box.
+Specifies an *optional* text message to display in the alert box.
 
 
 ## Example 1
