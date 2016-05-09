@@ -67,12 +67,15 @@ An escape character consists of a backslash (`\`) symbol followed by an alphabet
 
 The most common used escape characters are:
 
-`\n`: Decomposes the message and places the remaining text it on a new line
-`\r`: Carriage return
-`\t`: Inserts a tab
-`\'`: Single quote
-`\"`: Double quote
-`\\`: Backslash
+| Escapes character | Description | 
+|:-----------------:|-----------|
+|        `\n`       |  Decomposes the message and places the remaining text it on a new line       |
+|  `\r`              |   Carriage return       |
+|  `\t`              |   Inserts a tab         |
+|  `\'`              |   Single quote          |
+|  `\"`              |   Double quote          |
+|  `\\`              |   Backslash             |
+
 
 The following example shows the Javascript *line escaping* in practice.
 
