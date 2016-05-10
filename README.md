@@ -43,9 +43,13 @@ Stefan Frede:
 
 Gabriele Romeo:
 
-+ `<sub>`
-+ `max-height`
-+ `window.alert()`
++ [`<sub>`][9]
++ [`max-height`][10]
++ [`window.alert()`][11]
+
+[9]: ./md/sub.md
+[10]: ./md/max-height.md
+[11]: ./md/window-alert.md
 
 ### Project 3: Create Interactive Elements for the Encyclopedia Entries
 
