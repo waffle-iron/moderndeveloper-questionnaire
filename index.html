@@ -30,7 +30,7 @@
             </h2>
           </header>
           <fieldset>
-            <div class="form-row">
+            <p>
               <label for="card-01-name"
                      class="is-required">
                 What are your first and last names?
@@ -43,8 +43,8 @@
                      autofocus="autofocus"
                      aria-required="true"
                      required="required" />
-            </div>
-            <div class="form-row">
+            </p>
+            <p>
               <label for="card-01-email"
                      class="is-required">
                 What is your email address?
@@ -56,8 +56,8 @@
                      tabindex="2"
                      aria-required="true"
                      required="required" />
-            </div>
-            <div class="form-row">
+            </p>
+            <p>
               <label for="card-01-color">
                 What is your favorite color
               </label>
@@ -65,15 +65,15 @@
                      id="card-01-color"
                      name="card-01-color"
                      tabindex="3" />
-            </div>
-            <div class="form-row">
-              <button class="questionnaire__button" tabindex="4">
+            </p>
+            <p>
+              <button class="button button--questionnaire" tabindex="4">
                 Continue
               </button>
-            </div>
-            <p class="is-required">
-              * Required
             </p>
+            <div class="is-required">
+              * Required
+            </div>
           </fieldset>
         </section>
         <section class="questionnaire__card">
@@ -83,7 +83,7 @@
             </h2>
           </header>
           <fieldset>
-            <div class="form-row">
+            <p>
               <label for="card-02-question-01">
                 Question
               </label>
@@ -92,8 +92,8 @@
                      name="card-02-question-01"
                      placeholder="Answer"
                      tabindex="5" />
-            </div>
-            <div class="form-row">
+            </p>
+            <p>
               <label for="card-02-question-02">
                 Question
               </label>
@@ -102,8 +102,8 @@
                      name="card-02-question-02"
                      placeholder="Answer"
                      tabindex="6" />
-            </div>
-            <div class="form-row">
+            </p>
+            <p>
               <label for="card-02-question-03">
                 Question
               </label>
@@ -111,23 +111,23 @@
                         name="card-02-question-03"
                         placeholder="Long Response, using &lt;textarea&gt;"
                         tabindex="7"></textarea>
-            </div>
-            <div class="form-row">
-              <button class="questionnaire__button" tabindex="8">
+            </p>
+            <p>
+              <button class="button button--questionnaire" tabindex="8">
                 Continue
               </button>
-            </div>
+            </p>
           </fieldset>
         </section>
         <section class="questionnaire__card
-          questionnaire__card--disabled">
+                        questionnaire__card--disabled">
           <header class="questionnaire__head">
             <h2>
               This section is disabled
             </h2>
           </header>
-          <fieldset>
-            <div class="form-row">
+          <fieldset disabled="disabled">
+            <p>
               <label for="card-03-question-01">
                 Question
               </label>
@@ -137,14 +137,14 @@
                      placeholder="Answer"
                      tabindex="9"
                      disabled="disabled">
-            </div>
-            <div class="form-row">
-              <button class="questionnaire__button"
+            </p>
+            <p>
+              <button class="button button--questionnaire"
                       tabindex="10"
                       disabled="disabled">
                 Continue
               </button>
-            </div>
+            </p>
           </fieldset>
         </section>
         <section class="questionnaire__card">
@@ -156,29 +156,29 @@
               Section Title
             </h2>
           </header>
-          <p class="questionnaire__description">
-            Description paragraph.
-          </p>
-          <figure>
-            <img src="img/tree.jpg"
-                 class="questionnaire__img"
-                 alt="Amazing blue">
-          </figure>
           <fieldset>
-            <div class="form-row">
+            <legend class="questionnaire__description">
+              Description paragraph.
+            </legend>
+            <figure>
+              <img src="img/tree.jpg"
+                  class="questionnaire__img"
+                  alt="Amazing blue">
+            </figure>
+            <p>
               <label for="card-04-question-01">
                 Question
               </label>
-              <p class="questionnaire__description">
+              <small class="questionnaire__description">
                 Description paragraph.
-              </p>
+              </small>
               <input type="text"
                      id="card-04-question-01"
                      name="card-04-question-01"
                      placeholder="Answer"
                      tabindex="11" />
-            </div>
-            <div class="form-row">
+            </p>
+            <p>
               <label for="card-04-question-02">
                 Question
               </label>
@@ -187,8 +187,8 @@
                      name="card-04-question-02"
                      placeholder="Answer"
                      tabindex="12" />
-            </div>
-            <div class="form-row">
+            </p>
+            <p>
               <label for="card-04-question-03">
                 Question
               </label>
@@ -196,12 +196,12 @@
                         name="card-04-question-03"
                         placeholder="Long Response, using &lt;textarea&gt;"
                         tabindex="13"></textarea>
-            </div>
-            <div class="form-row">
-              <button class="questionnaire__button" tabindex="14">
+            </p>
+            <p>
+              <button class="button button--questionnaire" tabindex="14">
                 Continue
               </button>
-            </div>
+            </p>
           </fieldset>
         </section>
         <section class="questionnaire__card">
@@ -210,16 +210,14 @@
               Section Title w/ form elements
             </h2>
           </header>
-          <p class="questionnaire__description">
-            Description paragraph.
-          </p>
           <fieldset>
-            <div class="form-row questionnaire__multiple-choice">
-              <p>
-                <strong>
-                  Multiple Choice w/ Radio Inputs
-                </strong>
-              </p>
+            <legend class="questionnaire__description">
+              Description paragraph.
+            </legend>
+            <fieldset class="questionnaire__multiple-choice">
+              <legend class="label">
+                Multiple Choice w/ Radio Inputs
+              </legend>
               <label>
                 <input type="radio"
                        id="card-05-radio-item-1"
@@ -244,13 +242,11 @@
                        tabindex="17" />
                 I like option C
               </label>
-            </div>
-            <div class="form-row questionnaire__multiple-choice">
-              <p>
-                <strong>
-                  Multiple Choice w/ Checkbox Inputs
-                </strong>
-              </p>
+            </fieldset>
+            <fieldset class="questionnaire__multiple-choice">
+              <legend class="label">
+                Multiple Choice w/ Checkbox Inputs
+              </legend>
               <label>
                 <input type="checkbox"
                        id="card-05-checkbox-item-01"
@@ -275,16 +271,16 @@
                        tabindex="20" />
                 I like option C
               </label>
-            </div>
-            <div class="form-row">
+            </fieldset>
+            <p>
               <label for="card-05-dropdown"
                      class="questionnaire__question
                             is-required">
                 Dropdown Select from the list below:
               </label>
-              <p class="questionnaire__description">
+              <small class="questionnaire__description">
                 Description paragraph.
-              </p>
+              </small>
               <select name="card-05-dropdown"
                       id="card-05-dropdown"
                       tabindex="21"
@@ -302,27 +298,27 @@
                   Option 4
                 </option>
               </select>
-            </div>
-            <div class="form-row">
+            </p>
+            <p>
               <button type="submit"
-                      class="questionnaire__button
-                             questionnaire__button--submit"
+                      class="button
+                             button--questionnaire"
                       tabindex="22">
                 Submit
               </button>
-            </div>
-            <p class="is-required">
-              * Required
             </p>
+            <div class="is-required">
+              * Required
+            </div>
           </fieldset>
         </section>
       </form>
     </article>
   </main>
   <script>
-    window.onload = function() {
-      baseliner = new Baseliner(24);
-    }
+    // window.onload = function() {
+    //   baseliner = new Baseliner(24);
+    // }
   </script>
 </body>
 </html>
