@@ -24,8 +24,9 @@ The new box that shows up is known as a  "*modal window*" because it prevents th
 |                   ║      OK       ║                   |
 |                   ╚═══════════════╝                   │       
 └───────────────────────────────────────────────────────┘
-
 ```
+
+A visual example of a Javascript alert box.
 
 ## Syntax
 
@@ -53,8 +54,8 @@ The following example shows you how to use the `window.alert` functionality.
 
 ```js
         <script type="text/javascript">
-          // The result of this example is shown at the beginning of this page
-          window.alert(Hello world!);
+          // The visual result of this example is shown at the beginning of this page
+          window.alert('Hello world!');
         </script>
 
 ```
