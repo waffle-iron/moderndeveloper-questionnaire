@@ -13,7 +13,12 @@ document.addEventListener('DOMContentLoaded', function (e) {
      * resources.
      */
     Questionnaire.prototype = {
+        /*
+         * Since we define the Questionnaire's prototype this way,
+         * we need to set its constructor function again
+         */
         constructor: Questionnaire,
+
 
         init: function () {
 
@@ -34,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
                 empty: {
                     value: ''
                 }
-          };
+            };
 
             this.createQuestionnaire();
             this.handleSubmitCardForm();
@@ -51,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
         },
 
         handleSubmitCardForm: function () {
+
             var self = this;
 
             // Creates a single event listener on the grandparent node (article)
