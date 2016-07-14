@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
         // Checks for valid email addresses
         var regx = ['^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)',
                     '|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+',
-                    '[^<>()[\]\.,;:\s@\"]{2,})$/'].join('');
+                    '[^<>()[\]\.,;:\s@\"]{2,})$'].join('');
         var parent = 'form.js--submit-card';
 
         this.questionnairePrefix = "lmd-";
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
                 console.log('Error in form');
 
             }
-
+            e.preventDefault();
             e.stopPropagation(); // Stops Event Bubbling 
         });
     },
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
         var fields      = self.requiredFields,
             textInputs  = card.querySelectorAll('input[type=text]'),
             emailInputs = card.querySelectorAll('input[type=email]');
-
+console.log(textInputs);
       if (textInputs.length) {
         for (var i = 0; i < textInputs.length; i++) {
           var textInput = textInputs[i];
