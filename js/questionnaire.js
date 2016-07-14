@@ -8,9 +8,9 @@ document.addEventListener('DOMContentLoaded', function (e) {
     };
 
     /* 
-     * Sets all the methods and properties inside the Questionnaire's prototype 
-     * in such a way that each instance of it can use them without waste of 
-     * resources.
+     * Sets all methods and properties inside the Questionnaire's prototype 
+     * in such a way that each new instance can use them without waste of 
+     * resources
      */
     Questionnaire.prototype = {
         /*
