@@ -1,13 +1,13 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', function (e) {
-  function Questionnnaire(element) {
+  function Questionnaire(element) {
     this.element = element;
     this.init();
   };
 
-  Questionnnaire.prototype = {
-    constructor: Questionnnaire,
+  Questionnaire.prototype = {
+    constructor: Questionnaire,
 
     init: function () {
       this.questionnairePrefix = "lmd-";
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
   (function(e) {
     var element = e.target.querySelector('.js--questionnaire');
-    var questionnaire = new Questionnnaire(element);
+    var questionnaire = new Questionnaire(element);
   })(e);
 });
 
