@@ -71,11 +71,11 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
     _validateCardForm: function (card) {
         var self = this;
-
+console.log(card);
         var fields      = self.requiredFields,
             textInputs  = card.querySelectorAll('input[type=text]'),
             emailInputs = card.querySelectorAll('input[type=email]');
-console.log(textInputs);
+
       if (textInputs.length) {
         for (var i = 0; i < textInputs.length; i++) {
           var textInput = textInputs[i];
@@ -83,6 +83,7 @@ console.log(textInputs);
           var errorMsgInvalid = textInput.getAttribute('data-error-invalid');
 
           if (textInput.required && textInput.value === fields.empty.value) {
+
             textInput.setCustomValidity(errorMsgEmpty);
           } else {
             textInput.setCustomValidity('');
