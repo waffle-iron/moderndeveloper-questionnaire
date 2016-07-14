@@ -70,13 +70,14 @@ document.addEventListener('DOMContentLoaded', function (e) {
     },
 
     _validateCardForm: function (card) {
+
         var self = this;
 
         var fields = self.requiredFields,
             inputs = card.querySelectorAll('input');
 
         map(inputs, function(input) {
-            var errorMsgEmpty = input.getAttribute('data-error-empty');
+            var errorMsgEmpty   = input.getAttribute('data-error-empty');
             var errorMsgInvalid = input.getAttribute('data-error-invalid');
 
             if (input.required) {
