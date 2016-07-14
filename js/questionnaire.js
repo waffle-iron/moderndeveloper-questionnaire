@@ -77,8 +77,8 @@ document.addEventListener('DOMContentLoaded', function (e) {
             inputs = card.querySelectorAll('input');
 
         map(inputs, function(input) {
-            var errorMsgEmpty   = input.getAttribute('data-error-empty');
-            var errorMsgInvalid = input.getAttribute('data-error-invalid');
+            var errorMsgEmpty   = input.getAttribute('data-error-empty'),
+                errorMsgInvalid = input.getAttribute('data-error-invalid');
 
             if (input.required) {
                 if (!input.value) {
