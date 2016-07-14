@@ -354,7 +354,7 @@ legend.questionnaire__description {
 
   .questionnaire {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
   }
 
   .questionnaire__card {
@@ -362,6 +362,8 @@ legend.questionnaire__description {
     border-radius: 0.25rem;
     box-shadow: 0 0.25rem 0.25rem 0 rgba(50, 50, 50, 0.75);
     margin-top: calc(6rem - 1px);
+    margin-left: auto;
+    margin-right: auto;
     padding: 3rem 5rem 1.5rem;
     width: 42rem;
   }
@@ -370,3 +372,4 @@ legend.questionnaire__description {
     margin-bottom: calc(6rem - 1px);
   }
 }
+

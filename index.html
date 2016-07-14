@@ -13,14 +13,15 @@
         href="https://fonts.googleapis.com/css?family=Roboto:400,300,500,700">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-
-  <script src="js/baseliner.js"></script>
 </head>
 <body>
   <main role="main">
-    <article class="questionnaire">
-      <form accept-charset="UTF-8" action="#" method="post">
-        <section class="questionnaire__card">
+    <article class="questionnaire js--questionnaire">
+      <section class="questionnaire__card">
+        <form accept-charset="UTF-8"
+              action="index.html"
+              method="post"
+              class="js--submit-card">
           <header class="questionnaire__head">
             <h2>
               <strong>
@@ -42,6 +43,8 @@
                      tabindex="1"
                      autofocus="autofocus"
                      aria-required="true"
+                     data-error-empty="Error message text empty"
+                     data-error-invalid="Error message text invalid"
                      required="required" />
             </p>
             <p>
@@ -55,6 +58,7 @@
                      placeholder="whatsup@moderndeveloper.com"
                      tabindex="2"
                      aria-required="true"
+                     data-message="Error message email"
                      required="required" />
             </p>
             <p>
@@ -75,8 +79,13 @@
               * Required
             </div>
           </fieldset>
-        </section>
-        <section class="questionnaire__card">
+        </form>
+      </section>
+      <section class="questionnaire__card">
+        <form accept-charset="UTF-8"
+              action="index.html"
+              method="post"
+              class="js--submit-card">
           <header class="questionnaire__head">
             <h2>
               Section Title
@@ -118,9 +127,14 @@
               </button>
             </p>
           </fieldset>
-        </section>
-        <section class="questionnaire__card
-                        questionnaire__card--disabled">
+        </form>
+      </section>
+      <section class="questionnaire__card
+                      questionnaire__card--disabled">
+        <form accept-charset="UTF-8"
+              action="index.html"
+              method="post"
+              class="js--submit-card">
           <header class="questionnaire__head">
             <h2>
               This section is disabled
@@ -146,8 +160,13 @@
               </button>
             </p>
           </fieldset>
-        </section>
-        <section class="questionnaire__card">
+        </form>
+      </section>
+      <section class="questionnaire__card">
+        <form accept-charset="UTF-8"
+              action="index.html"
+              method="post"
+              class="js--submit-card">
           <header class="questionnaire__head">
             <h2>
               <strong>
@@ -203,8 +222,13 @@
               </button>
             </p>
           </fieldset>
-        </section>
-        <section class="questionnaire__card">
+        </form>
+      </section>
+      <section class="questionnaire__card">
+        <form accept-charset="UTF-8"
+              action="index.html"
+              method="post"
+              class="js--submit-card">
           <header class="questionnaire__head">
             <h2>
               Section Title w/ form elements
@@ -313,14 +337,11 @@
               * Required
             </div>
           </fieldset>
-        </section>
-      </form>
+        </form>
+      </section>
     </article>
   </main>
-  <script>
-    // window.onload = function() {
-    //   baseliner = new Baseliner(24);
-    // }
-  </script>
+  <script src="js/questionnaire.js"></script>
 </body>
 </html>
+
