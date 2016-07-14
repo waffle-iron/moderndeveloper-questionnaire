@@ -1,11 +1,17 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', function (e) {
+
     function Questionnaire(element) {
         this.element = element;
         this.init();
     };
 
+    /* 
+     * Sets all the methods and properties inside the Questionnaire's prototype 
+     * in such a way that each instance of it can use them without waste of 
+     * resources.
+     */
     Questionnaire.prototype = {
         constructor: Questionnaire,
 
@@ -123,23 +129,24 @@ document.addEventListener('DOMContentLoaded', function (e) {
         }
     };
 
+    // helper function
+    function map(array, callback) {
+
+        // holds the result of map operation  
+        var result = [];
+        var len    = array.length;
+        var i;
+
+        for (i = 0; i < len; i++) {
+            result.push(callback(array[i], i));
+        }
+
+        return result;
+    }
+
     (function(e) {
         var element = e.target.querySelector('.js--questionnaire');
         var questionnaire = new Questionnaire(element);
     })(e);
 });
-
-function map(array, callback) {
-
-    // holds the result of map operation  
-    var result = [];
-    var len    = array.length;
-    var i;
-
-    for (i = 0; i < len; i++) {
-        result.push(callback(array[i], i));
-    }
-
-    return result;
-}
 
