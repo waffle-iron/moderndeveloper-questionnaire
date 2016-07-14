@@ -35,9 +35,9 @@ document.addEventListener('DOMContentLoaded', function (e) {
         var questionnaireObj = {};
         questionnaireObj['items'] = [];
 
-        if (!(this.storage.getItem(this.questionnaireName))) {
-        this.storage.setItem(this.questionnaireName, 
-                             JSON.stringify(questionnaireObj));
+        if (_not(_exists(this.storage.getItem(this.questionnaireName)))) {
+            this.storage.setItem(this.questionnaireName, 
+                                 JSON.stringify(questionnaireObj));
         }
     },
 
@@ -107,6 +107,16 @@ document.addEventListener('DOMContentLoaded', function (e) {
         }
       }
     },
+
+    // Checks for truthiness
+    _exists: function (item) {
+        return !!item;
+    },
+
+    // Returns the logical negation
+    _not: function (x) {
+        return !x;
+    }
 
     _saveCardFormData: function (card) {
       console.log('Form saved');
