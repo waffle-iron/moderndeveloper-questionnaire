@@ -10,26 +10,33 @@ document.addEventListener('DOMContentLoaded', function (e) {
     constructor: Questionnaire,
 
     init: function () {
-      this.questionnairePrefix = "lmd-";
-      this.questionnaireName = this.questionnairePrefix + 'questionnaire';
-      this.storage = sessionStorage;
 
-      this.formSubmitCard = this.element.querySelectorAll('form.js--submit-card');
+        // Checks for valid email addresses
+        var regx = ['^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)',
+                    '|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+',
+                    '[^<>()[\]\.,;:\s@\"]{2,})$/'].join('');
+        var parent = 'form.js--submit-card';
+
+        this.questionnairePrefix = "lmd-";
+        this.questionnaireName = this.questionnairePrefix + 'questionnaire';
+        this.storage = sessionStorage;
+
+        this.formSubmitCard = this.element.querySelector(parent);
 
 
-      // Object containing patterns for form validation
-      this.requiredFields = {
-        email: {
-          value: /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
-        },
+        // Object containing patterns for form validation
+        this.requiredFields = {
+            email: {
+                value: new RegExp(regx, 'i')
+            },
 
-        empty: {
-          value: ''
-        }
+            empty: {
+                value: ''
+            }
       };
 
-      this.createQuestionnaire();
-      this.handleSubmitCardForm();
+        this.createQuestionnaire();
+        this.handleSubmitCardForm();
     },
 
     createQuestionnaire: function () {
@@ -48,7 +55,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
         // Creates a single event listener on the parent node element
         this.element.addEventListener('submit', function (e) {
 
-            e.preventDefault();
             // Here e.target is a reference to the target form card
             self._validateCardForm(e.target); 
 
@@ -56,15 +62,19 @@ document.addEventListener('DOMContentLoaded', function (e) {
                 self._saveCardFormData(e.target);
             } else {
                 console.log('Error in form');
+
             }
+
+            e.stopPropagation(); // Stops Event Bubbling 
         });
     },
 
     _validateCardForm: function (card) {
-      var self = this;
-      var fields = self.requiredFields;
-      var textInputs = card.querySelectorAll('input[type=text]');
-      var emailInputs = card.querySelectorAll('input[type=email]');
+        var self = this;
+
+        var fields      = self.requiredFields,
+            textInputs  = card.querySelectorAll('input[type=text]'),
+            emailInputs = card.querySelectorAll('input[type=email]');
 
       if (textInputs.length) {
         for (var i = 0; i < textInputs.length; i++) {
