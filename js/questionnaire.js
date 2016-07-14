@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
                 email: {
                     value: new RegExp(regx, 'i')
                 },
-
                 empty: {
                     value: ''
                 }
@@ -129,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
         }
     };
 
-    // helper function
+    // Helper function
     function map(array, callback) {
 
         // holds the result of map operation  
