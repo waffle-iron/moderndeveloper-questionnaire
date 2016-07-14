@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
          */
         constructor: Questionnaire,
 
-
         init: function () {
 
             // Checks for valid email addresses
