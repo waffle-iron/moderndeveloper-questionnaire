@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
     init: function () {
       this.questionnairePrefix = "lmd-";
       this.questionnaireName = this.questionnairePrefix + 'questionnaire';
+      this.total = this.questionnairePrefix + 'total';
       this.storage = sessionStorage;
 
       this.formSubmitCard = this.element.querySelectorAll('form.js--submit-card');
@@ -38,8 +39,40 @@ document.addEventListener('DOMContentLoaded', function (e) {
         questionnaire.items = [];
 
         this.storage.setItem(this.questionnaireName, JSON.stringify(questionnaire));
+        this.storage.setItem(this.total, JSON.stringify(this.formSubmitCard.length));
       }
     },
+
+    // $.fn.deserialize = function (serializedString) {
+    //   var $form = $(this);
+    //   $form[0].reset();
+    //   serializedString = serializedString.replace(/\+/g, '%20');
+    //   var formFieldArray = serializedString.split("&");
+    //   $populateFeedback.slideDown().html('');
+    //   $.each(formFieldArray, function(i, pair){
+    //     var nameValue = pair.split("=");
+    //     var name = decodeURIComponent(nameValue[0]);
+    //     var value = decodeURIComponent(nameValue[1]);
+    //     // Find one or more fields
+    //     var $field = $form.find('[name=' + name + ']');
+    //     console.log(name, value);
+    //     $populateFeedback.append('<li>' + name + ' = ' + value + '</li>');
+    //
+    //     if ($field[0].type == "radio"
+    //       || $field[0].type == "checkbox")
+    //     {
+    //       var $fieldWithValue = $field.filter('[value="' + value + '"]');
+    //       var isFound = ($fieldWithValue.length > 0);
+    //       if (!isFound && value == "on") {
+    //         $field.first().prop("checked", true);
+    //       } else {
+    //         $fieldWithValue.prop("checked", isFound);
+    //       }
+    //     } else {
+    //       $field.val(value);
+    //     }
+    //   });
+    // }
 
     handleSubmitCardForm: function () {
       var self = this;
@@ -56,8 +89,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
           if (e.target.checkValidity()) {
             self._saveCardFormData(e.target);
-          } else {
-            console.log('Error in form');
           }
         });
       }
@@ -108,8 +139,90 @@ document.addEventListener('DOMContentLoaded', function (e) {
       }
     },
 
-    _saveCardFormData: function (card) {
-      console.log('Form saved');
+    _saveCardFormData: function (form) {
+      var self = this;
+      var findIndex = self._findIndex;
+
+      var formObject = {
+        form: form.getAttribute('id'),
+        data: self._serializeCardForm(form)
+      };
+
+      var questionnaire = self.storage.getItem(self.questionnaireName);
+      var questionnaireObject = JSON.parse(questionnaire);
+      var questionnaireCopy = questionnaireObject;
+      var items = questionnaireCopy.items;
+
+      var idx = items.findIndex(function(item) {
+        return item.form === form.getAttribute('id');
+      });
+
+      if (idx > -1) {
+        items.splice(idx, 1, formObject);
+      } else {
+        items.push(formObject);
+      }
+
+      self.storage.setItem(self.questionnaireName, JSON.stringify(questionnaireCopy));
+    },
+
+    _serializeCardForm: function(form) {
+      var field = void 0;
+      var l = void 0;
+      var s = [];
+
+      if (typeof form === 'object' && form.nodeName === 'FORM') {
+        var len = form.elements.length;
+
+        for (var i = 0; i < len; i++) {
+          field = form.elements[i];
+
+          if (field.name &&
+             !field.disabled &&
+              field.type !== 'file' &&
+              field.type !== 'reset' &&
+              field.type !== 'submit' &&
+              field.type !== 'button') {
+            if (field.type === 'select-multiple') {
+              l = form.elements[i].options.length;
+
+              for (var j = 0; j < l; j++) {
+                if (field.options[j].selected) {
+                  s[s.length] = encodeURIComponent(field.name) + '=' + encodeURIComponent(field.options[j].value);
+                }
+              }
+            } else if ((field.type !== 'checkbox' && field.type !== 'radio') || field.checked) {
+              s[s.length] = encodeURIComponent(field.name) + '=' + encodeURIComponent(field.value);
+            }
+          }
+        }
+      }
+
+      return s.join('&').replace(/%20/g, '+');
+    },
+
+    _findIndex: function(predicate) {
+      if (this === null) {
+        throw new TypeError('findIndex called on null or undefined');
+      }
+
+      if (typeof predicate !== 'function') {
+        throw new TypeError('predicate must be a function');
+      }
+
+      var list = Object(this);
+      var length = list.length >>> 0;
+      var thisArg = arguments[1];
+      var value;
+
+      for (var i = 0; i < length; i++) {
+        value = list[i];
+        if (predicate.call(thisArg, value, i, list)) {
+          return i;
+        }
+      }
+
+      return -1;
     }
   };
 
