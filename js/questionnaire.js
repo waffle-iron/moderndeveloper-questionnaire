@@ -52,26 +52,30 @@ document.addEventListener('DOMContentLoaded', function (e) {
     handleSubmitCardForm: function () {
         var self = this;
 
-        // Creates a single event listener on the parent node element
-        this.element.addEventListener('submit', function (e) {
+        // Creates a single event listener on the grandparent node (article)
+        this.element.addEventListener('click', function (e) {
 
-            // Here e.target is a reference to the target form card
-            self._validateCardForm(e.target); 
+            var target = e.target;
 
-            if (e.target.checkValidity()) {
-                self._saveCardFormData(e.target);
-            } else {
-                console.log('Error in form');
+            if (target.nodeName.toLowerCase() === 'button') {
+                // Here e.target.form is a reference to the target form card
+                self._validateCardForm(target.form); 
 
+                if (target.form.checkValidity()) {
+                    self._saveCardFormData(target.form);
+                } else {
+                    console.log('Error in form');
+                }
             }
-            e.preventDefault();
+
+            e.preventDefault();  // Prevents default behaviour
             e.stopPropagation(); // Stops Event Bubbling 
         });
     },
 
     _validateCardForm: function (card) {
         var self = this;
-console.log(card);
+
         var fields      = self.requiredFields,
             textInputs  = card.querySelectorAll('input[type=text]'),
             emailInputs = card.querySelectorAll('input[type=email]');
