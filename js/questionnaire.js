@@ -32,13 +32,13 @@ document.addEventListener('DOMContentLoaded', function (e) {
     },
 
     createQuestionnaire: function () {
-      if (this.storage.getItem(this.questionnaireName) === null) {
+        var questionnaireObj = {};
+        questionnaireObj['items'] = [];
 
-        var questionnaire = {};
-        questionnaire.items = [];
-
-        this.storage.setItem(this.questionnaireName, JSON.stringify(questionnaire));
-      }
+        if (!(this.storage.getItem(this.questionnaireName))) {
+        this.storage.setItem(this.questionnaireName, 
+                             JSON.stringify(questionnaireObj));
+        }
     },
 
     handleSubmitCardForm: function () {
