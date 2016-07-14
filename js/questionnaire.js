@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
       this.formSubmitCard = this.element.querySelectorAll('form.js--submit-card');
 
+
       // Object containing patterns for form validation
       this.requiredFields = {
         email: {
@@ -35,32 +36,28 @@ document.addEventListener('DOMContentLoaded', function (e) {
         var questionnaireObj = {};
         questionnaireObj['items'] = [];
 
-        if (_not(_exists(this.storage.getItem(this.questionnaireName)))) {
+        if (!this.storage.getItem(this.questionnaireName)) {
             this.storage.setItem(this.questionnaireName, 
                                  JSON.stringify(questionnaireObj));
         }
     },
 
     handleSubmitCardForm: function () {
-      var self = this;
+        var self = this;
 
-      for (var i = 0; i < this.formSubmitCard.length; i++) {
-        var card = this.formSubmitCard[i];
+        // Creates a single event listener on the parent node element
+        this.element.addEventListener('submit', function (e) {
 
-        card.noValidate = true;
+            e.preventDefault();
+            // Here e.target is a reference to the target form card
+            self._validateCardForm(e.target); 
 
-        card.addEventListener('submit', function (e) {
-          e.preventDefault();
-
-          self._validateCardForm(e.target);
-
-          if (e.target.checkValidity()) {
-            self._saveCardFormData(e.target);
-          } else {
-            console.log('Error in form');
-          }
+            if (e.target.checkValidity()) {
+                self._saveCardFormData(e.target);
+            } else {
+                console.log('Error in form');
+            }
         });
-      }
     },
 
     _validateCardForm: function (card) {
@@ -107,16 +104,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
         }
       }
     },
-
-    // Checks for truthiness
-    _exists: function (item) {
-        return !!item;
-    },
-
-    // Returns the logical negation
-    _not: function (x) {
-        return !x;
-    }
 
     _saveCardFormData: function (card) {
       console.log('Form saved');
