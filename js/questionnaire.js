@@ -15,14 +15,10 @@ document.addEventListener('DOMContentLoaded', function (e) {
         var regx = ['^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)',
                     '|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+',
                     '[^<>()[\]\.,;:\s@\"]{2,})$'].join('');
-        var parent = 'form.js--submit-card';
 
         this.questionnairePrefix = "lmd-";
         this.questionnaireName = this.questionnairePrefix + 'questionnaire';
         this.storage = sessionStorage;
-
-        this.formSubmitCard = this.element.querySelector(parent);
-
 
         // Object containing patterns for form validation
         this.requiredFields = {
@@ -76,26 +72,23 @@ document.addEventListener('DOMContentLoaded', function (e) {
     _validateCardForm: function (card) {
         var self = this;
 
-        var fields      = self.requiredFields,
-            textInputs  = card.querySelectorAll('input[type=text]'),
-            emailInputs = card.querySelectorAll('input[type=email]');
+        var fields = self.requiredFields,
+            inputs = card.querySelectorAll('input');
 
-      if (textInputs.length) {
-        for (var i = 0; i < textInputs.length; i++) {
-          var textInput = textInputs[i];
-          var errorMsgEmpty = textInput.getAttribute('data-error-empty');
-          var errorMsgInvalid = textInput.getAttribute('data-error-invalid');
+        map(inputs, function(input) {
+            var errorMsgEmpty = input.getAttribute('data-error-empty');
+            var errorMsgInvalid = input.getAttribute('data-error-invalid');
 
-          if (textInput.required && textInput.value === fields.empty.value) {
+            if (input.required) {
+                if (!input.value) {
+                    input.setCustomValidity(errorMsgEmpty);
+                } else {
+                    input.setCustomValidity('');
+                }
+            }
 
-            textInput.setCustomValidity(errorMsgEmpty);
-          } else {
-            textInput.setCustomValidity('');
-          }
-
-          self._handleValidationError(textInput);
-        }
-      }
+            self._handleValidationError(input);
+        });
     },
 
     _handleValidationError: function (field) {
@@ -130,4 +123,18 @@ document.addEventListener('DOMContentLoaded', function (e) {
     var questionnaire = new Questionnaire(element);
   })(e);
 });
+
+function map(array, callback) {
+
+    // holds the result of map operation  
+    var result = [];
+    var len    = array.length;
+    var i;
+
+    for (i = 0; i < len; i++) {
+        result.push(callback(array[i], i));
+    }
+
+    return result;
+}
 
