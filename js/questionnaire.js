@@ -93,25 +93,29 @@ document.addEventListener('DOMContentLoaded', function (e) {
     },
 
     _handleValidationError: function (field) {
-      var parent = field.parentNode;
 
-      if (field.checkValidity()) {
-        if (parent.classList.contains('has-error')) {
-          parent.classList.remove('has-error');
-          parent.removeChild(parent.querySelector('.error-message'));
-        }
-      } else {
-        if (!parent.classList.contains('has-error')) {
-          var msgContainer = void 0;
-          msgContainer = document.createElement('div');
-          msgContainer.className = 'error-message';
-          msgContainer.innerHTML = field.validationMessage;
-          parent.classList.add('has-error');
-          parent.appendChild(msgContainer);
+        var msgContainer = void 0;
+
+        var parent = field.parentNode,
+            hasError = parent.classList.contains('has-error'),
+            errorMessage = parent.querySelector('.error-message');
+
+        if (field.checkValidity()) {
+            if (hasError) {
+                parent.classList.remove('has-error');
+                parent.removeChild(errorMessage);
+            }
         } else {
-          parent.querySelector('.error-message').innerHTML = field.validationMessage;
+            if (!hasError) {
+                msgContainer = document.createElement('div');
+                msgContainer.className = 'error-message';
+                msgContainer.innerHTML = field.validationMessage;
+                parent.classList.add('has-error');
+                parent.appendChild(msgContainer);
+            } else {
+                errorMessage.innerHTML = field.validationMessage;
+            }
         }
-      }
     },
 
     _saveCardFormData: function (card) {
