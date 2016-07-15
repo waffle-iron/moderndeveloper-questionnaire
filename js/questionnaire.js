@@ -45,12 +45,13 @@ document.addEventListener('DOMContentLoaded', function (e) {
         },
 
         createQuestionnaire: function () {
-            var questionnaireObj = {};
-            questionnaireObj['items'] = [];
+            var questionnaire = {};
 
-            if (!this.storage.getItem(this.questionnaireName)) {
+            questionnaire['items'] = [];
+
+            if (this.storage.getItem(this.questionnaireName) === null) {
                 this.storage.setItem(this.questionnaireName, 
-                                     JSON.stringify(questionnaireObj));
+                                     JSON.stringify(questionnaire));
             }
         },
 
