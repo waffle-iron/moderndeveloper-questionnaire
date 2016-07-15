@@ -27,11 +27,26 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
             // Object containing patterns for form validation
             this.requiredFields = {
-                email: {
-                    value: /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+                default: {
+                    msg: 'This field is required'
                 },
-                empty: {
-                    value: ''
+
+                types: {
+                    email: {
+                        pattern: /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
+                        msg: 'Error message email'
+                    },
+                    text: {
+                        pattern: /.*\S.*/,
+                        msg: 'Error message text empty'
+                    }
+                }
+
+                custom: {
+                    'card-05-dropdown': {
+                        pattern: /Option 1/i,
+                        msg: 'Error message select'
+                    }
                 }
             };
 
@@ -40,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
         },
 
         createQuestionnaire: function () {
+
             var questionnaire = {};
 
             questionnaire['items'] = [];
@@ -54,7 +70,8 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
             var self = this;
 
-            // Creates a single event listener on the grandparent node (article)
+            // Creates a single event listener at the grandparent level 
+            // (article) node
             this.element.addEventListener('submit', function (e) {
 
                 var target = e.target;
@@ -77,22 +94,26 @@ document.addEventListener('DOMContentLoaded', function (e) {
             var self = this;
 
             var fields = self.requiredFields,
-                inputs = card.querySelectorAll('input');
+                inputs   = [].slice.call(card.querySelectorAll('input'));
 
-            map(inputs, function(input) {
-                var errorMsgEmpty   = input.getAttribute('data-error-empty'),
-                    errorMsgInvalid = input.getAttribute('data-error-invalid');
+            inputs.map(function(input) {
 
-                if (input.required) {
-                    if (!input.value) {
-                        input.setCustomValidity(errorMsgEmpty);
+                var attributes  = input.attributes,
+                    type        = getAttribute(attributes, 'type').nodeValue,
+                    name        = getAttribute(attributes, 'name').nodeValue,
+                    isRequired  = !!getAttribute(attributes, 'required'),
+                    errorMsg    = '';
+
+                if (isRequired) {
+                    if (!fields[type].pattern.test(input.value)) {
+                        input.setCustomValidity(errorMsg);
                     } else {
                         input.setCustomValidity('');
                     }
                 }
 
                 self._handleValidationError(input);
-            });
+            })
         },
 
         _handleValidationError: function (field) {
@@ -127,18 +148,12 @@ document.addEventListener('DOMContentLoaded', function (e) {
     };
 
     // Helper function
-    function map(array, callback) {
-
-        // holds the result of map operation  
-        var result = [];
-        var len    = array.length;
-        var i;
-
-        for (i = 0; i < len; i++) {
-            result.push(callback(array[i], i));
+    function getAttribute(element, attribute) {
+        if ("hasOwnProperty" in element && element.hasOwnProperty(attribute)) {
+            return element[attribute];
+        } else {
+            return null;
         }
-
-        return result;
     }
 
     (function(e) {
