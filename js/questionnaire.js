@@ -21,11 +21,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
         init: function () {
 
-            // Checks for valid email addresses
-            var regx = ['^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)',
-                        '|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+',
-                        '[^<>()[\]\.,;:\s@\"]{2,})$'].join('');
-
             this.questionnairePrefix = "lmd-";
             this.questionnaireName = this.questionnairePrefix + 'questionnaire';
             this.storage = sessionStorage;
@@ -33,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
             // Object containing patterns for form validation
             this.requiredFields = {
                 email: {
-                    value: new RegExp(regx, 'i')
+                    value: /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
                 },
                 empty: {
                     value: ''
