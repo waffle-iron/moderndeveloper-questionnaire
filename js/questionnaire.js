@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
             // Object containing patterns for form validation
             this.requiredFields = {
+
                 default: {
                     msg: 'This field is required'
                 },
@@ -40,12 +41,11 @@ document.addEventListener('DOMContentLoaded', function (e) {
                         pattern: /.*\S.*/,
                         msg: 'Error message text empty'
                     }
-                }
+                },
 
                 custom: {
                     'card-05-dropdown': {
-                        pattern: /Option 1/i,
-                        msg: 'Error message select'
+                        pattern: /Option 1/i
                     }
                 }
             };
@@ -94,21 +94,39 @@ document.addEventListener('DOMContentLoaded', function (e) {
             var self = this;
 
             var fields = self.requiredFields,
-                inputs   = [].slice.call(card.querySelectorAll('input'));
+                inputs   = [].slice.call(card.querySelectorAll('textarea, '  +
+                                                               'select, '    +
+                                                               'input[type]'));
 
             inputs.map(function(input) {
 
-                var attributes  = input.attributes,
-                    type        = getAttribute(attributes, 'type').nodeValue,
-                    name        = getAttribute(attributes, 'name').nodeValue,
+                var value       = input.value,
+                    attributes  = input.attributes,
+                    type        = getAttribute(attributes, 'type') ? getAttribute(attributes, 'type').nodeValue : void 0,
+                    name        = getAttribute(attributes, 'name') ? getAttribute(attributes, 'name').nodeValue : void 0,
                     isRequired  = !!getAttribute(attributes, 'required'),
                     errorMsg    = '';
 
                 if (isRequired) {
-                    if (!fields[type].pattern.test(input.value)) {
-                        input.setCustomValidity(errorMsg);
-                    } else {
-                        input.setCustomValidity('');
+
+                    // First validate against field's type (if any)
+                    if (fields.types[type]) {
+                        if (!fields.types[type].pattern.test(value)) {
+                            errorMsg = getAttribute(fields.types[type], 'msg') || fields.default.msg;
+                            input.setCustomValidity(errorMsg);
+                        } else {
+                            input.setCustomValidity('');
+                        }
+                    }
+
+                    // Second validate against custom pattern (if any)
+                    if (fields.custom[name]) {
+                        if (!fields.custom[name].pattern.test(value)) {
+                            errorMsg = getAttribute(fields.custom[name], 'msg') || fields.default.msg;
+                            input.setCustomValidity(errorMsg);
+                        } else {
+                            input.setCustomValidity('');
+                        }
                     }
                 }
 
@@ -148,9 +166,9 @@ document.addEventListener('DOMContentLoaded', function (e) {
     };
 
     // Helper function
-    function getAttribute(element, attribute) {
-        if ("hasOwnProperty" in element && element.hasOwnProperty(attribute)) {
-            return element[attribute];
+    function getAttribute(obj, attribute) {
+        if (obj && "hasOwnProperty" in obj && obj.hasOwnProperty(attribute)) {
+            return obj[attribute];
         } else {
             return null;
         }
