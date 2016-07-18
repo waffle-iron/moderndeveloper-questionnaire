@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
       };
 
       this.createQuestionnaire();
+      this.displayQuestionnaire();
       this.handleSubmitCardForm();
     },
 
@@ -43,36 +44,46 @@ document.addEventListener('DOMContentLoaded', function (e) {
       }
     },
 
-    // $.fn.deserialize = function (serializedString) {
-    //   var $form = $(this);
-    //   $form[0].reset();
-    //   serializedString = serializedString.replace(/\+/g, '%20');
-    //   var formFieldArray = serializedString.split("&");
-    //   $populateFeedback.slideDown().html('');
-    //   $.each(formFieldArray, function(i, pair){
-    //     var nameValue = pair.split("=");
-    //     var name = decodeURIComponent(nameValue[0]);
-    //     var value = decodeURIComponent(nameValue[1]);
-    //     // Find one or more fields
-    //     var $field = $form.find('[name=' + name + ']');
-    //     console.log(name, value);
-    //     $populateFeedback.append('<li>' + name + ' = ' + value + '</li>');
-    //
-    //     if ($field[0].type == "radio"
-    //       || $field[0].type == "checkbox")
-    //     {
-    //       var $fieldWithValue = $field.filter('[value="' + value + '"]');
-    //       var isFound = ($fieldWithValue.length > 0);
-    //       if (!isFound && value == "on") {
-    //         $field.first().prop("checked", true);
-    //       } else {
-    //         $fieldWithValue.prop("checked", isFound);
-    //       }
-    //     } else {
-    //       $field.val(value);
-    //     }
-    //   });
-    // }
+    displayQuestionnaire: function () {
+      var self = this;
+
+      var questionnaire = self.storage.getItem(self.questionnaireName);
+      var questionnaireObject = JSON.parse(questionnaire);
+      var items = questionnaireObject.items;
+
+      if (items.length) {
+        for (var i = 0; i < items.length; i++) {
+          var item = items[i];
+          var form = self.element.querySelector('#' + item.form);
+          var serializedString = item.data.replace(/\+/g, '%20');
+          var formFieldArray = serializedString.split("&");
+
+          self._resetForm(form);
+
+          for (var j = 0; j < formFieldArray.length; j++) {
+            var pair = formFieldArray[j];
+
+            var nameValue = pair.split('=');
+            var name = decodeURIComponent(nameValue[0]);
+            var value = decodeURIComponent(nameValue[1]);
+
+            var fields = form.querySelectorAll('[name=' + name + ']');
+
+            for (var k = 0; k < fields.length; k++) {
+              var field = fields[k];
+
+              if (field.type === 'radio' || field.type === 'checkbox') {
+                if (field.getAttribute('value') === value) {
+                  field.checked = true;
+                }
+              } else {
+                field.value = value;
+              }
+            }
+          }
+        }
+      }
+    },
 
     handleSubmitCardForm: function () {
       var self = this;
@@ -223,6 +234,23 @@ document.addEventListener('DOMContentLoaded', function (e) {
       }
 
       return -1;
+    },
+
+    _resetForm: function(form) {
+      for (var i = 0; i < form.elements.length; i++) {
+        var element = form.elements[i];
+
+        switch (element.type) {
+          case 'radio':
+          case 'checkbox':
+            element.checked = false;
+            break;
+          case 'select-one':
+            element.selected = false;
+          default:
+            element.value = '';
+        }
+      }
     }
   };
 
