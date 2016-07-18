@@ -56,7 +56,15 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
         createQuestionnaire: function () {
 
+<<<<<<< HEAD
             var questionnaire = {};
+=======
+    init: function () {
+      this.questionnairePrefix = "lmd-";
+      this.questionnaireName = this.questionnairePrefix + 'questionnaire';
+      this.total = this.questionnairePrefix + 'total';
+      this.storage = sessionStorage;
+>>>>>>> dba5f281eb0ce76572ae4b3c86e896333a63f3e5
 
             questionnaire['items'] = [];
 
@@ -68,7 +76,14 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
         handleSubmitCardForm: function () {
 
+<<<<<<< HEAD
             var self = this;
+=======
+      this.createQuestionnaire();
+      this.displayQuestionnaire();
+      this.handleSubmitCardForm();
+    },
+>>>>>>> dba5f281eb0ce76572ae4b3c86e896333a63f3e5
 
             // Creates a single event listener at the grandparent level 
             // (article) node
@@ -76,8 +91,56 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
                 var target = e.target;
 
+<<<<<<< HEAD
                 e.preventDefault();  // Prevents default behaviour
                 e.stopPropagation(); // Stops Event Bubbling 
+=======
+        this.storage.setItem(this.questionnaireName, JSON.stringify(questionnaire));
+        this.storage.setItem(this.total, JSON.stringify(this.formSubmitCard.length));
+      }
+    },
+
+    displayQuestionnaire: function () {
+      var self = this;
+
+      var questionnaire = self.storage.getItem(self.questionnaireName);
+      var questionnaireObject = JSON.parse(questionnaire);
+      var items = questionnaireObject.items;
+
+      if (items.length) {
+        for (var i = 0; i < items.length; i++) {
+          var item = items[i];
+          var form = self.element.querySelector('#' + item.form);
+          var serializedString = item.data.replace(/\+/g, '%20');
+          var formFieldArray = serializedString.split("&");
+
+          self._resetForm(form);
+
+          for (var j = 0; j < formFieldArray.length; j++) {
+            var pair = formFieldArray[j];
+
+            var nameValue = pair.split('=');
+            var name = decodeURIComponent(nameValue[0]);
+            var value = decodeURIComponent(nameValue[1]);
+
+            var fields = form.querySelectorAll('[name=' + name + ']');
+
+            for (var k = 0; k < fields.length; k++) {
+              var field = fields[k];
+
+              if (field.type === 'radio' || field.type === 'checkbox') {
+                if (field.getAttribute('value') === value) {
+                  field.checked = true;
+                }
+              } else {
+                field.value = value;
+              }
+            }
+          }
+        }
+      }
+    },
+>>>>>>> dba5f281eb0ce76572ae4b3c86e896333a63f3e5
 
                 self._validateCardForm(target); 
 
@@ -97,9 +160,18 @@ document.addEventListener('DOMContentLoaded', function (e) {
                 inputs      = toArray(card.querySelectorAll(selector)),
                 reqInputs   = inputs.filter(getWith('required'));
 
+<<<<<<< HEAD
             reqInputs = reqInputs.map(function(input) {
                 // Gets only the first failed test per inputs
                 var failure = regexTest(input, self.validation.fields)[0];
+=======
+          if (e.target.checkValidity()) {
+            self._saveCardFormData(e.target);
+          }
+        });
+      }
+    },
+>>>>>>> dba5f281eb0ce76572ae4b3c86e896333a63f3e5
 
                 if (failure) {
                     input.setCustomValidity(failure.msg);
@@ -168,10 +240,114 @@ document.addEventListener('DOMContentLoaded', function (e) {
         }
     }
 
+<<<<<<< HEAD
     function getWith (property) { 
         return function (obj) {
             return obj[property];
         }
+=======
+    _saveCardFormData: function (form) {
+      var self = this;
+      var findIndex = self._findIndex;
+
+      var formObject = {
+        form: form.getAttribute('id'),
+        data: self._serializeCardForm(form)
+      };
+
+      var questionnaire = self.storage.getItem(self.questionnaireName);
+      var questionnaireObject = JSON.parse(questionnaire);
+      var questionnaireCopy = questionnaireObject;
+      var items = questionnaireCopy.items;
+
+      var idx = items.findIndex(function(item) {
+        return item.form === form.getAttribute('id');
+      });
+
+      if (idx > -1) {
+        items.splice(idx, 1, formObject);
+      } else {
+        items.push(formObject);
+      }
+
+      self.storage.setItem(self.questionnaireName, JSON.stringify(questionnaireCopy));
+    },
+
+    _serializeCardForm: function(form) {
+      var field = void 0;
+      var l = void 0;
+      var s = [];
+
+      if (typeof form === 'object' && form.nodeName === 'FORM') {
+        var len = form.elements.length;
+
+        for (var i = 0; i < len; i++) {
+          field = form.elements[i];
+
+          if (field.name &&
+             !field.disabled &&
+              field.type !== 'file' &&
+              field.type !== 'reset' &&
+              field.type !== 'submit' &&
+              field.type !== 'button') {
+            if (field.type === 'select-multiple') {
+              l = form.elements[i].options.length;
+
+              for (var j = 0; j < l; j++) {
+                if (field.options[j].selected) {
+                  s[s.length] = encodeURIComponent(field.name) + '=' + encodeURIComponent(field.options[j].value);
+                }
+              }
+            } else if ((field.type !== 'checkbox' && field.type !== 'radio') || field.checked) {
+              s[s.length] = encodeURIComponent(field.name) + '=' + encodeURIComponent(field.value);
+            }
+          }
+        }
+      }
+
+      return s.join('&').replace(/%20/g, '+');
+    },
+
+    _findIndex: function(predicate) {
+      if (this === null) {
+        throw new TypeError('findIndex called on null or undefined');
+      }
+
+      if (typeof predicate !== 'function') {
+        throw new TypeError('predicate must be a function');
+      }
+
+      var list = Object(this);
+      var length = list.length >>> 0;
+      var thisArg = arguments[1];
+      var value;
+
+      for (var i = 0; i < length; i++) {
+        value = list[i];
+        if (predicate.call(thisArg, value, i, list)) {
+          return i;
+        }
+      }
+
+      return -1;
+    },
+
+    _resetForm: function(form) {
+      for (var i = 0; i < form.elements.length; i++) {
+        var element = form.elements[i];
+
+        switch (element.type) {
+          case 'radio':
+          case 'checkbox':
+            element.checked = false;
+            break;
+          case 'select-one':
+            element.selected = false;
+          default:
+            element.value = '';
+        }
+      }
+>>>>>>> dba5f281eb0ce76572ae4b3c86e896333a63f3e5
     }
 
 
