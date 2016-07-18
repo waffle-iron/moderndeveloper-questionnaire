@@ -26,28 +26,28 @@ document.addEventListener('DOMContentLoaded', function (e) {
             this.storage = sessionStorage;
 
             // Object containing patterns for form validation
-            this.requiredFields = {
+            this.validation = {
 
-                default: {
-                    msg: 'This field is required'
-                },
+                selector: 'input[type], select, textarea',
 
-                types: {
-                    email: {
+                fields: 
+                [
+                    {   
+                        type: 'email',
                         pattern: /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
                         msg: 'Error message email'
                     },
-                    text: {
+                    {   
+                        type: 'text',
                         pattern: /.*\S.*/,
                         msg: 'Error message text empty'
+                    },
+                    {
+                        name: 'card-05-dropdown',
+                        pattern: /Option 1/i,
+                        msg: 'This field is required'
                     }
-                },
-
-                custom: {
-                    'card-05-dropdown': {
-                        pattern: /Option 1/i
-                    }
-                }
+                ]
             };
 
             this.createQuestionnaire();
@@ -93,45 +93,24 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
             var self = this;
 
-            var fields = self.requiredFields,
-                inputs   = [].slice.call(card.querySelectorAll('textarea, '  +
-                                                               'select, '    +
-                                                               'input[type]'));
+            var selector    = self.validation.selector,
+                inputs      = toArray(card.querySelectorAll(selector)),
+                reqInputs   = inputs.filter(getWith('required'));
 
-            inputs.map(function(input) {
 
-                var value       = input.value,
-                    attributes  = input.attributes,
-                    type        = getAttribute(attributes, 'type') ? getAttribute(attributes, 'type').nodeValue : void 0,
-                    name        = getAttribute(attributes, 'name') ? getAttribute(attributes, 'name').nodeValue : void 0,
-                    isRequired  = !!getAttribute(attributes, 'required'),
-                    errorMsg    = '';
+            reqInputs = reqInputs.map(function(input) {
+                // Gets only the first failed test per inputs
+                var failure = first(regexTest(input, self.validation.fields));
 
-                if (isRequired) {
-
-                    // First validate against field's type (if any)
-                    if (fields.types[type]) {
-                        if (!fields.types[type].pattern.test(value)) {
-                            errorMsg = getAttribute(fields.types[type], 'msg') || fields.default.msg;
-                            input.setCustomValidity(errorMsg);
-                        } else {
-                            input.setCustomValidity('');
-                        }
-                    }
-
-                    // Second validate against custom pattern (if any)
-                    if (fields.custom[name]) {
-                        if (!fields.custom[name].pattern.test(value)) {
-                            errorMsg = getAttribute(fields.custom[name], 'msg') || fields.default.msg;
-                            input.setCustomValidity(errorMsg);
-                        } else {
-                            input.setCustomValidity('');
-                        }
-                    }
+                if (failure) {
+                    input.setCustomValidity(failure.msg);
+                } else {
+                    input.setCustomValidity('');
                 }
+                return input;
+            });
 
-                self._handleValidationError(input);
-            })
+            //this._handleValidationError();
         },
 
         _handleValidationError: function (field) {
@@ -165,14 +144,39 @@ document.addEventListener('DOMContentLoaded', function (e) {
         }
     };
 
-    // Helper function
-    function getAttribute(obj, attribute) {
-        if (obj && "hasOwnProperty" in obj && obj.hasOwnProperty(attribute)) {
-            return obj[attribute];
-        } else {
-            return null;
+    function regexTest(input, patterns) {
+        return use('filter')(function (pattern) {
+            return (pattern.type === input.type  ||
+                    pattern.name === input.name) &&
+                    !pattern.pattern.test(input.value);
+        })(patterns);
+    }
+
+    function toArray (obj) {
+        return [].slice.call(obj);
+    }
+
+    function first(Array) {
+        return Array[0];
+    }
+
+    function use(protoFn) {
+        return function (fn) {
+            return function (list) {
+                return Array.prototype[protoFn].call(list, function (item) {
+                    return fn.call(this, item);
+                });
+            };
         }
     }
+
+    function getWith (property) { 
+        return function (obj) {
+            return obj[property];
+        }
+    }
+
+
 
     (function(e) {
         var element = e.target.querySelector('.js--questionnaire');
