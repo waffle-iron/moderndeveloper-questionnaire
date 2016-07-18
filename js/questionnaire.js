@@ -1,100 +1,59 @@
+
 'use strict';
 
 document.addEventListener('DOMContentLoaded', function (e) {
+  function Questionnnaire(element) {
+    this.element = element;
+    this.init();
+  };
 
-    function Questionnaire(element) {
-        this.element = element;
-        this.init();
-    };
+  Questionnnaire.prototype = {
+    constructor: Questionnnaire,
 
-    /* 
-     * Sets all methods and properties inside the Questionnaire's prototype 
-     * in such a way that each new instance can use them without waste of 
-     * resources
-     */
-    Questionnaire.prototype = {
-        /*
-         * Since we define the Questionnaire's prototype this way,
-         * we need to set its constructor function again
-         */
-        constructor: Questionnaire,
-
-        init: function () {
-
-            this.questionnairePrefix = "lmd-";
-            this.questionnaireName = this.questionnairePrefix + 'questionnaire';
-            this.storage = sessionStorage;
-
-            // Object containing patterns for form validation
-            this.validation = {
-
-                selector: 'input[type], select, textarea',
-
-                fields: 
-                [
-                    {   
-                        type: 'email',
-                        pattern: /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
-                        msg: 'Error message email'
-                    },
-                    {   
-                        type: 'text',
-                        pattern: /.*\S.*/,
-                        msg: 'Error message text empty'
-                    },
-                    {
-                        name: 'card-05-dropdown',
-                        pattern: /Option 1/i,
-                        msg: 'Only Option 1 is allowed'
-                    }
-                ]
-            };
-
-            this.createQuestionnaire();
-            this.handleSubmitCardForm();
-        },
-
-        createQuestionnaire: function () {
-
-<<<<<<< HEAD
-            var questionnaire = {};
-=======
     init: function () {
-      this.questionnairePrefix = "lmd-";
-      this.questionnaireName = this.questionnairePrefix + 'questionnaire';
-      this.total = this.questionnairePrefix + 'total';
-      this.storage = sessionStorage;
->>>>>>> dba5f281eb0ce76572ae4b3c86e896333a63f3e5
+        this.questionnairePrefix = "lmd-";
+        this.questionnaireName = this.questionnairePrefix + 'questionnaire';
+        this.total = this.questionnairePrefix + 'total';
+        this.storage = sessionStorage;
 
-            questionnaire['items'] = [];
+        this.formSubmitCard = this.element.querySelectorAll('form.js--submit-card');
 
-            if (this.storage.getItem(this.questionnaireName) === null) {
-                this.storage.setItem(this.questionnaireName, 
-                                     JSON.stringify(questionnaire));
-            }
-        },
+        // Object containing patterns for form validation
+        this.validation = {
 
-        handleSubmitCardForm: function () {
+            selector: 'input[type], select, textarea',
 
-<<<<<<< HEAD
-            var self = this;
-=======
+            fields: 
+            [
+                {   
+                    type: 'email',
+                    pattern: /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
+                    msg: 'Error message email'
+                },
+                {   
+                    type: 'text',
+                    pattern: /.*\S.*/,
+                    msg: 'Error message text empty'
+                },
+                {
+                    name: 'card-05-dropdown',
+                    pattern: /Option 1/i,
+                    msg: 'Only Option 1 is allowed'
+                }
+            ]
+        };
+
       this.createQuestionnaire();
       this.displayQuestionnaire();
       this.handleSubmitCardForm();
     },
->>>>>>> dba5f281eb0ce76572ae4b3c86e896333a63f3e5
 
-            // Creates a single event listener at the grandparent level 
-            // (article) node
-            this.element.addEventListener('submit', function (e) {
+    createQuestionnaire: function () {
+      if (this.storage.getItem(this.questionnaireName) === null) {
 
-                var target = e.target;
+        var questionnaire = {};
+        questionnaire.items = [];
 
-<<<<<<< HEAD
-                e.preventDefault();  // Prevents default behaviour
-                e.stopPropagation(); // Stops Event Bubbling 
-=======
         this.storage.setItem(this.questionnaireName, JSON.stringify(questionnaire));
         this.storage.setItem(this.total, JSON.stringify(this.formSubmitCard.length));
       }
@@ -140,112 +99,79 @@ document.addEventListener('DOMContentLoaded', function (e) {
         }
       }
     },
->>>>>>> dba5f281eb0ce76572ae4b3c86e896333a63f3e5
 
-                self._validateCardForm(target); 
+    handleSubmitCardForm: function () {
 
-                if (target.checkValidity()) {
-                    self._saveCardFormData(target);
-                } else {
-                    console.log('Error in form');
-                }
-            });
-        },
+        var self = this;
 
-        _validateCardForm: function (card) {
+        // Creates a single event listener at the grandparent level 
+        // (article) node
+        this.element.addEventListener('submit', function (e) {
 
-            var self = this;
+            var target = e.target;
 
-            var selector    = self.validation.selector,
-                inputs      = toArray(card.querySelectorAll(selector)),
-                reqInputs   = inputs.filter(getWith('required'));
+            e.preventDefault();  // Prevents default behaviour
+            e.stopPropagation(); // Stops Event Bubbling 
 
-<<<<<<< HEAD
-            reqInputs = reqInputs.map(function(input) {
-                // Gets only the first failed test per inputs
-                var failure = regexTest(input, self.validation.fields)[0];
-=======
-          if (e.target.checkValidity()) {
-            self._saveCardFormData(e.target);
-          }
+            self._validateCardForm(target); 
+
+            if (target.checkValidity()) {
+                self._saveCardFormData(target);
+            }
         });
-      }
     },
->>>>>>> dba5f281eb0ce76572ae4b3c86e896333a63f3e5
 
-                if (failure) {
-                    input.setCustomValidity(failure.msg);
-                } else {
-                    input.setCustomValidity('');
+    _validateCardForm: function (card) {
+
+        var self = this;
+
+        var selector    = self.validation.selector,
+            inputs      = toArray(card.querySelectorAll(selector)),
+            reqInputs   = inputs.filter(getWith('required'));
+
+        reqInputs = reqInputs.map(function(input) {
+            // Gets only the first failed test per inputs
+            var failure = regexTest(input, self.validation.fields)[0];
+
+            if (failure) {
+                input.setCustomValidity(failure.msg);
+            } else {
+                input.setCustomValidity('');
+            }
+            return input;
+        });
+
+        this._handleValidationError(reqInputs);
+    },
+
+    _handleValidationError: function (fields) {
+        var msgContainer = void 0;
+
+        fields.forEach(function (field) {
+
+            var parent = field.parentNode,
+                hasError = parent.classList.contains('has-error'),
+                errorMessage = parent.querySelector('.error-message');
+
+            if (field.checkValidity()) {
+                if (hasError) {
+                    parent.classList.remove('has-error');
+                    parent.removeChild(errorMessage);
                 }
-                return input;
-            });
-
-            this._handleValidationError(reqInputs);
-        },
-
-        _handleValidationError: function (fields) {
-
-            var msgContainer = void 0;
-
-            fields.forEach(function (field) {
-
-                var parent = field.parentNode,
-                    hasError = parent.classList.contains('has-error'),
-                    errorMessage = parent.querySelector('.error-message');
-
-                if (field.checkValidity()) {
-                    if (hasError) {
-                        parent.classList.remove('has-error');
-                        parent.removeChild(errorMessage);
-                    }
+            } else {
+                if (!hasError) {
+                    msgContainer = document.createElement('div');
+                    msgContainer.className = 'error-message';
+                    msgContainer.innerHTML = field.validationMessage;
+                    parent.classList.add('has-error');
+                    parent.appendChild(msgContainer);
                 } else {
-                    if (!hasError) {
-                        msgContainer = document.createElement('div');
-                        msgContainer.className = 'error-message';
-                        msgContainer.innerHTML = field.validationMessage;
-                        parent.classList.add('has-error');
-                        parent.appendChild(msgContainer);
-                    } else {
-                        errorMessage.innerHTML = field.validationMessage;
-                    }
+                    errorMessage.innerHTML = field.validationMessage;
                 }
-            });
-        },
+            }
+        });
+    },
 
-        _saveCardFormData: function (card) {
-            console.log('Form saved');
-        }
-    };
-
-    function regexTest (input, patterns) {
-        return use('filter')(function (pattern) {
-            return (pattern.type === input.type  ||
-                    pattern.name === input.name) &&
-                    !pattern.pattern.test(input.value);
-        })(patterns);
-    }
-
-    function toArray (obj) {
-        return [].slice.call(obj);
-    }
-
-    function use (protoFn) {
-        return function (fn) {
-            return function (list) {
-                return Array.prototype[protoFn].call(list, function (item) {
-                    return fn.call(this, item);
-                });
-            };
-        }
-    }
-
-<<<<<<< HEAD
-    function getWith (property) { 
-        return function (obj) {
-            return obj[property];
-        }
-=======
     _saveCardFormData: function (form) {
       var self = this;
       var findIndex = self._findIndex;
@@ -347,14 +273,39 @@ document.addEventListener('DOMContentLoaded', function (e) {
             element.value = '';
         }
       }
->>>>>>> dba5f281eb0ce76572ae4b3c86e896333a63f3e5
+    }
+  };
+
+      function regexTest (input, patterns) {
+        return use('filter')(function (pattern) {
+            return (pattern.type === input.type  ||
+                    pattern.name === input.name) &&
+                    !pattern.pattern.test(input.value);
+        })(patterns);
     }
 
+    function toArray (obj) {
+        return [].slice.call(obj);
+    }
 
+    function use (protoFn) {
+        return function (fn) {
+            return function (list) {
+                return Array.prototype[protoFn].call(list, function (item) {
+                    return fn.call(this, item);
+                });
+            };
+        }
+    }
 
-    (function(e) {
-        var element = e.target.querySelector('.js--questionnaire');
-        var questionnaire = new Questionnaire(element);
-    })(e);
+    function getWith (property) { 
+        return function (obj) {
+            return obj[property];
+        }
+    }
+
+  (function(e) {
+    var element = e.target.querySelector('.js--questionnaire');
+    var questionnaire = new Questionnnaire(element);
+  })(e);
 });
-
