@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
                     {
                         name: 'card-05-dropdown',
                         pattern: /Option 1/i,
-                        msg: 'This field is required'
+                        msg: 'Only Option 1 is allowed'
                     }
                 ]
             };
@@ -97,10 +97,9 @@ document.addEventListener('DOMContentLoaded', function (e) {
                 inputs      = toArray(card.querySelectorAll(selector)),
                 reqInputs   = inputs.filter(getWith('required'));
 
-
             reqInputs = reqInputs.map(function(input) {
                 // Gets only the first failed test per inputs
-                var failure = first(regexTest(input, self.validation.fields));
+                var failure = regexTest(input, self.validation.fields)[0];
 
                 if (failure) {
                     input.setCustomValidity(failure.msg);
@@ -110,33 +109,36 @@ document.addEventListener('DOMContentLoaded', function (e) {
                 return input;
             });
 
-            //this._handleValidationError();
+            this._handleValidationError(reqInputs);
         },
 
-        _handleValidationError: function (field) {
+        _handleValidationError: function (fields) {
 
             var msgContainer = void 0;
 
-            var parent = field.parentNode,
-                hasError = parent.classList.contains('has-error'),
-                errorMessage = parent.querySelector('.error-message');
+            fields.forEach(function (field) {
 
-            if (field.checkValidity()) {
-                if (hasError) {
-                    parent.classList.remove('has-error');
-                    parent.removeChild(errorMessage);
-                }
-            } else {
-                if (!hasError) {
-                    msgContainer = document.createElement('div');
-                    msgContainer.className = 'error-message';
-                    msgContainer.innerHTML = field.validationMessage;
-                    parent.classList.add('has-error');
-                    parent.appendChild(msgContainer);
+                var parent = field.parentNode,
+                    hasError = parent.classList.contains('has-error'),
+                    errorMessage = parent.querySelector('.error-message');
+
+                if (field.checkValidity()) {
+                    if (hasError) {
+                        parent.classList.remove('has-error');
+                        parent.removeChild(errorMessage);
+                    }
                 } else {
-                    errorMessage.innerHTML = field.validationMessage;
+                    if (!hasError) {
+                        msgContainer = document.createElement('div');
+                        msgContainer.className = 'error-message';
+                        msgContainer.innerHTML = field.validationMessage;
+                        parent.classList.add('has-error');
+                        parent.appendChild(msgContainer);
+                    } else {
+                        errorMessage.innerHTML = field.validationMessage;
+                    }
                 }
-            }
+            });
         },
 
         _saveCardFormData: function (card) {
@@ -144,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
         }
     };
 
-    function regexTest(input, patterns) {
+    function regexTest (input, patterns) {
         return use('filter')(function (pattern) {
             return (pattern.type === input.type  ||
                     pattern.name === input.name) &&
@@ -156,11 +158,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
         return [].slice.call(obj);
     }
 
-    function first(Array) {
-        return Array[0];
-    }
-
-    function use(protoFn) {
+    function use (protoFn) {
         return function (fn) {
             return function (list) {
                 return Array.prototype[protoFn].call(list, function (item) {
