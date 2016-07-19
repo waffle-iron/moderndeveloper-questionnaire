@@ -117,7 +117,9 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
             if (target.checkValidity()) {
                 self._saveCardFormData(target);
-            }
+            } else {
+                target.querySelector('input:invalid, select:invalid, textarea:invalid').focus();
+          }
         });
     },
 

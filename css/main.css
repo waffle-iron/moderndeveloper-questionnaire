@@ -130,6 +130,30 @@ textarea:focus {
   outline: 0;
 }
 
+.has-error {
+  color: #f44336;
+}
+
+.has-error .error-message {
+  line-height: 1;
+  padding-top: 0.875rem;
+}
+
+.has-error input[type="email"],
+.has-error input[type="text"],
+.has-error select,
+.has-error textarea {
+}
+
+.has-error input[type="email"]:focus,
+.has-error input[type="text"]:focus,
+.has-error select:focus,
+.has-error textarea:focus {
+  border-color: #f44336;
+  box-shadow: inset 0px 1px 1px 0px rgba(0, 0, 0, 0.075),
+              0 0 8px rgba(244, 67, 54, 0.6);
+}
+
 select {
   border: 1px solid #e0e0e0;
   height: 3rem;
