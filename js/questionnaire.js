@@ -275,22 +275,21 @@ document.addEventListener('DOMContentLoaded', function (e) {
             element.value = '';
         }
       }
-    }
-  };
+    },
 
-      function regexTest (input, patterns) {
+    _regexTest: function(input, patterns) {
         return use('filter')(function (pattern) {
             return (pattern.type === input.type  ||
                     pattern.name === input.name) &&
                     !pattern.pattern.test(input.value);
         })(patterns);
-    }
+    },
 
-    function toArray (obj) {
+    _toArray: function(obj) {
         return [].slice.call(obj);
-    }
+    },
 
-    function use (protoFn) {
+    _use: function(protoFn) {
         return function (fn) {
             return function (list) {
                 return Array.prototype[protoFn].call(list, function (item) {
@@ -298,13 +297,14 @@ document.addEventListener('DOMContentLoaded', function (e) {
                 });
             };
         }
-    }
+    },
 
-    function getWith (property) { 
+    _getWith: function(property) { 
         return function (obj) {
             return obj[property];
         }
     }
+  };
 
   (function(e) {
     var element = e.target.querySelector('.js--questionnaire');
