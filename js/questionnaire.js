@@ -21,24 +21,33 @@ document.addEventListener('DOMContentLoaded', function (e) {
         // Object containing patterns for form validation
         this.validation = {
 
-            selector: 'input[type], select, textarea',
+            selector:   'input[type], select, textarea',
 
-            fields: 
+            patterns: 
             [
                 {   
-                    type: 'email',
-                    pattern: /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
-                    msg: 'Error message email'
-                },
-                {   
-                    type: 'text',
+                    name: 'required',
                     pattern: /.*\S.*/,
                     msg: 'Error message text empty'
                 },
+                {   
+                    name: 'email',
+                    pattern: /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
+                    msg: 'Error message email'
+                },
                 {
-                    name: 'card-05-dropdown',
-                    pattern: /Option 1/i,
-                    msg: 'Only Option 1 is allowed'
+                    name: 'color',
+                    pattern: /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i,
+                    msg: 'We love colors. Please, choose a valid one.'
+                }
+            ],
+
+            fields: 
+            [
+                {
+                    name: 'card-01-color',
+                    patterns: ['required','color'],
+                    msg: 'Specialized message for this form field'
                 }
             ]
         };
