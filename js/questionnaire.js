@@ -128,12 +128,12 @@ document.addEventListener('DOMContentLoaded', function (e) {
         var self = this;
 
         var selector    = self.validation.selector,
-            inputs      = toArray(card.querySelectorAll(selector)),
-            reqInputs   = inputs.filter(getWith('required'));
+            inputs      = self._toArray(card.querySelectorAll(selector)),
+            reqInputs   = inputs.filter(self._getWith('required'));
 
         reqInputs = reqInputs.map(function(input) {
             // Gets only the first failed test per inputs
-            var failure = regexTest(input, self.validation.fields)[0];
+            var failure = self._regexTest(input, self.validation.fields)[0];
 
             if (failure) {
                 input.setCustomValidity(failure.msg);
@@ -278,7 +278,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
     },
 
     _regexTest: function(input, patterns) {
-        return use('filter')(function (pattern) {
+        return this._use('filter')(function (pattern) {
             return (pattern.type === input.type  ||
                     pattern.name === input.name) &&
                     !pattern.pattern.test(input.value);
