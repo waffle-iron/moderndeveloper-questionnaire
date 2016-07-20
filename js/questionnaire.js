@@ -97,8 +97,12 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
         var self = this;
 
-        // Creates a single event listener at the grandparent level 
-        // (article) node
+        self.formSubmitCard.forEach(function(form) {
+            form.noValidate = true;
+        });
+
+        // Creates a single event listener on the (article) node
+        // it exploits the Event Bubbling
         this.element.addEventListener('submit', function (e) {
 
             var target = e.target;
@@ -111,13 +115,14 @@ document.addEventListener('DOMContentLoaded', function (e) {
             if (target.checkValidity()) {
                 self._saveCardFormData(target);
             } else {
-                target.querySelector('input:invalid, select:invalid, textarea:invalid').focus();
+                target.querySelector('input:invalid, ' +
+                                     'select:invalid, ' +
+                                     'textarea:invalid').focus();
           }
         });
     },
 
     _validateCardForm: function (card) {
-
         var validation         = this.validation,
             rules              = this.validation.rules,
             isInvalid          = this._isInvalid(rules),
@@ -273,11 +278,13 @@ document.addEventListener('DOMContentLoaded', function (e) {
             var ruleName  = self._getRuleName(input),
                 rule      = rules[ruleName];
 
-            if (rule !== void 0) {
-                return !rule.pattern.test(input.value);
-            } 
+            if (rule === void 0) { return false; } 
 
-            return false;
+            if (ruleName !== 'required' && input.value === '') {
+                return false;
+            }
+
+            return !rule.pattern.test(input.value);
         }
     },
 
@@ -293,9 +300,9 @@ document.addEventListener('DOMContentLoaded', function (e) {
     },
 
     _getRuleName: function(input) {
-        return input.dataset['type'] || 
-               input.type || 
-               (input.required ? 'required' : void 0);
+        return input.dataset['type'] ||
+               (this.validation.rules[input.type] ? input.type : 
+               (input.required) ? 'required' : void 0);
     },
 
     _getTypeError: function(name) {
@@ -306,34 +313,16 @@ document.addEventListener('DOMContentLoaded', function (e) {
         var self = this;
 
         return function(input) {
-
-            var ruleName = self._getRuleName(input);
-            var msg      = input.dataset[self._getTypeError(ruleName)];
+            var ruleName = self._getRuleName(input),
+                msg      = input.dataset[self._getTypeError(ruleName)];
 
             input.setCustomValidity(msg);
-
             return input;
         }
     },
 
     _toArray: function(obj) {
         return [].slice.call(obj);
-    },
-
-    _use: function(protoFn) {
-        return function (fn) {
-            return function (list) {
-                return Array.prototype[protoFn].call(list, function (item) {
-                    return fn.call(this, item);
-                });
-            };
-        }
-    },
-
-    _getItem: function(property) { 
-        return function (obj) {
-            return obj[property];
-        }
     },
   };
 
