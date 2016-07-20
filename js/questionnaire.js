@@ -118,17 +118,16 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
     _validateCardForm: function (card) {
 
-        var self = this;
-
-        var validation         = self.validation,
-            rules              = self.validation.rules,
-            isInvalid          = self._isInvalid(rules),
-            setCustomValidity  = self._setCustomValidity(rules),
+        var validation         = this.validation,
+            rules              = this.validation.rules,
+            isInvalid          = this._isInvalid(rules),
+            resetValidity      = this._resetCustomValidity,
+            setCustomValidity  = this._setCustomValidity(rules),
             selector           = validation.selector,
-            inputs             = self._toArray(card.querySelectorAll(selector));
+            inputs             = this._toArray(card.querySelectorAll(selector));
 
             inputs
-                .map(this._resetCustomValidity)
+                .map(resetValidity)
                 .filter(isInvalid)
                 .every(setCustomValidity);
 
