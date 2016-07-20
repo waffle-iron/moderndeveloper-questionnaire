@@ -23,33 +23,17 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
             selector:   'input[type], select, textarea',
 
-            patterns: 
-            [
-                {   
-                    name: 'required',
-                    pattern: /.*\S.*/,
-                    msg: 'Error message text empty'
+            rules: {
+                'required': {
+                    pattern: /.*\S.*/
                 },
-                {   
-                    name: 'email',
-                    pattern: /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
-                    msg: 'Error message email'
+                'email': {
+                    pattern: /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
                 },
-                {
-                    name: 'color',
-                    pattern: /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i,
-                    msg: 'We love colors. Please, choose a valid one.'
+                'color': {
+                    pattern: /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i
                 }
-            ],
-
-            fields: 
-            [
-                {
-                    name: 'card-01-color',
-                    patterns: ['required','color'],
-                    msg: 'Specialized message for this form field'
-                }
-            ]
+            }
         };
 
       this.createQuestionnaire();
@@ -136,23 +120,19 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
         var self = this;
 
-        var selector    = self.validation.selector,
-            inputs      = self._toArray(card.querySelectorAll(selector)),
-            reqInputs   = inputs.filter(self._getWith('required'));
+        var validation         = self.validation,
+            rules              = self.validation.rules,
+            isInvalid          = self._isInvalid(rules),
+            setCustomValidity  = self._setCustomValidity(rules),
+            selector           = validation.selector,
+            inputs             = self._toArray(card.querySelectorAll(selector));
 
-        reqInputs = reqInputs.map(function(input) {
-            // Gets only the first failed test per inputs
-            var failure = self._regexTest(input, self.validation.fields)[0];
+            inputs
+                .map(this._resetCustomValidity)
+                .filter(isInvalid)
+                .every(setCustomValidity);
 
-            if (failure) {
-                input.setCustomValidity(failure.msg);
-            } else {
-                input.setCustomValidity('');
-            }
-            return input;
-        });
-
-        this._handleValidationError(reqInputs);
+       this._handleValidationError(inputs);
     },
 
     _handleValidationError: function (fields) {
@@ -286,12 +266,55 @@ document.addEventListener('DOMContentLoaded', function (e) {
       }
     },
 
-    _regexTest: function(input, patterns) {
-        return this._use('filter')(function (pattern) {
-            return (pattern.type === input.type  ||
-                    pattern.name === input.name) &&
-                    !pattern.pattern.test(input.value);
-        })(patterns);
+    _isInvalid: function (rules) {
+        var self = this;
+
+        return function(input) {
+
+            var ruleName  = self._getRuleName(input),
+                rule      = rules[ruleName];
+
+            if (rule !== void 0) {
+                return !rule.pattern.test(input.value);
+            } 
+
+            return false;
+        }
+    },
+
+    _isValid: function (input) {
+        return input.checkValidity();
+    },
+
+    _resetCustomValidity: function (input) {
+        if (input.checkValidity() === false) {
+            input.setCustomValidity('');
+        }
+        return input;
+    },
+
+    _getRuleName: function(input) {
+        return input.dataset['type'] || 
+               input.type || 
+               (input.required ? 'required' : void 0);
+    },
+
+    _getTypeError: function(name) {
+        return name === 'required' ? 'errorEmpty' : 'errorInvalid';
+    },
+
+    _setCustomValidity: function (rules) {
+        var self = this;
+
+        return function(input) {
+
+            var ruleName = self._getRuleName(input);
+            var msg      = input.dataset[self._getTypeError(ruleName)];
+
+            input.setCustomValidity(msg);
+
+            return input;
+        }
     },
 
     _toArray: function(obj) {
@@ -308,11 +331,11 @@ document.addEventListener('DOMContentLoaded', function (e) {
         }
     },
 
-    _getWith: function(property) { 
+    _getItem: function(property) { 
         return function (obj) {
             return obj[property];
         }
-    }
+    },
   };
 
   (function(e) {
