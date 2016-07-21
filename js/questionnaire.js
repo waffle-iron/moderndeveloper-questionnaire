@@ -135,12 +135,12 @@ document.addEventListener('DOMContentLoaded', function (e) {
                 selector           = validation.selector,
                 inputs             = this._toArray(card.querySelectorAll(selector));
 
-                inputs
-                    .map(resetValidity)
-                    .filter(isInvalid)
-                    .every(setCustomValidity);
+            inputs
+                .map(resetValidity)
+                .filter(isInvalid)
+                .every(setCustomValidity);
 
-           this._handleValidationError(inputs);
+            this._handleValidationError(inputs);
         },
 
         _handleValidationError: function (fields) {
