@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
                 rules              = this.validation.rules,
                 isInvalid          = this._isInvalid(rules),
                 resetValidity      = this._resetCustomValidity,
-                setCustomValidity  = this._setCustomValidity(rules),
+                setCustomValidity  = this._setCustomValidity(),
                 selector           = validation.selector,
                 inputs             = this._toArray(card.querySelectorAll(selector));
 
@@ -316,7 +316,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
             return name === 'required' ? 'errorEmpty' : 'errorInvalid';
         },
 
-        _setCustomValidity: function (rules) {
+        _setCustomValidity: function () {
             var self = this;
 
             return function(input) {
