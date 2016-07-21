@@ -171,31 +171,32 @@ document.addEventListener('DOMContentLoaded', function (e) {
             });
         },
 
-        _saveCardFormData: function (form) {
-          var self = this;
-          var findIndex = self._findIndex;
+        _saveCardFormData: function(form) {
+            var self = this;
+            var findIndex = self._findIndex;
 
-          var formObject = {
-            form: form.getAttribute('id'),
-            data: self._serializeCardForm(form)
-          };
+            var formObject = {
+                form: form.getAttribute('id'),
+                data: self._serializeCardForm(form)
+            };
 
-          var questionnaire = self.storage.getItem(self.questionnaireName);
-          var questionnaireObject = JSON.parse(questionnaire);
-          var questionnaireCopy = questionnaireObject;
-          var items = questionnaireCopy.items;
+            var questionnaire = self.storage.getItem(self.questionnaireName);
+            var questionnaireObject = JSON.parse(questionnaire);
+            var questionnaireCopy = questionnaireObject;
+            var items = questionnaireCopy.items;
 
-          var idx = items.findIndex(function(item) {
-            return item.form === form.getAttribute('id');
-          });
+            var idx = items.findIndex(function(item) {
+                return item.form === form.getAttribute('id');
+            });
 
-          if (idx > -1) {
-            items.splice(idx, 1, formObject);
-          } else {
-            items.push(formObject);
-          }
+            if (idx > -1) {
+                items.splice(idx, 1, formObject);
+            } else {
+                items.push(formObject);
+            }
 
-          self.storage.setItem(self.questionnaireName, JSON.stringify(questionnaireCopy));
+            self.storage.setItem(self.questionnaireName,
+                                 JSON.stringify(questionnaireCopy));
         },
 
         _serializeCardForm: function(form) {
