@@ -57,44 +57,44 @@ document.addEventListener('DOMContentLoaded', function (e) {
         },
 
         displayQuestionnaire: function () {
-          var self = this;
+            var self = this;
 
-          var questionnaire = self.storage.getItem(self.questionnaireName);
-          var questionnaireObject = JSON.parse(questionnaire);
-          var items = questionnaireObject.items;
+            var questionnaire = self.storage.getItem(self.questionnaireName);
+            var questionnaireObject = JSON.parse(questionnaire);
+            var items = questionnaireObject.items;
 
-          if (items.length) {
-            for (var i = 0; i < items.length; i++) {
-              var item = items[i];
-              var form = self.element.querySelector('#' + item.form);
-              var serializedString = item.data.replace(/\+/g, '%20');
-              var formFieldArray = serializedString.split("&");
+            if (items.length) {
+                for (var i = 0; i < items.length; i++) {
+                    var item = items[i];
+                    var form = self.element.querySelector('#' + item.form);
+                    var serializedString = item.data.replace(/\+/g, '%20');
+                    var formFieldArray = serializedString.split('&');
 
-              self._resetForm(form);
+                    self._resetForm(form);
 
-              for (var j = 0; j < formFieldArray.length; j++) {
-                var pair = formFieldArray[j];
+                    for (var j = 0; j < formFieldArray.length; j++) {
+                        var pair = formFieldArray[j];
 
-                var nameValue = pair.split('=');
-                var name = decodeURIComponent(nameValue[0]);
-                var value = decodeURIComponent(nameValue[1]);
+                        var nameValue = pair.split('=');
+                        var name = decodeURIComponent(nameValue[0]);
+                        var value = decodeURIComponent(nameValue[1]);
 
-                var fields = form.querySelectorAll('[name=' + name + ']');
+                        var fields = form.querySelectorAll('[name=' + name + ']');
 
-                for (var k = 0; k < fields.length; k++) {
-                  var field = fields[k];
+                        for (var k = 0; k < fields.length; k++) {
+                            var field = fields[k];
 
-                  if (field.type === 'radio' || field.type === 'checkbox') {
-                    if (field.getAttribute('value') === value) {
-                      field.checked = true;
+                            if (field.type === 'radio' || field.type === 'checkbox') {
+                                if (field.getAttribute('value') === value) {
+                                    field.checked = true;
+                                }
+                            } else {
+                                field.value = value;
+                            }
+                        }
                     }
-                  } else {
-                    field.value = value;
-                  }
                 }
-              }
             }
-          }
         },
 
         handleSubmitCardForm: function () {
