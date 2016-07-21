@@ -42,14 +42,18 @@ document.addEventListener('DOMContentLoaded', function (e) {
         },
 
         createQuestionnaire: function () {
-          if (this.storage.getItem(this.questionnaireName) === null) {
+            var questionnaire = null;
 
-            var questionnaire = {};
-            questionnaire.items = [];
+            if (this.storage.getItem(this.questionnaireName) === null) {
 
-            this.storage.setItem(this.questionnaireName, JSON.stringify(questionnaire));
-            this.storage.setItem(this.total, JSON.stringify(this.formSubmitCard.length));
-          }
+                questionnaire = {};
+                questionnaire.items = [];
+
+                this.storage.setItem(this.questionnaireName,
+                                     JSON.stringify(questionnaire));
+                this.storage.setItem(this.total,
+                                     JSON.stringify(this.formSubmitCard.length));
+            }
         },
 
         displayQuestionnaire: function () {
