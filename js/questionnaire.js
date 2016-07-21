@@ -98,10 +98,10 @@ document.addEventListener('DOMContentLoaded', function (e) {
         },
 
         handleSubmitCardForm: function () {
+            var self  = this;
+            var forms = self._toArray(self.formSubmitCard);
 
-            var self = this;
-
-            self.formSubmitCard.forEach(function(form) {
+            forms.forEach(function(form) {
                 form.noValidate = true;
             });
 
