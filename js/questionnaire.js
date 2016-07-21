@@ -199,38 +199,38 @@ document.addEventListener('DOMContentLoaded', function (e) {
         },
 
         _serializeCardForm: function(form) {
-          var field = void 0;
-          var l = void 0;
-          var s = [];
+            var field = void 0;
+            var l = void 0;
+            var s = [];
 
-          if (typeof form === 'object' && form.nodeName === 'FORM') {
-            var len = form.elements.length;
+            if (typeof form === 'object' && form.nodeName === 'FORM') {
+                var len = form.elements.length;
 
-            for (var i = 0; i < len; i++) {
-              field = form.elements[i];
+                for (var i = 0; i < len; i++) {
+                    field = form.elements[i];
 
-              if (field.name &&
-                 !field.disabled &&
-                  field.type !== 'file' &&
-                  field.type !== 'reset' &&
-                  field.type !== 'submit' &&
-                  field.type !== 'button') {
-                if (field.type === 'select-multiple') {
-                  l = form.elements[i].options.length;
+                    if (field.name &&
+                        !field.disabled &&
+                        field.type !== 'file' &&
+                        field.type !== 'reset' &&
+                        field.type !== 'submit' &&
+                        field.type !== 'button') {
+                        if (field.type === 'select-multiple') {
+                            l = form.elements[i].options.length;
 
-                  for (var j = 0; j < l; j++) {
-                    if (field.options[j].selected) {
-                      s[s.length] = encodeURIComponent(field.name) + '=' + encodeURIComponent(field.options[j].value);
+                            for (var j = 0; j < l; j++) {
+                                if (field.options[j].selected) {
+                                    s[s.length] = encodeURIComponent(field.name) + '=' + encodeURIComponent(field.options[j].value);
+                                }
+                            }
+                        } else if ((field.type !== 'checkbox' && field.type !== 'radio') || field.checked) {
+                            s[s.length] = encodeURIComponent(field.name) + '=' + encodeURIComponent(field.value);
+                        }
                     }
-                  }
-                } else if ((field.type !== 'checkbox' && field.type !== 'radio') || field.checked) {
-                  s[s.length] = encodeURIComponent(field.name) + '=' + encodeURIComponent(field.value);
                 }
-              }
             }
-          }
 
-          return s.join('&').replace(/%20/g, '+');
+            return s.join('&').replace(/%20/g, '+');
         },
 
         _findIndex: function(predicate) {
