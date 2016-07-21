@@ -44,8 +44,9 @@
                      tabindex="1"
                      autofocus="autofocus"
                      aria-required="true"
-                     data-error-empty="Error message text empty"
-                     data-error-invalid="Error message text invalid"
+                     data-error-empty="This field cannot be empty.
+                                       Please fill it."
+                     data-error-invalid="Invalid fullname. Please try again."
                      required="required" />
             </p>
             <p>
@@ -59,7 +60,10 @@
                      placeholder="whatsup@moderndeveloper.com"
                      tabindex="2"
                      aria-required="true"
-                     data-message="Error message email"
+                     data-error-empty="This field cannot be empty.
+                                       Please fill it."
+                     data-error-invalid="You have entered an invalid e-mail
+                                         addrees. Please try again."
                      required="required" />
             </p>
             <p>
@@ -69,7 +73,14 @@
               <input type="text"
                      id="card-01-color"
                      name="card-01-color"
-                     tabindex="3" />
+                     tabindex="3"
+                     data-error-empty="Error message color silly"
+                     data-error-invalid="You have entered an invalid hexadecimal
+                                         color value. Hexadecimal colors are
+                                         strings with a length of 7
+                                         (including the #), using the characters
+                                         0—9 and A—F. Please try again."
+                     data-type="color" />
             </p>
             <p>
               <button type="submit"

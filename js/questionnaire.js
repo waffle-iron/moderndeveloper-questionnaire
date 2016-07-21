@@ -1,3 +1,4 @@
+
 'use strict';
 
 document.addEventListener('DOMContentLoaded', function (e) {
@@ -18,13 +19,19 @@ document.addEventListener('DOMContentLoaded', function (e) {
             this.formSubmitCard = this.element.querySelectorAll('form.js-submit-card:not(.js-submit-card--disabled)');
 
             // Object containing patterns for form validation
-            this.requiredFields = {
-                email: {
-                    value: /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
-                },
+            this.validation = {
+                selector:   'input[type], select, textarea',
 
-                empty: {
-                    value: ''
+                rules: {
+                    'required': {
+                        pattern: /.*\S.*/
+                    },
+                    'email': {
+                        pattern: /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+                    },
+                    'color': {
+                        pattern: /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i
+                    }
                 }
             };
 
@@ -85,50 +92,58 @@ document.addEventListener('DOMContentLoaded', function (e) {
         },
 
         handleSubmitCardForm: function () {
-            var self = this;
-            var forms = [].slice.call(self.formSubmitCard);
+            var self  = this;
+            var forms = self._toArray(self.formSubmitCard);
 
             forms.forEach(function(form) {
                 form.noValidate = true;
 
-                form.addEventListener('submit', function (e) {
-                    e.preventDefault();
+                // Check for last form
+                if (form === forms[forms.length - 1]) {
+                    form.setAttribute('data-last-form', 'true');
+                }
+            });
 
-                    self._validateCardForm(e.target);
+            // Creates a single event listener on the (article) node
+            // it exploits the Event Bubbling
+            self.element.addEventListener('submit', function (e) {
+                var target = e.target;
 
-                    if (e.target.checkValidity()) {
-                        self._saveCardFormData(e.target);
+                e.preventDefault();  // Prevents default behaviour
+                e.stopPropagation(); // Stops Event Bubbling
 
-                        // Check if last form
-                        if (form === forms[forms.length - 1]) {
-                            self._checkCardForms();
-                        }
+                self._validateCardForm(target);
+
+                if (target.checkValidity()) {
+                    self._saveCardFormData(target);
+
+                    // Check if last form
+                    if (target.getAttribute('data-last-form') === 'true') {
+                        self._checkCardForms();
                     }
-                });
+                } else {
+                    target.querySelector('input:invalid, ' +
+                                         'select:invalid, ' +
+                                         'textarea:invalid').focus();
+                }
             });
         },
 
         _validateCardForm: function (card) {
-            var self = this;
-            var fields = self.requiredFields;
-            var textInputs = card.querySelectorAll('input[type=text]');
-            var emailInputs = card.querySelectorAll('input[type=email]');
+            var validation         = this.validation;
+            var rules              = this.validation.rules;
+            var isInvalid          = this._isInvalid(rules);
+            var resetValidity      = this._resetCustomValidity;
+            var setCustomValidity  = this._setCustomValidity();
+            var selector           = validation.selector;
+            var inputs             = this._toArray(card.querySelectorAll(selector));
 
-            if (textInputs.length) {
-                for (var i = 0; i < textInputs.length; i++) {
-                    var textInput = textInputs[i];
-                    var errorMsgEmpty = textInput.getAttribute('data-error-empty');
-                    var errorMsgInvalid = textInput.getAttribute('data-error-invalid');
+            inputs
+                .map(resetValidity)
+                .filter(isInvalid)
+                .every(setCustomValidity);
 
-                    if (textInput.required && textInput.value === fields.empty.value) {
-                        textInput.setCustomValidity(errorMsgEmpty);
-                    } else {
-                        textInput.setCustomValidity('');
-                    }
-
-                    self._handleValidationError(textInput);
-                }
-            }
+            this._handleValidationError(inputs);
         },
 
         _checkCardForms: function () {
@@ -158,26 +173,32 @@ document.addEventListener('DOMContentLoaded', function (e) {
             }
         },
 
-        _handleValidationError: function (field) {
-            var parent = field.parentNode;
+        _handleValidationError: function (fields) {
+            var msgContainer = void 0;
 
-            if (field.checkValidity()) {
-                if (parent.classList.contains('has-error')) {
-                    parent.classList.remove('has-error');
-                    parent.removeChild(parent.querySelector('.error-message'));
-                }
-            } else {
-                if (!parent.classList.contains('has-error')) {
-                    var msgContainer = void 0;
-                    msgContainer = document.createElement('div');
-                    msgContainer.className = 'error-message';
-                    msgContainer.innerHTML = field.validationMessage;
-                    parent.classList.add('has-error');
-                    parent.appendChild(msgContainer);
+            fields.forEach(function (field) {
+
+                var parent = field.parentNode,
+                    hasError = parent.classList.contains('has-error'),
+                    errorMessage = parent.querySelector('.error-message');
+
+                if (field.checkValidity()) {
+                    if (hasError) {
+                        parent.classList.remove('has-error');
+                        parent.removeChild(errorMessage);
+                    }
                 } else {
-                    parent.querySelector('.error-message').innerHTML = field.validationMessage;
+                    if (!hasError) {
+                        msgContainer = document.createElement('div');
+                        msgContainer.className = 'error-message';
+                        msgContainer.innerHTML = field.validationMessage;
+                        parent.classList.add('has-error');
+                        parent.appendChild(msgContainer);
+                    } else {
+                        errorMessage.innerHTML = field.validationMessage;
+                    }
                 }
-            }
+            });
         },
 
         _saveCardFormData: function (form) {
@@ -204,7 +225,8 @@ document.addEventListener('DOMContentLoaded', function (e) {
                 items.push(formObject);
             }
 
-            self.storage.setItem(self.questionnaireName, JSON.stringify(questionnaireCopy));
+            self.storage.setItem(self.questionnaireName,
+                                 JSON.stringify(questionnaireCopy));
         },
 
         _serializeCardForm: function(form) {
@@ -271,17 +293,75 @@ document.addEventListener('DOMContentLoaded', function (e) {
                 var element = form.elements[i];
 
                 switch (element.type) {
-                    case 'radio':
-                    case 'checkbox':
-                        element.checked = false;
-                        break;
-                    case 'select-one':
-                        element.selected = false;
-                    default:
-                        element.value = '';
+                case 'radio':
+                case 'checkbox':
+                    element.checked = false;
+                    break;
+                case 'select-one':
+                    element.selected = false;
+                    break;
+
+                default:
+                    element.value = '';
                 }
             }
-        }
+        },
+
+        _isInvalid: function (rules) {
+            var self = this;
+
+            return function(input) {
+
+                var ruleName  = self._getRuleName(input),
+                    rule      = rules[ruleName];
+
+                if (rule === void 0) { return false; }
+
+                if (ruleName !== 'required' && input.value === '') {
+                    return false;
+                }
+
+                return !rule.pattern.test(input.value);
+            };
+        },
+
+        _isValid: function (input) {
+            return input.checkValidity();
+        },
+
+        _resetCustomValidity: function (input) {
+            if (input.checkValidity() === false) {
+                input.setCustomValidity('');
+            }
+
+            return input;
+        },
+
+        _getRuleName: function(input) {
+            return input.dataset['type'] ||
+                   (this.validation.rules[input.type] ? input.type :
+                   (input.required) ? 'required' : void 0);
+        },
+
+        _getTypeError: function(name) {
+            return name === 'required' ? 'errorEmpty' : 'errorInvalid';
+        },
+
+        _setCustomValidity: function () {
+            var self = this;
+
+            return function(input) {
+                var ruleName = self._getRuleName(input);
+                var msg      = input.dataset[self._getTypeError(ruleName)];
+
+                input.setCustomValidity(msg);
+                return input;
+            };
+        },
+
+        _toArray: function(obj) {
+            return [].slice.call(obj);
+        },
     };
 
     (function(e) {
