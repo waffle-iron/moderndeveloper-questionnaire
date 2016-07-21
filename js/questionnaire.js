@@ -258,20 +258,22 @@ document.addEventListener('DOMContentLoaded', function (e) {
         },
 
         _resetForm: function(form) {
-          for (var i = 0; i < form.elements.length; i++) {
-            var element = form.elements[i];
+            for (var i = 0; i < form.elements.length; i++) {
+                var element = form.elements[i];
 
-            switch (element.type) {
-              case 'radio':
-              case 'checkbox':
-                element.checked = false;
-                break;
-              case 'select-one':
-                element.selected = false;
-              default:
-                element.value = '';
+                switch (element.type) {
+                case 'radio':
+                case 'checkbox':
+                    element.checked = false;
+                    break;
+                case 'select-one':
+                    element.selected = false;
+                    break;
+
+                default:
+                    element.value = '';
+                }
             }
-          }
         },
 
         _isInvalid: function (rules) {
