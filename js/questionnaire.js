@@ -108,9 +108,9 @@ document.addEventListener('DOMContentLoaded', function (e) {
             var target = e.target;
 
             e.preventDefault();  // Prevents default behaviour
-            e.stopPropagation(); // Stops Event Bubbling 
+            e.stopPropagation(); // Stops Event Bubbling
 
-            self._validateCardForm(target); 
+            self._validateCardForm(target);
 
             if (target.checkValidity()) {
                 self._saveCardFormData(target);
@@ -278,7 +278,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
             var ruleName  = self._getRuleName(input),
                 rule      = rules[ruleName];
 
-            if (rule === void 0) { return false; } 
+            if (rule === void 0) { return false; }
 
             if (ruleName !== 'required' && input.value === '') {
                 return false;
@@ -301,7 +301,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
     _getRuleName: function(input) {
         return input.dataset['type'] ||
-               (this.validation.rules[input.type] ? input.type : 
+               (this.validation.rules[input.type] ? input.type :
                (input.required) ? 'required' : void 0);
     },
 
