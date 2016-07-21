@@ -1,0 +1,6 @@
+augroup filetype_javascript
+  autocmd!
+  " Softtabs, 4 spaces
+  autocmd FileType javascript set tabstop=4 | set shiftwidth=4
+augroup END
+

@@ -13,14 +13,16 @@
         href="https://fonts.googleapis.com/css?family=Roboto:400,300,500,700">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-
-  <script src="js/baseliner.js"></script>
 </head>
 <body>
   <main role="main">
-    <article class="questionnaire">
-      <form accept-charset="UTF-8" action="#" method="post">
-        <section class="questionnaire__card">
+    <article class="questionnaire js-questionnaire">
+      <section class="questionnaire__card">
+        <form accept-charset="UTF-8"
+              action="index.html"
+              method="post"
+              id="card-01"
+              class="js-submit-card">
           <header class="questionnaire__head">
             <h2>
               <strong>
@@ -42,6 +44,9 @@
                      tabindex="1"
                      autofocus="autofocus"
                      aria-required="true"
+                     data-error-empty="This field cannot be empty.
+                                       Please fill it."
+                     data-error-invalid="Invalid fullname. Please try again."
                      required="required" />
             </p>
             <p>
@@ -55,6 +60,10 @@
                      placeholder="whatsup@moderndeveloper.com"
                      tabindex="2"
                      aria-required="true"
+                     data-error-empty="This field cannot be empty.
+                                       Please fill it."
+                     data-error-invalid="You have entered an invalid e-mail
+                                         addrees. Please try again."
                      required="required" />
             </p>
             <p>
@@ -64,10 +73,19 @@
               <input type="text"
                      id="card-01-color"
                      name="card-01-color"
-                     tabindex="3" />
+                     tabindex="3"
+                     data-error-empty="Error message color silly"
+                     data-error-invalid="You have entered an invalid hexadecimal
+                                         color value. Hexadecimal colors are
+                                         strings with a length of 7
+                                         (including the #), using the characters
+                                         0—9 and A—F. Please try again."
+                     data-type="color" />
             </p>
             <p>
-              <button class="button button--questionnaire" tabindex="4">
+              <button type="submit"
+                      class="button button--questionnaire"
+                      tabindex="4">
                 Continue
               </button>
             </p>
@@ -75,8 +93,14 @@
               * Required
             </div>
           </fieldset>
-        </section>
-        <section class="questionnaire__card">
+        </form>
+      </section>
+      <section class="questionnaire__card">
+        <form accept-charset="UTF-8"
+              action="index.html"
+              method="post"
+              id="card-02"
+              class="js-submit-card">
           <header class="questionnaire__head">
             <h2>
               Section Title
@@ -113,14 +137,22 @@
                         tabindex="7"></textarea>
             </p>
             <p>
-              <button class="button button--questionnaire" tabindex="8">
+              <button type="submit"
+                      class="button button--questionnaire"
+                      tabindex="8">
                 Continue
               </button>
             </p>
           </fieldset>
-        </section>
-        <section class="questionnaire__card
-                        questionnaire__card--disabled">
+        </form>
+      </section>
+      <section class="questionnaire__card
+                      questionnaire__card--disabled">
+        <form accept-charset="UTF-8"
+              action="index.html"
+              method="post"
+              id="card-03"
+              class="js-submit-card js-submit-card--disabled">
           <header class="questionnaire__head">
             <h2>
               This section is disabled
@@ -139,15 +171,22 @@
                      disabled="disabled">
             </p>
             <p>
-              <button class="button button--questionnaire"
+              <button type="submit"
+                      class="button button--questionnaire"
                       tabindex="10"
                       disabled="disabled">
                 Continue
               </button>
             </p>
           </fieldset>
-        </section>
-        <section class="questionnaire__card">
+        </form>
+      </section>
+      <section class="questionnaire__card">
+        <form accept-charset="UTF-8"
+              action="index.html"
+              method="post"
+              id="card-04"
+              class="js-submit-card">
           <header class="questionnaire__head">
             <h2>
               <strong>
@@ -198,13 +237,21 @@
                         tabindex="13"></textarea>
             </p>
             <p>
-              <button class="button button--questionnaire" tabindex="14">
+              <button type="submit"
+                      class="button button--questionnaire"
+                      tabindex="14">
                 Continue
               </button>
             </p>
           </fieldset>
-        </section>
-        <section class="questionnaire__card">
+        </form>
+      </section>
+      <section class="questionnaire__card">
+        <form accept-charset="UTF-8"
+              action="index.html"
+              method="post"
+              id="card-05"
+              class="js-submit-card">
           <header class="questionnaire__head">
             <h2>
               Section Title w/ form elements
@@ -250,7 +297,7 @@
               <label>
                 <input type="checkbox"
                        id="card-05-checkbox-item-01"
-                       name="card-05-checkbox-item-01"
+                       name="card-05-checkbox-item"
                        value="something_A" checked
                        tabindex="18" />
                 I like option A
@@ -258,7 +305,7 @@
               <label>
                 <input type="checkbox"
                        id="card-05-checkbox-item-02"
-                       name="card-05-checkbox-item-02"
+                       name="card-05-checkbox-item"
                        value="something_B"
                        tabindex="19" />
                 I like option B
@@ -266,7 +313,7 @@
               <label>
                 <input type="checkbox"
                        id="card-05-checkbox-item-03"
-                       name="card-05-checkbox-item-03"
+                       name="card-05-checkbox-item"
                        value="something_C"
                        tabindex="20" />
                 I like option C
@@ -313,14 +360,11 @@
               * Required
             </div>
           </fieldset>
-        </section>
-      </form>
+        </form>
+      </section>
     </article>
   </main>
-  <script>
-    // window.onload = function() {
-    //   baseliner = new Baseliner(24);
-    // }
-  </script>
+  <script src="js/questionnaire.js"></script>
 </body>
 </html>
+
