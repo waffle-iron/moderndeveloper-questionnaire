@@ -198,7 +198,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
         _saveCardFormData: function (form) {
             var self = this;
-            var findIndex = self._findIndex;
 
             var formObject = {
                 form: form.getAttribute('id'),
