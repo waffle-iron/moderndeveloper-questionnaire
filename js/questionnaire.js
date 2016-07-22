@@ -126,18 +126,18 @@ document.addEventListener('DOMContentLoaded', function (e) {
         },
 
         _validateCardForm: function (card) {
-            var validation         = this.validation;
-            var rules              = this.validation.rules;
-            var isInvalid          = this._isInvalid(rules);
-            var resetValidity      = this._resetCustomValidity;
-            var setCustomValidity  = this._setCustomValidity();
-            var selector           = validation.selector;
-            var inputs             = this._toArray(card.querySelectorAll(selector));
+            var validation     = this.validation;
+            var rules          = this.validation.rules;
+            var isInvalid      = this._isInvalid(rules);
+            var resetValidity  = this._resetCustomValidity;
+            var setCstValidity = this._setCustomValidity();
+            var selector       = validation.selector;
+            var inputs         = this._toArray(card.querySelectorAll(selector));
 
             inputs
                 .map(resetValidity)
                 .filter(isInvalid)
-                .every(setCustomValidity);
+                .every(setCstValidity);
 
             this._handleValidationError(inputs);
         },
