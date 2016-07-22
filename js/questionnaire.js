@@ -144,7 +144,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
         _checkCardForms: function () {
             var self = this;
-            var findIndex = self._findIndex;
             var forms = [].slice.call(self.formSubmitCard);
 
             var questionnaire = self.storage.getItem(self.questionnaireName);
