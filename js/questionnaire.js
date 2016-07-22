@@ -50,45 +50,41 @@ document.addEventListener('DOMContentLoaded', function (e) {
             }
         },
 
+        _decode: function(URIcomponent) {
+            return decodeURIComponent(URIcomponent);
+        },
+
+        _rebuildForm: function(self) {
+            return function(item) {
+                var form   = self.element.querySelector('#' + item.form);
+                self._resetForm(form);
+                item.data
+                    .replace(/\+/g, '%20')
+                    .split('&')
+                    .forEach(function(field) {
+                        var pair  = field.split('='),
+                            name  = self._decode(pair[0]),
+                            value = self._decode(pair[1]),
+                            selectorByName = '[name="' + name + '"]',
+                            selectorByPair = '[name="' + name + '"]' +
+                                             '[value="' + value + '"]',
+                            input = form.querySelector(selectorByPair) ||
+                                    form.querySelector(selectorByName);
+
+                        (input.type === 'radio' || input.type === 'checkbox') ?
+                        input.checked = true :
+                        input.value   = value;
+                    });
+            };
+        },
+
         displayQuestionnaire: function () {
-            var self = this;
+            var questionnaire  = this.storage.getItem(this.questionnaireName),
+                questionnaireObject = JSON.parse(questionnaire);
 
-            var questionnaire = self.storage.getItem(self.questionnaireName);
-            var questionnaireObject = JSON.parse(questionnaire);
-            var items = questionnaireObject.items;
+            var rebuildForm = this._rebuildForm(this);
 
-            if (items.length) {
-                for (var i = 0; i < items.length; i++) {
-                    var item = items[i];
-                    var form = self.element.querySelector('#' + item.form);
-                    var serializedString = item.data.replace(/\+/g, '%20');
-                    var formFieldArray = serializedString.split("&");
-
-                    self._resetForm(form);
-
-                    for (var j = 0; j < formFieldArray.length; j++) {
-                        var pair = formFieldArray[j];
-
-                        var nameValue = pair.split('=');
-                        var name = decodeURIComponent(nameValue[0]);
-                        var value = decodeURIComponent(nameValue[1]);
-
-                        var fields = form.querySelectorAll('[name=' + name + ']');
-
-                        for (var k = 0; k < fields.length; k++) {
-                            var field = fields[k];
-
-                            if (field.type === 'radio' || field.type === 'checkbox') {
-                                if (field.getAttribute('value') === value) {
-                                    field.checked = true;
-                                }
-                            } else {
-                                field.value = value;
-                            }
-                        }
-                    }
-                }
-            }
+            questionnaireObject.items.forEach(rebuildForm);
         },
 
         handleSubmitCardForm: function () {
