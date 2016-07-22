@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/stefanfrede/moderndeveloper-questionnaire.png?label=ready&title=Ready)](https://waffle.io/stefanfrede/moderndeveloper-questionnaire)
 # Introduction to JavaScript and Modern Web Development
 
 [![Join the chat at https://gitter.im/stefanfrede/moderndeveloper-questionnaire](https://badges.gitter.im/stefanfrede/moderndeveloper-questionnaire.svg)](https://gitter.im/stefanfrede/moderndeveloper-questionnaire?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
